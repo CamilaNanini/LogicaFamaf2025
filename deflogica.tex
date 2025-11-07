@@ -1,0 +1,653 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{enumitem}
+\usepackage{amsmath, amssymb}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 1}
+\begin{enumerate}[label=(\arabic*)]
+    \item Defina $n(J)$ (para $J \in \text{Just}^+$)
+
+    \bigskip
+    Sea $J \in \text{Just}^+$. Por el Lema 4, existen únicos $n \geq 1$ y $J_1, \ldots, J_n \in \text{Just}$ tales que 
+    \[
+    J = J_1 \ldots J_n.
+    \]
+    Definimos entonces $n(J) = n$, y escribiremos $J_1, \ldots, J_{n(J)}$ para referirnos a la única sucesión de justificaciones cuya concatenación es $J$.
+
+    \item Defina “par adecuado de tipo $\tau$” (no hace falta que defina cuando $J \in \text{Just}^+$ es balanceada)
+
+    \bigskip
+    Un \textbf{par adecuado de tipo} $\tau$ es un par $(\varphi, J) \in S^{ \tau +} \times \text{Just}^+$ tal que se cumple que $n(\varphi) = n(J)$ y $J$ es balanceada.  
+
+    \item Defina $\text{Mod}_T(\varphi)$
+    \item Dados $\varphi =_d \varphi(v_1, \ldots, v_n)$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina qué significa $A \vDash \varphi[a_1, \ldots, a_n]$ (i.e. Convención notacional 4)
+    \bigskip
+    Sean 
+    \[\varphi =_d \varphi(v_1, \dots, v_n)\]
+    una fórmula de tipo $\tau$, 
+    $A$ una estructura (modelo) de tipo $\tau$, 
+    y $a_1, \dots, a_n \in A$. 
+
+    Entonces escribimos
+    \[
+        A \vDash \varphi[a_1, \dots, a_n]
+    \]
+    para indicar que existe una asignación 
+    \(\vec{b}\) tal que a cada variable \(v_i\) le asigna el valor \(a_i\),
+    y se cumple que 
+    \[
+        A \vDash \varphi[\vec{b}],
+    \]
+    es decir, la fórmula \(\varphi\) resulta verdadera en \(A\) bajo dicha asignación.  
+
+    \item Defina $(L,s,i,c,0,1)/\theta$ ($\theta$ una congruencia del reticulado complementado $(L,s,i,c,0,1)$).  
+    
+    \bigskip
+    
+    Sea $(L,s,i,c,0,1)$ un reticulado complementado. Una congruencia sobre $(L,s,i,c,0,1)$ es una relación de equivalencia $\theta$ sobre $L$ tal que:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\theta$ es una congruencia sobre $(L,s,i,0,1)$
+        \item $x/\theta = y/\theta \implies x^c/\theta = y^c/\theta$
+    \end{enumerate}
+    
+    Las condiciones anteriores nos permiten definir sobre $L/\theta$ dos operaciones binarias $\tilde{s}$ y $\tilde{\imath}$, y una operación unaria $\tilde{c}$ de la siguiente manera:
+    \[
+        x/\theta \;\tilde{s}\; y/\theta = (x \;s\; y)/\theta, \quad
+        x/\theta \;\tilde{\imath}\; y/\theta = (x \;i\; y)/\theta, \quad
+        (x/\theta)^{\tilde{c}} = x^c/\theta
+    \]
+    
+    La 6-upla $(L/\theta, \tilde{s}, \tilde{\imath}, \tilde{c}, 0/\theta, 1/\theta)$ se llama el cociente de $(L,s,i,c,0,1)$ sobre $\theta$ y se denota por $(L,s,i,c,0,1)/\theta$.
+\end{enumerate}
+
+
+\section*{Combo 2}
+\begin{enumerate}[label=(\arabic*)]
+    \item Defina $(\Sigma, \tau) \vDash \varphi$
+
+    \bigskip
+    Sea $(\Sigma, \tau)$ una teoría de primer orden. Decimos que
+    \[
+    (\Sigma, \tau) \vDash \varphi
+    \]
+    si y sólo si $\varphi$ es verdadera en todo modelo de $(\Sigma, \tau)$.
+
+    \item Defina “Partición de $A$” y $RP$
+    \item Defina cuando “$\varphi_i$ está bajo la hipótesis $\varphi_l$ en $(\varphi, J)$” (no hace falta que defina $B^J$)
+    \item Defina $(L,s,i)/\theta$ ($\theta$ una congruencia del reticulado terna $(L,s,i)$).  
+    
+    \bigskip
+
+    Sea $(L,s,i)$ un reticulado terna. Una congruencia sobre $(L,s,i)$ es una relación de equivalencia $\theta$ sobre $L$ tal que:
+    \[
+        x \,\theta\, x' \;\text{y}\; y \,\theta\, y' \implies (x \,s\, y) \,\theta\, (x' \,s\, y') \;\text{y}\; (x \,i\, y) \,\theta\, (x' \,i\, y')
+    \]
+    
+    Gracias a esta condición podemos definir de manera inambigua sobre $L/\theta$ dos operaciones binarias $\tilde{s}$ y $\tilde{\imath}$ de la siguiente manera:
+    \[
+        x/\theta \;\tilde{s}\; y/\theta = (x \,s\, y)/\theta, \quad
+        x/\theta \;\tilde{\imath}\; y/\theta = (x \,i\, y)/\theta
+    \]
+\end{enumerate}
+
+
+\section*{Combo 3}
+\begin{enumerate}[label=(\arabic*)]
+    \item Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T_\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina $t^A[a_1, \ldots, a_n]$ (i.e. Convención notacional 2)
+
+    \bigskip
+    
+    Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T_\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, se define:
+    \[
+    t^A[a_1, \ldots, a_n]
+    \]
+    como el elemento $t^A[\vec{b}]$, donde $\vec{b}$ es una asignación tal que a cada variable $v_i$ le asigna el valor $a_i$.  
+    Es decir, $t^A[a_1, \ldots, a_n] = t^A[\vec{b}]$ cuando $\vec{b}(v_i) = a_i$ para todo $i = 1, \ldots, n$.
+
+    \item Defina “$F$ es un homomorfismo de $(L,s,i,c,0,1)$ en $(L',s',i',c',0',1')$”.  
+    
+    \bigskip
+    
+    Sean $(L,s,i,c,0,1)$ y $(L',s',i',c',0',1')$ reticulados complementados. Una función $F : L \to L'$ se llama homomorfismo de $(L,s,i,c,0,1)$ en $(L',s',i',c',0',1')$ si para todo $x, y \in L$ se cumple:
+    \[
+        F(x \,s\, y) = F(x) \,s'\, F(y), \quad
+        F(x \,i\, y) = F(x) \,i'\, F(y),
+    \]
+    \[
+        F(x^c) = F(x)^{c'}, \quad
+        F(0) = 0', \quad
+        F(1) = 1'.
+    \]
+    
+    \item Defina “filtro generado por $S$ en $(L,s,i)$”
+    \item Defina cuando $J \in \text{Just}^+$ es balanceada (no hace falta que defina $B_J$)
+    \bigskip
+
+Sea $J = J_1 \dots J_{n(J)} \in \text{Just}^+$. Diremos que $J$ es \emph{balanceada} si se cumplen las siguientes condiciones:
+
+\begin{enumerate}
+    \item Para cada $k \in \mathbb{N}$, a lo sumo hay un $i$ tal que $J_i = \text{HIPOTESIS } \overline{k}$ y a lo sumo hay un $i$ tal que $J_i = \text{TESIS } \overline{k}\alpha$, con $\alpha \in \text{JustBas}$.
+    \item Si $J_i = \text{HIPOTESIS } \overline{k}$, entonces existe $l > i$ tal que $J_l = \text{TESIS } \overline{k}\alpha$, con $\alpha \in \text{JustBas}$.
+    \item Si $J_i = \text{TESIS } \overline{k}\alpha$, con $\alpha \in \text{JustBas}$, entonces existe $l < i$ tal que $J_l = \text{HIPOTESIS } \overline{k}$.
+    \item Los bloques de hipótesis-tesis no se solapan de forma parcial: si $B_1, B_2 \in B^J$, entonces $B_1 \cap B_2 = \emptyset$ o $B_1 \subseteq B_2$ o $B_2 \subseteq B_1$.
+\end{enumerate}
+
+\end{enumerate}
+
+\section*{Combo 4} 
+\begin{enumerate}[label=(\arabic*)]
+    \item Defina “$(L,s,i,c,0,1)$ es un subreticulado complementado de $(L',s',i',c',0',1')$”.  
+    
+    \bigskip
+
+    Dados reticulados complementados $(L,s,i,c,0,1)$ y $(L',s',i',c',0',1')$, diremos que $(L,s,i,c,0,1)$ es un subreticulado complementado de $(L',s',i',c',0',1')$ si se cumplen las siguientes condiciones:
+    \begin{enumerate}[label=(\roman*)]
+        \item $L \subseteq L'$
+        \item $L$ es cerrado bajo las operaciones $s'$, $i'$ y $c'$
+        \item $0 = 0'$ y $1 = 1'$
+        \item $s = s'|_{L \times L}, \; i = i'|_{L \times L}, \; c = c'|_L$
+    \end{enumerate}
+    
+    \item Defina $A \vDash \varphi[\vec{a}]$ (versión absoluta, no dependiente de una declaración previa, i.e. $\vec{a} \in A^N$. No hace falta definir $t^A[\vec{a}]$)
+    
+    \bigskip
+
+    Sea $A = (A, i)$ una estructura de tipo $\tau$, y sea $\vec{a} = (a_1, a_2, \ldots) \in A^N$ una asignación.  
+    Definimos recursivamente la relación de \emph{satisfacción} $A \vDash \varphi[\vec{a}]$ como:
+
+    \begin{enumerate}[label=(\arabic*)]
+        \item Si $\varphi$ es una \textbf{fórmula atómica}:
+        \begin{itemize}
+            \item Si $\varphi$ es de la forma $t = s$, entonces
+            \[
+            A \vDash (t = s)[\vec{a}] \;\; \text{ssi} \;\; t^A[\vec{a}] = s^A[\vec{a}].
+            \]
+            \item Si $\varphi$ es de la forma $r(t_1, \ldots, t_n)$, con $r \in R_n$, entonces
+            \[
+            A \vDash r(t_1, \ldots, t_n)[\vec{a}] \;\; \text{ssi} \;\; (t_1^A[\vec{a}], \ldots, t_n^A[\vec{a}]) \in r^A.
+            \]
+        \end{itemize}
+
+        \item Si $\varphi = \neg \psi$, entonces
+        \[
+        A \vDash \neg \psi[\vec{a}] \;\; \text{ssi} \;\; A \nvDash \psi[\vec{a}].
+        \]
+    
+        \item Si $\varphi = (\psi_1 \eta \psi_2)$, donde $\eta \in \{\land, \lor, \to, \leftrightarrow\}$, entonces
+        \[
+        A \vDash (\psi_1 \eta \psi_2)[\vec{a}]
+        \]
+        se define:
+        \begin{align*}
+            A \vDash (\psi_1 \land \psi_2)[\vec{a}] &\;\; \text{ssi} \;\; A \vDash \psi_1[\vec{a}] \text{ y } A \vDash \psi_2[\vec{a}],\\
+            A \vDash (\psi_1 \lor \psi_2)[\vec{a}] &\;\; \text{ssi} \;\; A \vDash \psi_1[\vec{a}] \text{ o } A \vDash \psi_2[\vec{a}],\\
+            A \vDash (\psi_1 \to \psi_2)[\vec{a}] &\;\; \text{ssi} \;\; A \nvDash \psi_1[\vec{a}] \text{ o } A \vDash \psi_2[\vec{a}],\\
+            A \vDash (\psi_1 \leftrightarrow \psi_2)[\vec{a}] &\;\; \text{ssi} \;\; 
+            (A \vDash \psi_1[\vec{a}] \text{ y } A \vDash \psi_2[\vec{a}]) \text{ o } 
+            (A \nvDash \psi_1[\vec{a}] \text{ y } A \nvDash \psi_2[\vec{a}]).
+        \end{align*}
+
+        \item Si $\varphi = Qx_i\,\psi$, con $Q \in \{\forall, \exists\}$, entonces:
+        \begin{itemize}
+            \item $A \vDash \forall x_i\,\psi[\vec{a}]$ ssi para todo $a \in A$, se tiene $A \vDash \psi[\downarrow_i^a\vec{a}]$.
+            \item $A \vDash \exists x_i\,\psi[\vec{a}]$ ssi existe $a \in A$ tal que $A \vDash \psi[\downarrow_i^a\vec{a}]$.
+        \end{itemize}
+    \end{enumerate}
+
+    En tal caso decimos que \emph{$A$ satisface $\varphi$ bajo la asignación $\vec{a}$}, o que \emph{$\varphi$ es verdadera en $A$ para $\vec{a}$}.
+
+
+    \item Defina la relación “$v$ ocurre libremente en $\varphi$ a partir de $i$”
+    
+
+    Dadas palabras $\alpha, \beta \in \Sigma^*$, con $|\alpha|, |\beta| \ge 1$, y un natural $i \in \{1, \dots, |\beta|\}$, se dice que $\alpha$ ocurre a partir de $i$ en $\beta$ cuando existen palabras $\delta, \gamma$ tales que $\beta = \delta \alpha \gamma$ y $|\delta| = i-1$.  
+    O sea "$\alpha$ ocurre a partir de $i$ en $\beta$ si al comenzar a leer desde el $i$-ésimo lugar de $\beta$"
+
+    Definimos recursivamente la relación “$v$ ocurre libremente en $\varphi$ a partir de $i$”, donde $v \in \text{Var}$, $\varphi \in F_\tau$ e $i \in \{1, \dots, |\varphi|\}$, de la siguiente manera:
+
+    \begin{enumerate}[label=(\arabic*)]
+        \item Si $\varphi$ es atómica, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si $v$ ocurre en $\varphi$ a partir de $i$.
+        \item Si $\varphi = (\varphi_1 \eta \varphi_2)$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si se da alguna de las siguientes:
+        \begin{enumerate}[label=(\alph*)]
+            \item $v$ ocurre libremente en $\varphi_1$ a partir de $i-1$
+            \item $v$ ocurre libremente en $\varphi_2$ a partir de $i - |\varphi_1 \eta|$
+        \end{enumerate}
+        \item Si $\varphi = \neg \varphi_1$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si $v$ ocurre libremente en $\varphi_1$ a partir de $i-1$.
+        \item Si $\varphi = Q w \varphi_1$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si $v \neq w$ y $v$ ocurre libremente en $\varphi_1$ a partir de $i - |Q w|$.
+    \end{enumerate}
+
+
+    \item Defina reticulado cuaterna.  
+    
+    
+    Por un reticulado cuaterna entendemos una 4-upla $(L,s,i,\leq)$ tal que $L$ es un conjunto no vacío, $s$ e $i$ son operaciones binarias sobre $L$, $\leq$ es una relación binaria sobre $L$, y se cumplen las siguientes propiedades:
+    \begin{enumerate}[label=(\roman*)]
+        \item $x \leq x$, cualesquiera sea $x \in L$
+        \item $x \leq y$ y $y \leq z$ implican $x \leq z$, cualesquiera sean $x, y, z \in L$
+        \item $x \leq y$ y $y \leq x$ implican $x = y$, cualesquiera sean $x, y \in L$
+        \item $x \leq x \,s\, y$ y $y \leq x \,s\, y$, cualesquiera sean $x, y \in L$
+        \item $x \leq z$ y $y \leq z$ implican $x \,s\, y \leq z$, cualesquiera sean $x, y, z \in L$
+        \item $x \,i\, y \leq x$ y $x \,i\, y \leq y$, cualesquiera sean $x, y \in L$
+        \item $z \leq x$ y $z \leq y$ implican $z \leq x \,i\, y$, cualesquiera sean $x, y, z \in L$
+    \end{enumerate}
+\end{enumerate}
+
+\section*{Combo 5}
+Explique la notación declaratoria para términos con sus tres Convenciones Notacionales (Convenciones 1, 2 y 5 de la Guía 11).
+
+\bigskip
+
+    La notación declaratoria para términos se utiliza para expresar explícitamente de qué variables depende un término y permite realizar sustituciones o evaluaciones.  
+    Supongamos que $t =_d t(v_1, \ldots, v_n)$ es una declaración de término. Entonces se aplican las siguientes convenciones:
+
+    \begin{enumerate}
+    \item \textbf{Convención Notacional 1:}  
+      Si hemos declarado $t =_d t(v_1, \ldots, v_n)$ y $P_1, \ldots, P_n$ son palabras cualesquiera (no necesariamente términos), entonces:
+    \[
+    t(P_1, \ldots, P_n)
+    \]
+    denota la palabra que resulta de reemplazar simultáneamente cada ocurrencia de $v_1$ en $t$ por $P_1$, cada ocurrencia de $v_2$ por $P_2$, y así sucesivamente.  
+
+    \item \textbf{Convención Notacional 2:}  
+    Si hemos declarado $t =_d t(v_1, \ldots, v_n)$, $A$ es un modelo de tipo $\tau$ y $a_1, \ldots, a_n \in A$, entonces:
+    \[
+    t^A[a_1, \ldots, a_n]
+    \]
+    denota el elemento $t^A[\vec{b}]$, donde $\vec{b}$ es una asignación tal que a cada variable $v_i$ le asigna el valor $a_i$.  
+
+    \item \textbf{Convención Notacional 5:}  
+    Si hemos declarado $t =_d t(v_1, \ldots, v_n)$ y se cumple el caso (3) del Lema de Lectura Única de Términos —es decir, 
+    \[
+    t = f(t_1, \ldots, t_m),
+    \]
+    con $f \in F_m$ y $t_1, \ldots, t_m \in T_\tau$—, entonces supondremos tácitamente que también se han hecho las declaraciones:
+    \[
+    t_1 =_d t_1(v_1, \ldots, v_n), \quad \ldots, \quad t_m =_d t_m(v_1, \ldots, v_n).
+    \]
+    Esto es posible porque las variables que ocurren en cada $t_i$ pertenecen al conjunto $\{v_1, \ldots, v_n\}$.  
+    \end{enumerate}
+
+\section*{Combo 6}
+Explique la notación declaratoria para fórmulas con sus tres Convenciones Notacionales (Convenciones 3, 4 y 6 de la Guía 11). Puede asumir la notación declaratoria para términos.
+
+\bigskip
+
+Supongamos que hemos declarado una fórmula $\varphi =_d \varphi(v_1, \ldots, v_n)$. Entonces se aplican las siguientes convenciones:
+
+\begin{enumerate}
+  \item \textbf{Convención Notacional 3:}  
+  Si hemos hecho la declaración $\varphi =_d \varphi(v_1, \ldots, v_n)$ y $P_1, \ldots, P_n$ son palabras cualesquiera (no necesariamente términos o fórmulas), entonces:
+  \[
+  \varphi(P_1, \ldots, P_n)
+  \]
+  denota la palabra que resulta de reemplazar simultáneamente cada ocurrencia \emph{libre} de $v_1$ en $\varphi$ por $P_1$, cada ocurrencia libre de $v_2$ por $P_2$, y así sucesivamente.  
+
+  \item \textbf{Convención Notacional 4:}  
+  Si hemos declarado $\varphi =_d \varphi(v_1, \ldots, v_n)$, y $A$ es una estructura (modelo) de tipo $\tau$ con $a_1, \ldots, a_n \in A$, entonces:
+  \[
+  A \vDash \varphi[a_1, \ldots, a_n]
+  \]
+  significa que $A \vDash \varphi[\vec{b}]$, donde $\vec{b}$ es una asignación tal que a cada variable $v_i$ le asigna el valor $a_i$.  
+  En general, $A \nvDash \varphi[a_1, \ldots, a_n]$ significa que no se cumple $A \vDash \varphi[a_1, \ldots, a_n]$.  
+
+  \item \textbf{Convención Notacional 6:}  
+  Si hemos declarado $\varphi =_d \varphi(v_1, \ldots, v_n)$, entonces, según la \textbf{Lectura única de fórmulas declaradas (Lema 3)}, se cumple exactamente uno de los siguientes casos para $\varphi$, y en cada uno de ellos se asumen tácitamente las declaraciones indicadas:
+
+  \begin{itemize}
+    \item \textbf{(1)} Si $\varphi = (t \equiv s)$, con $t, s \in T_\tau$, entonces también declaramos:
+    \[
+    t =_d t(v_1, \ldots, v_n) \quad \text{y} \quad s =_d s(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(2)} Si $\varphi = r(t_1, \ldots, t_m)$, con $r \in R_m$ y $t_1, \ldots, t_m \in T_\tau$, entonces declaramos:
+    \[
+    t_1 =_d t_1(v_1, \ldots, v_n), \ldots, t_m =_d t_m(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(3)} Si $\varphi = (\varphi_1 \wedge \varphi_2)$, entonces declaramos:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n), \quad \varphi_2 =_d \varphi_2(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(4)} Si $\varphi = (\varphi_1 \vee \varphi_2)$, se declaran igualmente:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n), \quad \varphi_2 =_d \varphi_2(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(5)} Si $\varphi = (\varphi_1 \to \varphi_2)$, se declaran:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n), \quad \varphi_2 =_d \varphi_2(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(6)} Si $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$, se declaran:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n), \quad \varphi_2 =_d \varphi_2(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(7)} Si $\varphi = \neg \varphi_1$, se declara:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(8)} Si $\varphi = \forall v_j \, \varphi_1$, con $v_j \in \{v_1, \ldots, v_n\}$, se declara:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(9)} Si $\varphi = \forall v \, \varphi_1$, con $v \in Var - \{v_1, \ldots, v_n\}$, se declara:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n, v).
+    \]
+
+    \item \textbf{(10)} Si $\varphi = \exists v_j \, \varphi_1$, con $v_j \in \{v_1, \ldots, v_n\}$, se declara:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n).
+    \]
+
+    \item \textbf{(11)} Si $\varphi = \exists v \, \varphi_1$, con $v \in Var - \{v_1, \ldots, v_n\}$, se declara:
+    \[
+    \varphi_1 =_d \varphi_1(v_1, \ldots, v_n, v).
+    \]
+  \end{itemize}
+
+\end{enumerate}
+
+\section*{Combo 7}
+\begin{enumerate}[label=(\arabic*)]
+    \item Defina recursivamente la relación “$v$ es sustituible por $w$ en $\varphi$”
+    
+    Diremos que una variable $v$ es \emph{sustituible por} $w$ en una fórmula $\varphi$ cuando
+    ninguna ocurrencia libre de $v$ en $\varphi$ aparece dentro de una subfórmula de la forma
+    $Qw\psi$ (donde $Q$ es un cuantificador, $\forall$ o $\exists$).  
+    En otras palabras, $v$ \emph{no} es sustituible por $w$ en $\varphi$ cuando alguna ocurrencia
+    libre de $v$ en $\varphi$ ocurre dentro de una subfórmula de la forma $Qw\psi$.
+
+    A partir de esta idea, la relación “$v$ es sustituible por $w$ en $\varphi$” puede definirse
+    \textbf{recursivamente} de la siguiente manera:
+
+    \begin{enumerate}
+    \item[(1)] Si $\varphi$ es \textbf{atómica}, entonces $v$ es sustituible por $w$ en $\varphi$.
+  
+    \item[(2)] Si $\varphi = (\varphi_1 \, \eta \, \varphi_2)$, donde $\eta$ es un conector binario 
+    ($\wedge$, $\vee$, $\rightarrow$, $\leftrightarrow$), entonces:
+    \[
+    v \text{ es sustituible por } w \text{ en } \varphi 
+    \iff 
+    v \text{ es sustituible por } w \text{ en } \varphi_1 
+    \text{ y en } \varphi_2.
+    \]
+  
+    \item[(3)] Si $\varphi = \neg \varphi_1$, entonces:
+    \[
+    v \text{ es sustituible por } w \text{ en } \varphi 
+    \iff 
+    v \text{ es sustituible por } w \text{ en } \varphi_1.
+    \]
+  
+    \item[(4)] Si $\varphi = Qv \, \varphi_1$, entonces $v$ es sustituible por $w$ en $\varphi$.
+  
+    \item[(5)] Si $\varphi = Qw \, \varphi_1$ y $v \in Li(\varphi_1)$, entonces 
+    $v$ \textbf{no} es sustituible por $w$ en $\varphi$.
+
+    \item[(6)] Si $\varphi = Qw \, \varphi_1$ y $v \notin Li(\varphi_1)$, entonces 
+    $v$ es sustituible por $w$ en $\varphi$.
+  
+    \item[(7)] Si $\varphi = Qu \, \varphi_1$, con $u \neq v, w$, entonces:
+    \[
+    v \text{ es sustituible por } w \text{ en } \varphi 
+    \iff 
+    v \text{ es sustituible por } w \text{ en } \varphi_1.
+    \]
+    \end{enumerate}
+
+    Además, dado un término $t$, se dice que $v$ es \emph{sustituible por $t$ en $\varphi$} cuando
+    $v$ es sustituible por cada variable que ocurre en $t$ dentro de $\varphi$.
+
+    \item Defina cuando $J \in \text{Just}^+$ es balanceada (no hace falta que defina $B^J$) (Mismo que en combo 3.4)
+    \item Defina “filtro del reticulado terna $(L,s,i)$”
+    \item Defina “teoría elemental”.  
+    
+    Una teoría elemental es un par $(\Sigma, \tau)$ tal que $\tau$ es un tipo cualquiera y $\Sigma$ es un conjunto de sentencias elementales puras de tipo $\tau$.
+\end{enumerate}
+
+\section*{Combo 8}
+\begin{enumerate}[label=(\arabic*)]
+    \item Defina $(L,s,i,c,0,1)/\theta$ ($\theta$ una congruencia del reticulado complementado $(L,s,i,c,0,1)$)
+    (Ver combo 1)
+    \item Dados $\varphi =_d \varphi(v_1, \ldots, v_n)$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina qué significa $A \vDash \varphi[a_1, \ldots, a_n]$ (i.e. Convención notacional 4)
+
+    \bigskip
+
+    Según la Convención Notacional 4, cuando hemos declarado $\varphi =_d \varphi(v_1, \ldots, v_n)$,  
+    si $A$ es un modelo de tipo $\tau$ y $a_1, \ldots, a_n \in A$, entonces
+    \[
+    A \vDash \varphi[a_1, \ldots, a_n]
+    \]
+
+    significa que $A \vDash \varphi[\vec{b}]$, donde $\vec{b}$ es una asignación tal que a cada variable $v_i$ le asigna el valor $a_i$.  
+    En general, $A \not\vDash \varphi[a_1, \ldots, a_n]$ significa que no sucede $A \vDash \varphi[a_1, \ldots, a_n]$.
+
+    \item Dado un poset $(P, \leq)$, defina “$a$ es supremo de $S$ en $(P, \leq)$”
+    
+    \bigskip
+
+    Sea $(P, \leq)$ un poset y $S \subseteq P$. 
+    Un elemento $a \in P$ se llama supremo de $S$ en $(P, \leq)$ si se cumplen las siguientes propiedades:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $a$ es cota superior de $S$ en $(P, \leq)$
+        \item Para cada $b \in P$, si $b$ es cota superior de $S$ en $(P, \leq)$, entonces $a \leq b$
+    \end{enumerate}
+    Diremos que un elemento $a \in P$ es cota superior de $S$ en $(P, \leq)$ cuando $b \leq a$ para todo $b \in S$. 
+
+    \item Defina “$i$ es anterior a $j$ en $(\varphi, J)$” (no hace falta que defina $B_J$)
+
+    \bigskip
+    Sea $(\varphi, J)$ un par adecuado de tipo $\tau$, con $i, j \in \langle 1, n(\varphi)\rangle$.  
+    Diremos que $i$ es \emph{anterior} a $j$ en $(\varphi, J)$ si se cumplen las siguientes condiciones:
+
+    \begin{enumerate}
+        \item $i < j$.
+        \item Para todo $B \in B^J$, si $i \in B$, entonces $j \in B$.
+    \end{enumerate}
+\end{enumerate}
+
+\section*{Combo 9}
+\begin{enumerate}[label=(\arabic*)]
+    \item Defina “término elemental de tipo $\tau$”
+    
+    
+    Dado un tipo $\tau = (C, F, R, a)$, los términos elementales de tipo $\tau$ se definen mediante las siguientes cláusulas:
+    \begin{enumerate}[label=(\arabic*)]
+        \item Cada palabra de $C$ es un término elemental de tipo $\tau$
+        \item Las variables $x, y, z, w, \dots$ son términos elementales de tipo $\tau$
+        \item Los nombres de elementos fijos $a, b, c, d, \dots$ son términos elementales de tipo $\tau$
+        \item Si $f \in F_n$, con $n \ge 1$, y $t_1, \dots, t_n$ son términos elementales de tipo $\tau$, entonces
+        \[
+            f(t_1, \dots, t_n)
+        \]
+        es un término elemental de tipo $\tau$
+        \item Una palabra es un término elemental de tipo $\tau$ si y solo si se puede construir usando las cláusulas anteriores
+    \end{enumerate}
+
+    \item Defina $\dashv\vdash_T$:
+
+    Sea $T = (\Sigma, \tau)$ una teoría. Definimos la siguiente relación binaria sobre el conjunto de sentencias $S_\tau$:
+    \[
+    \varphi \dashv\vdash_T \psi \quad \text{si y sólo si} \quad T \vdash (\varphi \leftrightarrow \psi)
+    \]
+    Es decir,
+    \[
+    \dashv\vdash_T = \{(\varphi, \psi) \in S_\tau : T \vdash (\varphi \leftrightarrow \psi)\}.
+    \]
+    La relación $\dashv\vdash_T$ es una relación de equivalencia sobre $S_\tau$.
+
+    \item Defina $s^T$ (explique por qué la definición es inambigua):
+
+    Dada una teoría $T = (\Sigma, \tau)$ y $\varphi, \psi \in S_\tau$, definimos la operación binaria
+    \[
+    [\varphi]_T \, s^T \, [\psi]_T = [(\varphi \lor \psi)]_T.
+    \]
+    La definición es inambigua porque si $[\varphi]_T = [\varphi']_T$ y $[\psi]_T = [\psi']_T$, entonces 
+    \[
+    T \vdash ((\varphi \lor \psi) \leftrightarrow (\varphi' \lor \psi')),
+    \]
+    lo cual garantiza que las clases de equivalencia obtenidas son las mismas, independientemente de los representantes elegidos.
+
+    \item Defina $A_T$:
+
+    Dada una teoría $T = (\Sigma, \tau)$, se define el \emph{álgebra de Lindenbaum} de $T$ como
+    \[
+    A_T = (S_\tau / \dashv\vdash_T, \, s^T, \, i^T, \, c^T, \, 0_T, \, 1_T),
+    \]
+    donde:
+    \[
+    [\varphi]_T \, i^T \, [\psi]_T = [(\varphi \land \psi)]_T, \quad 
+    ([\varphi]_T)^{c^T} = [\neg \varphi]_T,
+    \]
+    \[
+    1_T = \{\varphi \in S_\tau : T \vdash \varphi\}, \quad 
+    0_T = \{\varphi \in S_\tau : T \vdash \neg \varphi\}.
+    \]
+    El álgebra $A_T$ es un álgebra de Boole.
+
+    \item Defina “$S$ es un subuniverso del reticulado complementado $(L,s,i,c,0,1)$”
+    
+    Dados reticulados complementados $(L,s,i,c,0,1)$ y $(L',s',i',c',0',1')$, diremos que $(L,s,i,c,0,1)$ es un subreticulado complementado de $(L',s',i',c',0',1')$ si se cumplen las siguientes condiciones:
+    \begin{enumerate}[label=(\roman*)]
+        \item $L \subseteq L'$
+        \item $L$ es cerrado bajo las operaciones $s'$, $i'$ y $c'$
+        \item $0 = 0'$ y $1 = 1'$
+        \item $s = s'|_{L \times L}, \; i = i'|_{L \times L}, \; c = c'|_L$
+    \end{enumerate}
+
+    Sea $(L,s,i,c,0,1)$ un reticulado complementado. Un conjunto $S \subseteq L$ se llama subuniverso de $(L,s,i,c,0,1)$ si $0,1 \in S$ y además $S$ es cerrado bajo las operaciones $s$, $i$ y $c$.
+\end{enumerate}
+
+\section*{Combo 10}
+\begin{enumerate}[label=(\arabic*)]
+    \item Defina “tesis del bloque $\langle i, j \rangle$ en $(\varphi, J)$”
+    
+    \bigskip
+    Sea $(\varphi, J)$ un par adecuado de tipo $\tau$ y $\langle i, j \rangle \in B^J$.  
+    La \emph{tesis} del bloque $\langle i, j \rangle$ en $(\varphi, J)$ es la sentencia $\varphi_j$.
+
+    \item Defina cuando una teoría de primer orden $(\Sigma, \tau)$ es consistente
+
+    \bigskip
+    Una teoría $(\Sigma, \tau)$ será \emph{inconsistente} cuando exista una sentencia $\varphi$ tal que
+    \[
+    (\Sigma, \tau) \vdash (\varphi \wedge \neg \varphi).
+    \] 
+    Una teoría $(\Sigma, \tau)$ será \emph{consistente} cuando no sea inconsistente.
+
+    \item Dada una teoría elemental $(\Sigma, \tau)$ y una sentencia elemental pura $\varphi$ de tipo $\tau$, defina “prueba elemental de $\varphi$ en $(\Sigma, \tau)$”
+    
+    Una prueba elemental de $\varphi$ en $(\Sigma, \tau)$ es una prueba de $\varphi$ que cumple las siguientes características:
+    \begin{enumerate}[label=(\arabic*)]
+        \item En la prueba se parte de una estructura de tipo $\tau$, fija pero arbitraria, en el sentido de que lo único que sabemos es que satisface los axiomas de $\Sigma$ (esta es la única información particular que podemos usar).
+        \item Las deducciones en la prueba son muy simples y obvias de justificar con mínimas frases en castellano.
+        \item En la escritura de la prueba, lo concerniente a la matemática misma se expresa usando solo sentencias elementales de tipo $\tau$.
+    \end{enumerate}
+\end{enumerate}
+
+\section*{Combo 11}
+Enuncie el programa de lógica matemática dado al final de la Guía 8 y explique brevemente con qué definiciones matemáticas se van resolviendo los tres primeros puntos y qué teoremas garantizan la resolución del cuarto punto de dicho programa.
+
+\textbf{Programa de Lógica Matemática:}
+\begin{enumerate}[label=(\arabic*)]
+    \item Dar un modelo matemático del concepto de fórmula elemental de tipo $\tau$.
+    \item Dar una definición matemática de cuándo una fórmula elemental de tipo $\tau$ es verdadera en una estructura de tipo $\tau$ para una asignación dada de valores a las variables libres y a los nombres de elementos fijos de dicha fórmula elemental.
+    \item (Plato gordo) Dar un modelo matemático del concepto de prueba elemental en una teoría elemental. A estos objetos matemáticos los llamaremos \emph{pruebas formales}.
+    \item (Sublime) Intentar probar matemáticamente que nuestro concepto de prueba formal es una correcta modelización matemática de la idea intuitiva de prueba elemental en una teoría elemental.
+\end{enumerate}
+\medskip
+\textbf{Resolución del punto (1):}  
+Si $\tau = (C,F,R,a)$ es un tipo, diremos que $\tau'$ es una extensión de $\tau$ por nombres de constantes si $\tau'$ es de la forma $(C',F,R,a)$ con $C \subseteq C'$.  
+
+Las fórmulas de tipo $\tau$ son un modelo matemático de las fórmulas elementales puras de tipo $\tau$ (es decir, aquellas en las que no ocurren nombres de elementos fijos).  
+Los nombres de elementos fijos se usan en las pruebas elementales para denotar elementos fijos (a veces arbitrarios y otras veces que cumplen alguna propiedad). Cuando un matemático realiza una prueba elemental en una teoría elemental $(\Sigma, \tau)$, comienza imaginando una estructura de tipo $\tau$ de la cual lo único que sabe es que cumple las sentencias de $\Sigma$. Luego, cuando fija un elemento y le pone nombre, digamos $b$, podemos pensar que expandió su estructura imaginaria a una de tipo $(C \cup \{b\}, F, R, a)$ y continúa su razonamiento. Esta mecánica de prueba del matemático puede repetirse varias veces a lo largo de la prueba, por lo cual su estructura imaginaria va cambiando de tipo.  
+Esta mecánica justifica modelizar las fórmulas elementales de tipo $\tau$ con fórmulas de tipo $\tau_1$, donde $\tau_1$ es alguna extensión de $\tau$ por nombres de constantes.
+
+\medskip
+\textbf{Resolución del punto (2):}  
+La definición matemática de la relación $A \vDash \varphi[\vec{a}]$ soluciona el punto (2).
+
+\medskip
+\textbf{Resolución del punto (3):}  
+La definición de prueba formal en una teoría de primer orden soluciona el punto (3).
+
+\medskip
+\textbf{Resolución del punto (4):}  
+Este punto es resuelto por los teoremas de Corrección y Completitud.  
+El Teorema de Corrección asegura que nuestro concepto de prueba formal no es demasiado permisivo como para permitir probar sentencias que son falsas en algún modelo de la teoría.  
+Sin embargo, dicho concepto podría ser incompleto en el sentido de que podría pasar que un matemático diera una prueba elemental de una sentencia $\varphi$ en una teoría $(\Sigma, \tau)$ pero que no haya una prueba formal de $\varphi$ en $(\Sigma, \tau)$.  
+El Teorema de Completitud de Gödel garantiza que este no es el caso.
+
+\section*{Combo 12}
+Defina el concepto de función y desarrolle las tres Convenciones Notacionales asociadas a dicho concepto (Guía 0).
+
+\bigskip
+
+\textbf{Definición de función.}  
+Una \emph{función} es un conjunto de pares ordenados 
+\[
+f \subseteq A \times B
+\]
+que cumple la siguiente propiedad (F):
+\[
+(F) \quad \text{Si } (x, y) \in f \text{ y } (x, z) \in f, \text{ entonces } y = z.
+\]
+Esto significa que cada elemento del dominio \(x\) se asocia con un único valor \(y\).  
+Así, una función puede verse como una \emph{regla de correspondencia} que asigna a cada elemento \(x\) de un conjunto (el \textbf{dominio}) un único elemento \(y\) de otro conjunto (la \textbf{imagen}, contenida en un conjunto de llegada).
+
+\bigskip
+
+\textbf{Convención Notacional 1.}  
+Dado \(x \in D_f\), se escribe \(f(x)\) para denotar el único \(y \in I_f\) tal que \((x, y) \in f\).
+
+\[
+f(x) = y \quad \text{si y sólo si} \quad (x, y) \in f.
+\]
+
+\bigskip
+
+\textbf{Convención Notacional 2.}  
+Se escribe
+\[
+f : S \subseteq A \to B
+\]
+para indicar que \(f\) es una función con \(D_f = S \subseteq A\) e \(I_f \subseteq B\).  
+También puede escribirse \(f : A \to B\) cuando \(D_f = A\).  
+
+En este contexto:
+\begin{itemize}
+  \item \(A\): conjunto de partida.
+  \item \(B\): conjunto de llegada (no necesariamente igual a la imagen, sólo debe contenerla: \(I_f \subseteq B\)).
+\end{itemize}
+
+\bigskip
+
+\textbf{Convención Notacional 3.}  
+Muchas veces para definir una función \emph{f}, lo haremos dando su dominio y su
+regla de asignacion, es decir especificaremos en forma precisa que conjunto
+es el dominio de f y ademas especificaremos en forma precisa quien es f(x)
+para cada x de dicho dominio. Obviamente esto determina por completo
+a la funcion f ya que siempre se da que ya que:
+\[
+f = \{(x, f(x)) : x \in D_f\}.
+\]
+
+Usualmente se escribe de forma más intuitiva:
+\[
+f : D_f \to B, \quad x \mapsto f(x).
+\]
+
+\end{document}

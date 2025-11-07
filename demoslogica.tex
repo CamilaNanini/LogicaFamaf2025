@@ -1,0 +1,169 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 1}
+
+\begin{theorem}[del Filtro Primo]
+Sea $(L, s, i)$ un reticulado terna distributivo y $F$ un filtro. Supongamos $x_0 \in L - F$. Entonces hay un filtro primo $P$ tal que
+\[
+x_0 \notin P \quad \text{y} \quad F \subseteq P.
+\]
+\end{theorem}
+
+\begin{lemma}[Propiedades básicas de la consistencia]
+Sea $(\Sigma, \tau)$ una teoría.
+\begin{enumerate}[label=(\arabic*)]
+    \item Si $(\Sigma, \tau)$ es inconsistente, entonces $(\Sigma, \tau) \vdash \varphi$, para toda sentencia $\varphi$.
+    \item Si $(\Sigma, \tau)$ es consistente y $(\Sigma, \tau) \vdash \varphi$, entonces $(\Sigma \cup \{\varphi\}, \tau)$ es consistente.
+    \item Si $(\Sigma, \tau) \not\vdash \neg\varphi$, entonces $(\Sigma \cup \{\varphi\}, \tau)$ es consistente.
+\end{enumerate}
+\end{lemma}
+
+\section*{Combo 2}
+
+\begin{theorem}[de Dedekind]
+Sea $(L, s, i)$ un reticulado terna. La relación binaria definida por:
+\[
+x \le y \quad \text{si y sólo si} \quad x s y = y
+\]
+es un orden parcial sobre $L$ para el cual se cumple que:
+\[
+\sup(\{x, y\}) = x s y, \quad \inf(\{x, y\}) = x i y
+\]
+cualesquiera sean $x, y \in L$.
+\end{theorem}
+
+\begin{lemma}
+Supongamos que $\vec{a}, \vec{b}$ son asignaciones tales que si $x_i \in Li(\varphi)$, entonces $a_i = b_i$. Entonces:
+\[
+A \vDash \varphi[\vec{a}] \text{ si y sólo si } A \vDash \varphi[\vec{b}].
+\]
+\end{lemma}
+
+\section*{Combo 3}
+
+\begin{theorem}[Lectura única de términos]
+Dado $t \in T^\tau$, se da una de las siguientes:
+\begin{enumerate}[label=(\arabic*)]
+    \item $t \in Var \cup C$
+    \item Hay únicos $n \ge 1$, $f \in F^n$, $t_1, \ldots, t_n \in T^\tau$ tales que $t = f(t_1, \ldots, t_n)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi \in F^\tau$. Entonces
+\[
+A \vDash \varphi[(a_1, a_2, \ldots)] \text{ si y sólo si } B \vDash \varphi[(F(a_1), F(a_2), \ldots)]
+\]
+para cada $(a_1, a_2, \ldots) \in A^N$. En particular, $A$ y $B$ satisfacen las mismas sentencias de tipo $\tau$.
+\end{lemma}
+
+\begin{theorem}
+Sea $T = (\Sigma, \tau)$ una teoría. Entonces
+\[
+(S^\tau / \dashv\vdash_T, s^T, i^T, c^T, 0^T, 1^T)
+\]
+es un álgebra de Boole. \\
+\textbf{Pruebe sólo el ítem (6).}
+\end{theorem}
+
+\section*{Combo 4}
+
+\begin{lemma}[Propiedades básicas de la deducción]
+Sea $(\Sigma, \tau)$ una teoría.
+\begin{enumerate}[label=(\arabic*)]
+    \item (\textit{Uso de teoremas}) Si $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$ y $(\Sigma \cup \{\varphi_1, \ldots, \varphi_n\}, \tau) \vdash \varphi$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item Supongamos $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$. Si $R$ es una regla distinta de \textsc{Generalización} y \textsc{Elección} y $\varphi$ se deduce de $\varphi_1, \ldots, \varphi_n$ por la regla $R$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ si y sólo si $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+Sea $(L, s, i, c, 0, 1)$ un álgebra de Boole y sean $a, b \in B$. Se tiene que:
+\begin{enumerate}[label=(\arabic*)]
+    \item $(a i b)^c = a^c s b^c$
+    \item $a i b = 0$ si y sólo si $b \le a^c$
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+Sean $(L, s, i)$ y $(L', s', i')$ reticulados terna y sean $(L, \le)$ y $(L', \le')$ los posets asociados. Sea $F: L \to L'$ una función. Entonces $F$ es un isomorfismo de $(L, s, i)$ en $(L', s', i')$ si y sólo si $F$ es un isomorfismo de $(L, \le)$ en $(L', \le')$.
+\end{lemma}
+
+\section*{Combo 5}
+
+\begin{theorem}[de Completitud]
+Sea $T = (\Sigma, \tau)$ una teoría de primer orden. Si $T \vDash \varphi$, entonces $T \vdash \varphi$. \\
+Haga sólo el caso en que $\tau$ tiene una cantidad infinita de nombres de constantes que no ocurren en las sentencias de $\Sigma$. En la exposición de la prueba no es necesario que demuestre los ítems (1) y (5).
+\end{theorem}
+
+\section*{Combo 6}
+
+\begin{theorem}[de Completitud]
+Sea $T = (\Sigma, \tau)$ una teoría de primer orden. Si $T \vDash \varphi$, entonces $T \vdash \varphi$. \\
+Haga sólo el caso en que $\tau$ tiene una cantidad infinita de nombres de constantes que no ocurren en las sentencias de $\Sigma$. En la exposición de la prueba no es necesario que demuestre los ítems (1), (2), (3) y (4).
+\end{theorem}
+
+\section*{Combo 7}
+
+\begin{lemma}[Propiedades básicas de la deducción]
+Sea $(\Sigma, \tau)$ una teoría.
+\begin{enumerate}[label=(\arabic*)]
+    \item (\textit{Uso de teoremas}) Si $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$ y $(\Sigma \cup \{\varphi_1, \ldots, \varphi_n\}, \tau) \vdash \varphi$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item Supongamos $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$. Si $R$ es una regla distinta de \textsc{Generalización} y \textsc{Elección} y $\varphi$ se deduce de $\varphi_1, \ldots, \varphi_n$ por la regla $R$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ si y sólo si $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+Sea $(L, s, i)$ un reticulado terna y sea $\theta$ una congruencia de $(L, s, i)$. Entonces:
+\begin{enumerate}[label=(\arabic*)]
+    \item $(L / \theta, \tilde{s}, \tilde{i})$ es un reticulado terna.
+    \item El orden parcial $\tilde{\le}$ asociado al reticulado terna $(L / \theta, \tilde{s}, \tilde{i})$ cumple:
+    \[
+    x / \theta \tilde{\le} y / \theta \quad \text{ssi} \quad y \theta (x s y).
+    \]
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+Sean $(L, s, i)$ y $(L', s', i')$ reticulados terna y sean $(L, \le)$ y $(L', \le')$ los posets asociados. Sea $F: L \to L'$ una función. Entonces $F$ es un isomorfismo de $(L, s, i)$ en $(L', s', i')$ si y sólo si $F$ es un isomorfismo de $(L, \le)$ en $(L', \le')$.
+\end{lemma}
+
+\section*{Combo 8}
+
+\begin{lemma}
+Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi =_{d} \varphi(v_1, \ldots, v_n) \in F_\tau$. Entonces:
+\[
+A \vDash \varphi[a_1, a_2, \ldots, a_n] \text{ ssi } B \vDash \varphi[F(a_1), F(a_2), \ldots, F(a_n)]
+\]
+para cada $a_1, a_2, \ldots, a_n \in A$.
+\end{lemma}
+
+\begin{lemma}
+Sean $(P, \le)$ y $(P', \le')$ posets. Supongamos que $F$ es un isomorfismo de $(P, \le)$ en $(P', \le')$.
+\begin{enumerate}[label=(\alph*)]
+    \item Para cada $S \subseteq P$ y cada $a \in P$, se tiene que $a$ es cota superior (resp. inferior) de $S$ si y sólo si $F(a)$ es cota superior (resp. inferior) de $F(S)$.
+    \item Para cada $S \subseteq P$, se tiene que existe $\sup(S)$ si y sólo si existe $\sup(F(S))$ y en tal caso se cumple que:
+    \[
+    F(\sup(S)) = \sup(F(S)).
+    \]
+\end{enumerate}
+\end{lemma}
+
+\end{document}
+
