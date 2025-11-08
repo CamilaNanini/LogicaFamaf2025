@@ -338,6 +338,23 @@ Dado $t \in T^\tau$, se da una de las siguientes:
     \item $t \in Var \cup C$
     \item Hay únicos $n \ge 1$, $f \in F^n$, $t_1, \ldots, t_n \in T^\tau$ tales que $t = f(t_1, \ldots, t_n)$.
 \end{enumerate}
+\begin{proof}
+\noindent
+Por la definición de $T^\tau$ está claro que vale sin la unicidad (1)
+En virtud del Lema de Menú de términos solo nos falta probar la unicidad en el punto (2). 
+Supongamos
+\[
+t = f(t_1,\ldots,t_n) = g(s_1,\ldots,s_m)
+\]
+con $n,m\ge 1$, $f\in F_n$, $g\in F_m$, $t_1,\ldots,t_n,s_1,\ldots,s_m\in T_\tau$.
+Nótese que $f=g$. Es decir, $n=m=a(f)$. 
+
+\noindent
+Nótese que $t_1$ es tramo inicial de $s_1$ o $s_1$ es tramo inicial de $t_1$, lo cual, por el lema de mordisqueo de términos, nos dice que $t_1=s_1$. Con el mismo razonamiento se prueba que necesariamente
+\[
+t_2=s_2,\ \ldots,\ t_n=s_n.
+\]
+\end{proof}
 \end{theorem}
 
 \begin{lemma}
@@ -346,6 +363,135 @@ Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi \in F^\tau$. Entonce
 A \vDash \varphi[(a_1, a_2, \ldots)] \text{ si y sólo si } B \vDash \varphi[(F(a_1), F(a_2), \ldots)]
 \]
 para cada $(a_1, a_2, \ldots) \in A^N$. En particular, $A$ y $B$ satisfacen las mismas sentencias de tipo $\tau$.
+\begin{proof}
+Para $\vec{a} = (a_1, a_2, \ldots) \in A^N$, denotemos $(F(a_1), F(a_2), \ldots)$ con $F(\vec{a})$.  
+Procedemos por inducción.
+
+\medskip
+\noindent
+\textbf{Teo$_k$:} Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi \in F_\tau^k$. Entonces
+\[
+A \vDash \varphi[\vec{a}] \text{ sii } B \vDash \varphi[F(\vec{a})],
+\]
+para cada $(a_1,a_2,\ldots) \in A^N$.
+
+\medskip
+\noindent
+\textbf{Prueba de Teo$_0$.}  
+Hay dos casos.  
+\smallskip
+
+\noindent
+\textbf{Caso} $\varphi = r(t_1, \ldots, t_n)$, con $n \ge 1$, $r \in R_n$ y $t_1, \ldots, t_n \in T^\tau$.  
+Tenemos entonces:
+\[
+\begin{aligned}
+A \vDash \varphi[\vec{a}]
+&\text{ sii } (t_1^A[\vec{a}], \ldots, t_n^A[\vec{a}]) \in r^A && \text{(def. de $\vDash$)}\\
+&\text{ sii } (F(t_1^A[\vec{a}]), \ldots, F(t_n^A[\vec{a}])) \in r^B && \text{($F$ es iso)}\\
+&\text{ sii } (t_1^B[F(\vec{a})], \ldots, t_n^B[F(\vec{a})]) \in r^B && \text{(por lema previo)}\\
+&\text{ sii } B \vDash \varphi[F(\vec{a})].
+\end{aligned}
+\]
+
+\textbf{Caso} $\varphi = (t \equiv s)$ con $t,s \in T^\tau$. Tenemos ahora que 
+\[
+\begin{aligned}
+A \vDash \varphi[\vec{a}]
+&\text{ sii } (t^A[\vec{a}] \equiv s^A[\vec{a}]) && \text{(def. de $\vDash$)}\\
+&\text{ sii } (F(t^A[\vec{a}]) \equiv F(s^A[\vec{a}])) && \text{($F$ es iso)}\\
+&\text{ sii } (t^B[F(\vec{a})] \equiv s^B[F(\vec{a})]) && \text{(por lema previo)}\\
+&\text{ sii } B \vDash \varphi[F(\vec{a})].
+\end{aligned}
+\]
+\medskip
+\noindent
+Veamos ahora que Teo$_k$ implica Teo$_{k+1}$.  
+Supongamos que vale Teo$_k$. Probaremos que entonces vale Teo$_{k+1}$.
+
+\smallskip
+Si $\varphi \in F_\tau^k$, podemos aplicar directamente Teo$_k$.  
+Supongamos entonces que $\varphi \in F_\tau^{k+1} - F_\tau^k$.  
+Por el Lema de Lectura Única de fórmulas, hay varios casos.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F_\tau^k$. Entonces:
+\[
+\begin{aligned}
+A \vDash \varphi[\vec{a}]
+&\text{ sii } A \vDash \varphi_1[\vec{a}] \text{ o } A \vDash \varphi_2[\vec{a}] && \text{(def. de $\vDash$)}\\
+&\text{ sii } B \vDash \varphi_1[F(\vec{a})] \text{ o } B \vDash \varphi_2[F(\vec{a})] && \text{(Teo$_k$)}\\
+&\text{ sii } B \vDash \varphi[F(\vec{a})] && \text{(def. de $\vDash$)}.
+\end{aligned}
+\]
+
+Los casos $\varphi = (\varphi_1 \land \varphi_2)$, $\varphi = (\varphi_1 \to \varphi_2)$, 
+$\varphi = (\varphi_1 \leftrightarrow \varphi_2)$ y $\varphi = \neg \varphi_1$ son análogos al anterior.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = \forall x_j \varphi_1$, con $\varphi_1 \in F_\tau^k$.  
+Veamos cada implicación por separado.
+
+\smallskip
+\noindent
+Supongamos $A \vDash \varphi[\vec{a}]$.  
+Entonces, por la definición de $\vDash$, se tiene que 
+\[
+A \vDash \varphi_1[\downarrow a_j(\vec{a})], \quad \text{para todo } a \in A.
+\]
+Por Teo$_k$ tenemos que 
+\[
+B \vDash \varphi_1[F(\downarrow a_j(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Pero como
+\[
+F(\downarrow a_j(\vec{a})) = \downarrow F(a)_j(F(\vec{a})),
+\]
+tenemos que 
+\[
+B \vDash \varphi_1[\downarrow F(a)_j(F(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Como $F$ es sobreyectiva, obtenemos que 
+\[
+B \vDash \varphi_1[\downarrow b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
+\]
+Ahora, por la definición de $\vDash$, tenemos que 
+\[
+B \vDash \forall x_j \varphi_1[F(\vec{a})],
+\]
+es decir, $B \vDash \varphi[F(\vec{a})]$.
+
+\smallskip
+\noindent
+Recíprocamente, supongamos que $B \vDash \varphi[F(\vec{a})]$.  
+La definición de $\vDash$ nos dice que 
+\[
+B \vDash \varphi_1[\downarrow b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
+\]
+Obviamente, esto implica que 
+\[
+B \vDash \varphi_1[\downarrow F(a)_j(F(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Pero como 
+\[
+\downarrow F(a)_j(F(\vec{a})) = F(\downarrow a_j(\vec{a})),
+\]
+tenemos que 
+\[
+B \vDash \varphi_1[F(\downarrow a_j(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Por Teo$_k$, se sigue que 
+\[
+A \vDash \varphi_1[\downarrow a_j(\vec{a})], \quad \text{para todo } a \in A,
+\]
+lo cual, por la definición de $\vDash$, nos dice que $A \vDash \varphi[\vec{a}]$.
+
+\medskip
+\noindent
+El caso $\varphi = \exists x_j \varphi_1$ es análogo al anterior.
+\end{proof}
 \end{lemma}
 
 \begin{theorem}
@@ -354,7 +500,87 @@ Sea $T = (\Sigma, \tau)$ una teoría. Entonces
 (S^\tau / \dashv\vdash_T, s^T, i^T, c^T, 0^T, 1^T)
 \]
 es un álgebra de Boole. \\
+
 \textbf{Pruebe sólo el ítem (6).}
+\begin{proof}
+Veamos que
+\[
+[\varphi_1]_T \, s_T \, \big( [\varphi_2]_T \, s_T \, [\varphi_3]_T \big)
+= \big( [\varphi_1]_T \, s_T \, [\varphi_2]_T \big) \, s_T \, [\varphi_3]_T,
+\]
+cualesquiera sean $\varphi_1, \varphi_2, \varphi_3 \in S_\tau$.
+
+Sean $\varphi_1, \varphi_2, \varphi_3 \in S_\tau$ fijas.  
+Por la definición de la operación $s_T$ tenemos que:
+\[
+\begin{aligned}
+[\varphi_1]_T \, s_T \, \big( [\varphi_2]_T \, s_T \, [\varphi_3]_T \big)
+&= [\varphi_1]_T \, s_T \, [(\varphi_2 \vee \varphi_3)]_T \\
+&= [(\varphi_1 \vee (\varphi_2 \vee \varphi_3))]_T, \\[6pt]
+\big( [\varphi_1]_T \, s_T \, [\varphi_2]_T \big) \, s_T \, [\varphi_3]_T
+&= [(\varphi_1 \vee \varphi_2)]_T \, s_T \, [\varphi_3]_T \\
+&= [((\varphi_1 \vee \varphi_2) \vee \varphi_3)]_T.
+\end{aligned}
+\]
+
+\noindent
+Por tanto, debemos probar que
+\[
+[(\varphi_1 \vee (\varphi_2 \vee \varphi_3))]_T
+= [((\varphi_1 \vee \varphi_2) \vee \varphi_3)]_T,
+\]
+es decir, que
+\[
+T \vdash 
+\big( (\varphi_1 \vee (\varphi_2 \vee \varphi_3)) 
+\leftrightarrow 
+((\varphi_1 \vee \varphi_2) \vee \varphi_3) \big).
+\]
+
+\noindent
+Nótese que, por (2) del Lema 7.38, basta con probar que:
+\[
+T \vdash 
+\big( (\varphi_1 \vee (\varphi_2 \vee \varphi_3))
+\rightarrow 
+((\varphi_1 \vee \varphi_2) \vee \varphi_3) \big),
+\qquad
+T \vdash 
+\big( ((\varphi_1 \vee \varphi_2) \vee \varphi_3)
+\rightarrow 
+(\varphi_1 \vee (\varphi_2 \vee \varphi_3)) \big).
+\]
+
+\noindent
+A continuación damos una prueba formal de
+\[
+(\varphi_1 \vee (\varphi_2 \vee \varphi_3))
+\rightarrow 
+((\varphi_1 \vee \varphi_2) \vee \varphi_3)
+\text{ en } T,
+\]
+
+\begin{enumerate}[label=\arabic*.]
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Hipótesis 1}
+    \item $\varphi_1$ \hfill \textit{Hipótesis 2}
+    \item $(\varphi_1 \vee \varphi_2)$ \hfill \textit{Introducción de $\vee$ (2)}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 2, Introducción de $\vee$ (3)}
+    \item $\varphi_1 \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $(\varphi_2 \vee \varphi_3)$ \hfill \textit{Hipótesis 3}
+    \item $\varphi_2$ \hfill \textit{Hipótesis 4}
+    \item $(\varphi_1 \vee \varphi_2)$ \hfill \textit{Introducción de $\vee$ (6)}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 4, Introducción de $\vee$ (7)}
+    \item $\varphi_2 \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $\varphi_3$ \hfill \textit{Hipótesis 5}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 5, Introducción de $\vee$ (11)}
+    \item $\varphi_3 \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 3, División por casos (6, 10, 13)}
+    \item $(\varphi_2 \vee \varphi_3) \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 1, División por casos (1, 5, 15)}
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3)) \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+\end{enumerate}
+
+\end{proof}
 \end{theorem}
 
 \section*{Combo 4}
@@ -648,6 +874,126 @@ Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi =_{d} \varphi(v_1, \
 A \vDash \varphi[a_1, a_2, \ldots, a_n] \text{ ssi } B \vDash \varphi[F(a_1), F(a_2), \ldots, F(a_n)]
 \]
 para cada $a_1, a_2, \ldots, a_n \in A$.
+\begin{proof}
+\noindent
+Haremos la prueba por inducción en $k$.
+
+\medskip
+También, en esta prueba se usará sin demostrar el siguiente lema:
+
+\begin{quote}
+\textbf{Lema 5.}  
+Si $F$ es un homomorfismo entonces
+\[
+F(t^A[a_1, \ldots, a_n]) = t^B[F(a_1), \ldots, F(a_n)]
+\]
+para cada $t \in T_\tau$ y $a_1, \ldots, a_n \in A$.
+\end{quote}
+
+\bigskip
+\noindent
+\textbf{Caso base:} $\varphi \in F^\tau_0$.  
+Por el lema de menú para fórmulas, $\varphi$ puede tener las siguientes formas:
+\[
+\varphi = (s = t) \quad \text{con } s,t \in T_\tau, 
+\qquad \text{o bien} \qquad
+\varphi = r(t_1, \ldots, t_n),\; n \ge 1,\; r \in R_n,\; t_1, \ldots, t_n \in T_\tau.
+\]
+
+\noindent
+Si $\varphi = (s = t)$ entonces:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } s^A[a_1, \ldots, a_n] = t^A[a_1, \ldots, a_n].
+\]
+Luego, como $F$ es un isomorfismo,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } F(s^A[a_1, \ldots, a_n]) = F(t^A[a_1, \ldots, a_n]).
+\]
+Por el Lema 5,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } s^B[F(a_1), \ldots, F(a_n)] = t^B[F(a_1), \ldots, F(a_n)].
+\]
+Por definición,
+\[
+s^B[F(a_1), \ldots, F(a_n)] = t^B[F(a_1), \ldots, F(a_n)] 
+\text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
+\]
+
+\noindent
+El caso $\varphi = r(t_1, \ldots, t_n)$ es similar:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } (t_1^A[a_1, \ldots, a_n], \ldots, t_n^A[a_1, \ldots, a_n]) \in r^A.
+\]
+Como $F$ es isomorfismo,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } (F(t_1^A[a_1, \ldots, a_n]), \ldots, F(t_n^A[a_1, \ldots, a_n])) \in r^B.
+\]
+Por el Lema 5,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } (t_1^B[F(a_1), \ldots, F(a_n)], \ldots, t_n^B[F(a_1), \ldots, F(a_n)]) \in r^B.
+\]
+Y por definición,
+\[
+(t_1^B[F(a_1), \ldots, F(a_n)], \ldots, t_n^B[F(a_1), \ldots, F(a_n)]) \in r^B
+\text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
+\]
+Por lo que queda probado el caso base.
+
+\bigskip
+\noindent
+\textbf{Caso inductivo:} $\varphi \in F^\tau_{k+1}$.
+
+\medskip
+\textbf{Hipótesis inductiva (HI):}  
+Si $\varphi \in F^\tau_k$ entonces
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \iff B \vDash \varphi[F(a_1), \ldots, F(a_n)]
+\quad \forall a_1, \ldots, a_n \in A.
+\]
+
+Si $\varphi \in F_\tau^k$, entonces claramente se cumple la propiedad, por lo que suponemos $\varphi \in F_\tau^{k+1} - F_\tau^k$.  
+Ahora, por el lema de menú para fórmulas, tenemos distintos casos.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F_\tau^k$.
+\[
+\begin{aligned}
+A \vDash \varphi[a_1, \ldots, a_n]
+&\text{ sii } A \vDash \varphi_1[a_1, \ldots, a_n] \text{ o } A \vDash \varphi_2[a_1, \ldots, a_n] && \text{(def. de $\vDash$)} \\
+&\text{ sii } B \vDash \varphi_1[F(a_1), \ldots, F(a_n)] \text{ o } B \vDash \varphi_2[F(a_1), \ldots, F(a_n)] && \text{(HI)} \\
+&\text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)] && \text{(def. de $\vDash$)}.
+\end{aligned}
+\]
+
+Los casos $\varphi = (\varphi_1 \land \varphi_2)$, $\varphi = (\varphi_1 \Rightarrow \varphi_2)$, 
+$\varphi = (\varphi_1 \Leftrightarrow \varphi_2)$ y $\varphi = \neg \varphi_1$ son análogos.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = \forall x_j \varphi_1$, con $\varphi_1 \in F_\tau^k$.  
+Por definición:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } A \vDash \varphi_1[a_1, \ldots, a, \ldots, a_n] 
+\quad \text{para todo } a \in A.
+\]
+Por la HI:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi_1[F(a_1), \ldots, F(a), \ldots, F(a_n)] 
+\quad \text{para todo } a \in A.
+\]
+Luego, como $F$ es isomorfismo, $\operatorname{Im}(F) = B$, entonces:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi_1[F(a_1), \ldots, b, \ldots, F(a_n)] 
+\quad \text{para todo } b \in B.
+\]
+Finalmente, por definición:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
+\]
+
+El caso $\varphi = \exists x_j \varphi_1$ es análogo.
+\end{proof}
 \end{lemma}
 
 \begin{lemma}
@@ -659,6 +1005,29 @@ Sean $(P, \le)$ y $(P', \le')$ posets. Supongamos que $F$ es un isomorfismo de $
     F(\sup(S)) = \sup(F(S)).
     \]
 \end{enumerate}
+\begin{proof}
+(a) Supongamos que $a$ es cota superior de $S$. 
+Veamos que entonces $F(a)$ es cota superior de $F(S)$. 
+Sea $x \in F(S)$. Sea $s \in S$ tal que $x = F(s)$. 
+Ya que $s \leq a$, tenemos que $x = F(s) \leq' F(a)$.
+
+Supongamos ahora que $F(a)$ es cota superior de $F(S)$ y veamos que entonces $a$ es cota superior de $S$. 
+Sea $s \in S$. Ya que $F(s) \leq' F(a)$, tenemos que 
+\[
+s = F^{-1}(F(s)) \leq F^{-1}(F(a)) = a.
+\]
+
+(b) Supongamos que existe $\sup(S)$. 
+Veamos entonces que $F(\sup(S))$ es el supremo de $F(S)$. 
+Por (e), $F(\sup(S))$ es cota superior de $F(S)$. 
+Supongamos que $b$ es cota superior de $F(S)$. 
+Entonces $F^{-1}(b)$ es cota superior de $S$, 
+por lo cual $\sup(S) \leq F^{-1}(b)$, 
+produciendo $F(\sup(S)) \leq' b$.
+
+En forma análoga, se ve que si existe $\sup(F(S))$, 
+entonces $F^{-1}(\sup(F(S)))$ es el supremo de $S$.
+\end{proof}
 \end{lemma}
 
 \end{document}
