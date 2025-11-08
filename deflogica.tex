@@ -28,6 +28,13 @@
     Un \textbf{par adecuado de tipo} $\tau$ es un par $(\varphi, J) \in S^{ \tau +} \times \text{Just}^+$ tal que se cumple que $n(\varphi) = n(J)$ y $J$ es balanceada.  
 
     \item Defina $\text{Mod}_T(\varphi)$
+    \medskip
+    
+    Sea $T = (\Sigma, \tau)$ una teoría. Dada $\varphi \in S_{\tau}$ definamos
+    \[
+    \mathrm{Mod}_T(\varphi) = \{A : A \text{ es modelo de } T \text{ y } A \vDash \varphi\}.
+    \]
+
     \item Dados $\varphi =_d \varphi(v_1, \ldots, v_n)$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina qué significa $A \vDash \varphi[a_1, \ldots, a_n]$ (i.e. Convención notacional 4)
     \bigskip
     Sean 
@@ -81,7 +88,25 @@
     si y sólo si $\varphi$ es verdadera en todo modelo de $(\Sigma, \tau)$.
 
     \item Defina “Partición de $A$” y $RP$
+    
+    Dado un conjunto $A$, por una \emph{partición} de $A$ entenderemos un conjunto $P$ tal que:
+    \begin{itemize}
+    \item Cada elemento de $P$ es un subconjunto no vacío de $A$.
+    \item Si $S_1, S_2 \in P$ y $S_1 \neq S_2$, entonces $S_1 \cap S_2 = \emptyset$.
+    \item $A = \{ a : a \in S \text{ para algún } S \in P \}$.
+    \end{itemize}
+
+    Dada una partición $P$ de un conjunto $A$, podemos definir una relación binaria asociada a $P$ de la siguiente manera:
+    \[
+    R_P = \{ (a, b) \in A^2 : a, b \in S \text{ para algún } S \in P \}.
+    \]
+
     \item Defina cuando “$\varphi_i$ está bajo la hipótesis $\varphi_l$ en $(\varphi, J)$” (no hace falta que defina $B^J$)
+    
+    Diremos que $\varphi_i$ está bajo la hipótesis $\varphi_l$ en $(\varphi, J)$, o que 
+    $\varphi_l$ es una hipótesis de $\varphi_i$ en $(\varphi, J)$, cuando haya en $B_J$ 
+    un bloque de la forma $\langle l, j \rangle$ el cual contenga a $i$.
+
     \item Defina $(L,s,i)/\theta$ ($\theta$ una congruencia del reticulado terna $(L,s,i)$).  
     
     \bigskip
@@ -128,6 +153,13 @@
     \]
     
     \item Defina “filtro generado por $S$ en $(L,s,i)$”
+    
+    Dado un conjunto $S \subseteq L$, denotemos con $[S)$ el siguiente conjunto:
+    \[
+    [S) = \{\, y \in L : y \geq s_1 \lor \dots \lor s_n, \text{ para algunos } s_1, \ldots, s_n \in S, \, n \geq 1 \,\}.
+    \]
+    Llamaremos a $[S)$ el \emph{filtro generado por} $S$.
+
     \item Defina cuando $J \in \text{Just}^+$ es balanceada (no hace falta que defina $B_J$)
     \bigskip
 
@@ -413,6 +445,14 @@ Supongamos que hemos declarado una fórmula $\varphi =_d \varphi(v_1, \ldots, v_
 
     \item Defina cuando $J \in \text{Just}^+$ es balanceada (no hace falta que defina $B^J$) (Mismo que en combo 3.4)
     \item Defina “filtro del reticulado terna $(L,s,i)$”
+    
+    Un \emph{filtro} de un reticulado $\,(L, s, i)\,$ será un subconjunto $F \subseteq L$ tal que:
+    \begin{enumerate}
+        \item $F \neq \emptyset$,
+        \item Si $x, y \in F$, entonces $x i y \in F$,
+        \item Si $x \in F$ y $x \leq y$, entonces $y \in F$.
+    \end{enumerate}
+
     \item Defina “teoría elemental”.  
     
     Una teoría elemental es un par $(\Sigma, \tau)$ tal que $\tau$ es un tipo cualquiera y $\Sigma$ es un conjunto de sentencias elementales puras de tipo $\tau$.
