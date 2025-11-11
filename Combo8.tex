@@ -1,0 +1,200 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newcommand{\deduce}[2]{(#1, #2) \vdash}
+\newcommand{\incon}{es inconsistente}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 8}
+
+\begin{lemma}
+Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi =_{d} \varphi(v_1, \ldots, v_n) \in F_\tau$. Entonces:
+\[
+A \vDash \varphi[a_1, a_2, \ldots, a_n] \text{ ssi } B \vDash \varphi[F(a_1), F(a_2), \ldots, F(a_n)]
+\]
+para cada $a_1, a_2, \ldots, a_n \in A$.
+\begin{proof}
+\noindent
+Haremos la prueba por inducción en $k$.
+
+\medskip
+También, en esta prueba se usará sin demostrar el siguiente lema:
+
+\begin{quote}
+\textbf{Lema 5.}  
+Si $F$ es un homomorfismo entonces
+\[
+F(t^A[a_1, \ldots, a_n]) = t^B[F(a_1), \ldots, F(a_n)]
+\]
+para cada $t \in T_\tau$ y $a_1, \ldots, a_n \in A$.
+\end{quote}
+
+\bigskip
+\noindent
+\textbf{Caso base:} $\varphi \in F^\tau_0$.  
+Por el lema de menú para fórmulas, $\varphi$ puede tener las siguientes formas:
+\[
+\varphi = (s = t) \quad \text{con } s,t \in T_\tau, 
+\qquad \text{o bien} \qquad
+\varphi = r(t_1, \ldots, t_n),\; n \ge 1,\; r \in R_n,\; t_1, \ldots, t_n \in T_\tau.
+\]
+
+\noindent
+Si $\varphi = (s = t)$ entonces:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } s^A[a_1, \ldots, a_n] = t^A[a_1, \ldots, a_n].
+\]
+Luego, como $F$ es un isomorfismo,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } F(s^A[a_1, \ldots, a_n]) = F(t^A[a_1, \ldots, a_n]).
+\]
+Por el Lema 5,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } s^B[F(a_1), \ldots, F(a_n)] = t^B[F(a_1), \ldots, F(a_n)].
+\]
+Por definición,
+\[
+s^B[F(a_1), \ldots, F(a_n)] = t^B[F(a_1), \ldots, F(a_n)] 
+\text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
+\]
+
+\noindent
+El caso $\varphi = r(t_1, \ldots, t_n)$ es similar:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } (t_1^A[a_1, \ldots, a_n], \ldots, t_n^A[a_1, \ldots, a_n]) \in r^A.
+\]
+Como $F$ es isomorfismo,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } (F(t_1^A[a_1, \ldots, a_n]), \ldots, F(t_n^A[a_1, \ldots, a_n])) \in r^B.
+\]
+Por el Lema 5,
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } (t_1^B[F(a_1), \ldots, F(a_n)], \ldots, t_n^B[F(a_1), \ldots, F(a_n)]) \in r^B.
+\]
+Y por definición,
+\[
+(t_1^B[F(a_1), \ldots, F(a_n)], \ldots, t_n^B[F(a_1), \ldots, F(a_n)]) \in r^B
+\text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
+\]
+Por lo que queda probado el caso base.
+
+\bigskip
+\noindent
+\textbf{Caso inductivo:} $\varphi \in F^\tau_{k+1}$.
+
+\medskip
+\textbf{Hipótesis inductiva (HI):}  
+Si $\varphi \in F^\tau_k$ entonces
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \iff B \vDash \varphi[F(a_1), \ldots, F(a_n)]
+\quad \forall a_1, \ldots, a_n \in A.
+\]
+
+Si $\varphi \in F_\tau^k$, entonces claramente se cumple la propiedad, por lo que suponemos $\varphi \in F_\tau^{k+1} - F_\tau^k$.  
+Ahora, por el lema de menú para fórmulas, tenemos distintos casos.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F_\tau^k$.
+\[
+\begin{aligned}
+A \vDash \varphi[a_1, \ldots, a_n]
+&\text{ sii } A \vDash \varphi_1[a_1, \ldots, a_n] \text{ o } A \vDash \varphi_2[a_1, \ldots, a_n] && \text{(def. de $\vDash$)} \\
+&\text{ sii } B \vDash \varphi_1[F(a_1), \ldots, F(a_n)] \text{ o } B \vDash \varphi_2[F(a_1), \ldots, F(a_n)] && \text{(HI)} \\
+&\text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)] && \text{(def. de $\vDash$)}.
+\end{aligned}
+\]
+
+Los casos $\varphi = (\varphi_1 \land \varphi_2)$, $\varphi = (\varphi_1 \Rightarrow \varphi_2)$, 
+$\varphi = (\varphi_1 \Leftrightarrow \varphi_2)$ y $\varphi = \neg \varphi_1$ son análogos.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = \forall x_j \varphi_1$, con $\varphi_1 \in F_\tau^k$.  
+Por definición:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } A \vDash \varphi_1[a_1, \ldots, a, \ldots, a_n] 
+\quad \text{para todo } a \in A.
+\]
+Por la HI:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi_1[F(a_1), \ldots, F(a), \ldots, F(a_n)] 
+\quad \text{para todo } a \in A.
+\]
+Luego, como $F$ es isomorfismo, $\operatorname{Im}(F) = B$, entonces:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi_1[F(a_1), \ldots, b, \ldots, F(a_n)] 
+\quad \text{para todo } b \in B.
+\]
+Finalmente, por definición:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
+\]
+
+El caso $\varphi = \exists x_j \varphi_1$ es análogo.
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+Sean $(P, \le)$ y $(P', \le')$ posets. Supongamos que $F$ es un isomorfismo de $(P, \le)$ en $(P', \le')$.
+\begin{enumerate}[label=(\alph*)]
+    \item Para cada $S \subseteq P$ y cada $a \in P$, se tiene que $a$ es cota superior (resp. inferior) de $S$ si y sólo si $F(a)$ es cota superior (resp. inferior) de $F(S)$.
+    \item Para cada $S \subseteq P$, se tiene que existe $\sup(S)$ si y sólo si existe $\sup(F(S))$ y en tal caso se cumple que:
+    \[
+    F(\sup(S)) = \sup(F(S)).
+    \]
+\end{enumerate}
+\begin{proof}
+(a) Supongamos que $a$ es cota superior de $S$. 
+Veamos que entonces $F(a)$ es cota superior de $F(S)$. 
+Sea $x \in F(S)$. Sea $s \in S$ tal que $x = F(s)$. 
+Ya que $s \leq a$, tenemos que $x = F(s) \leq' F(a)$.
+
+Supongamos ahora que $F(a)$ es cota superior de $F(S)$ y veamos que entonces $a$ es cota superior de $S$. 
+Sea $s \in S$. Ya que $F(s) \leq' F(a)$, tenemos que 
+\[
+s = F^{-1}(F(s)) \leq F^{-1}(F(a)) = a.
+\]
+
+(b) Supongamos que existe $\sup(S)$. 
+Veamos entonces que $F(\sup(S))$ es el supremo de $F(S)$. 
+Por (e), $F(\sup(S))$ es cota superior de $F(S)$. 
+Supongamos que $b$ es cota superior de $F(S)$. 
+Entonces $F^{-1}(b)$ es cota superior de $S$, 
+por lo cual $\sup(S) \leq F^{-1}(b)$, 
+produciendo $F(\sup(S)) \leq' b$.
+
+En forma análoga, se ve que si existe $\sup(F(S))$, 
+entonces $F^{-1}(\sup(F(S)))$ es el supremo de $S$.
+\end{proof}
+\end{lemma}
+
+\section*{Auxiliares de Demostraciones}
+\begin{enumerate}
+    \item Lema de menú de fórmulas:  Supongamos $\varphi \in F_k^\tau$, con $k \ge 1$. Entonces $\varphi$ es de alguna de las siguientes formas:
+
+\begin{enumerate}
+    \item $\varphi = (t \equiv s)$, con $t, s \in T^\tau$.
+    \item $\varphi = r(t_1, \ldots, t_n)$, con $r \in R_n$, $t_1, \ldots, t_n \in T^\tau$.
+    \item $\varphi = (\varphi_1 \, \eta \, \varphi_2)$, con $\eta \in \{\wedge, \vee, \to, \leftrightarrow\}$, $\varphi_1, \varphi_2 \in F_{k-1}^\tau$.
+    \item $\varphi = \neg \varphi_1$, con $\varphi_1 \in F_{k-1}^\tau$.
+    \item $\varphi = Qv\varphi_1$, con $Q \in \{\forall, \exists\}$, $v \in Var$ y $\varphi_1 \in F_{k-1}^\tau$.
+\end{enumerate}
+
+    
+\end{enumerate}
+
+\end{document}
+

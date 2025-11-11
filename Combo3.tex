@@ -1,0 +1,326 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newcommand{\deduce}[2]{(#1, #2) \vdash}
+\newcommand{\incon}{es inconsistente}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 3}
+
+\begin{theorem}[Lectura única de términos]
+Dado $t \in T^\tau$, se da una de las siguientes:
+\begin{enumerate}[label=(\arabic*)]
+    \item $t \in Var \cup C$
+    \item Hay únicos $n \ge 1$, $f \in F^n$, $t_1, \ldots, t_n \in T^\tau$ tales que $t = f(t_1, \ldots, t_n)$.
+\end{enumerate}
+\begin{proof}
+\noindent
+Por la definición de $T^\tau$ está claro que vale sin la unicidad (1)
+En virtud del Lema de Menú de términos solo nos falta probar la unicidad en el punto (2). 
+Supongamos
+\[
+t = f(t_1,\ldots,t_n) = g(s_1,\ldots,s_m)
+\]
+con $n,m\ge 1$, $f\in F_n$, $g\in F_m$, $t_1,\ldots,t_n,s_1,\ldots,s_m\in T_\tau$.
+Nótese que $f=g$. Es decir, $n=m=a(f)$. 
+
+\noindent
+Nótese que $t_1$ es tramo inicial de $s_1$ o $s_1$ es tramo inicial de $t_1$, lo cual, por el lema de mordisqueo de términos, nos dice que $t_1=s_1$. Con el mismo razonamiento se prueba que necesariamente
+\[
+t_2=s_2,\ \ldots,\ t_n=s_n.
+\]
+\end{proof}
+\end{theorem}
+
+\begin{lemma}
+Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi \in F^\tau$. Entonces
+\[
+A \vDash \varphi[(a_1, a_2, \ldots)] \text{ si y sólo si } B \vDash \varphi[(F(a_1), F(a_2), \ldots)]
+\]
+para cada $(a_1, a_2, \ldots) \in A^N$. En particular, $A$ y $B$ satisfacen las mismas sentencias de tipo $\tau$.
+\begin{proof}
+Para $\vec{a} = (a_1, a_2, \ldots) \in A^N$, denotemos $(F(a_1), F(a_2), \ldots)$ con $F(\vec{a})$.  
+Procedemos por inducción.
+
+\medskip
+\noindent
+\textbf{Teo$_k$:} Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi \in F_\tau^k$. Entonces
+\[
+A \vDash \varphi[\vec{a}] \text{ sii } B \vDash \varphi[F(\vec{a})],
+\]
+para cada $(a_1,a_2,\ldots) \in A^N$.
+
+\medskip
+\noindent
+\textbf{Prueba de Teo$_0$.}  
+Hay dos casos.  
+\smallskip
+
+\noindent
+\textbf{Caso} $\varphi = r(t_1, \ldots, t_n)$, con $n \ge 1$, $r \in R_n$ y $t_1, \ldots, t_n \in T^\tau$.  
+Tenemos entonces:
+\[
+\begin{aligned}
+A \vDash \varphi[\vec{a}]
+&\text{ sii } (t_1^A[\vec{a}], \ldots, t_n^A[\vec{a}]) \in r^A && \text{(def. de $\vDash$)}\\
+&\text{ sii } (F(t_1^A[\vec{a}]), \ldots, F(t_n^A[\vec{a}])) \in r^B && \text{($F$ es iso)}\\
+&\text{ sii } (t_1^B[F(\vec{a})], \ldots, t_n^B[F(\vec{a})]) \in r^B && \text{(por lema auxiliar 2)}\\
+&\text{ sii } B \vDash \varphi[F(\vec{a})].
+\end{aligned}
+\]
+
+\textbf{Caso} $\varphi = (t \equiv s)$ con $t,s \in T^\tau$. Tenemos ahora que 
+\[
+\begin{aligned}
+A \vDash \varphi[\vec{a}]
+&\text{ sii } (t^A[\vec{a}] \equiv s^A[\vec{a}]) && \text{(def. de $\vDash$)}\\
+&\text{ sii } (F(t^A[\vec{a}]) \equiv F(s^A[\vec{a}])) && \text{($F$ es iso)}\\
+&\text{ sii } (t^B[F(\vec{a})] \equiv s^B[F(\vec{a})]) && \text{(por lema auxiliar 2)}\\
+&\text{ sii } B \vDash \varphi[F(\vec{a})].
+\end{aligned}
+\]
+\medskip
+\noindent
+Veamos ahora que Teo$_k$ implica Teo$_{k+1}$.  
+Supongamos que vale Teo$_k$. Probaremos que entonces vale Teo$_{k+1}$.
+
+\smallskip
+Si $\varphi \in F_\tau^k$, podemos aplicar directamente Teo$_k$.  
+Supongamos entonces que $\varphi \in F_\tau^{k+1} - F_\tau^k$.  
+Por el Lema de Lectura Única de fórmulas, hay varios casos.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F_\tau^k$. Entonces:
+\[
+\begin{aligned}
+A \vDash \varphi[\vec{a}]
+&\text{ sii } A \vDash \varphi_1[\vec{a}] \text{ o } A \vDash \varphi_2[\vec{a}] && \text{(def. de $\vDash$)}\\
+&\text{ sii } B \vDash \varphi_1[F(\vec{a})] \text{ o } B \vDash \varphi_2[F(\vec{a})] && \text{(Teo$_k$)}\\
+&\text{ sii } B \vDash \varphi[F(\vec{a})] && \text{(def. de $\vDash$)}.
+\end{aligned}
+\]
+
+Los casos $\varphi = (\varphi_1 \land \varphi_2)$, $\varphi = (\varphi_1 \to \varphi_2)$, 
+$\varphi = (\varphi_1 \leftrightarrow \varphi_2)$ y $\varphi = \neg \varphi_1$ son análogos al anterior.
+
+\medskip
+\noindent
+\textbf{Caso} $\varphi = \forall x_j \varphi_1$, con $\varphi_1 \in F_\tau^k$.  
+Veamos cada implicación por separado.
+
+\smallskip
+\noindent
+Supongamos $A \vDash \varphi[\vec{a}]$.  
+Entonces, por la definición de $\vDash$, se tiene que 
+\[
+A \vDash \varphi_1[\downarrow a_j(\vec{a})], \quad \text{para todo } a \in A.
+\]
+Por Teo$_k$ tenemos que 
+\[
+B \vDash \varphi_1[F(\downarrow a_j(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Pero como
+\[
+F(\downarrow a_j(\vec{a})) = \downarrow F(a)_j(F(\vec{a})),
+\]
+tenemos que 
+\[
+B \vDash \varphi_1[\downarrow F(a)_j(F(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Como $F$ es sobreyectiva, obtenemos que 
+\[
+B \vDash \varphi_1[\downarrow b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
+\]
+Ahora, por la definición de $\vDash$, tenemos que 
+\[
+B \vDash \forall x_j \varphi_1[F(\vec{a})],
+\]
+es decir, $B \vDash \varphi[F(\vec{a})]$.
+
+\smallskip
+\noindent
+Recíprocamente, supongamos que $B \vDash \varphi[F(\vec{a})]$.  
+La definición de $\vDash$ nos dice que 
+\[
+B \vDash \varphi_1[\downarrow b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
+\]
+Obviamente, esto implica que 
+\[
+B \vDash \varphi_1[\downarrow F(a)_j(F(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Pero como 
+\[
+\downarrow F(a)_j(F(\vec{a})) = F(\downarrow a_j(\vec{a})),
+\]
+tenemos que 
+\[
+B \vDash \varphi_1[F(\downarrow a_j(\vec{a}))], \quad \text{para todo } a \in A.
+\]
+Por Teo$_k$, se sigue que 
+\[
+A \vDash \varphi_1[\downarrow a_j(\vec{a})], \quad \text{para todo } a \in A,
+\]
+lo cual, por la definición de $\vDash$, nos dice que $A \vDash \varphi[\vec{a}]$.
+
+\medskip
+\noindent
+El caso $\varphi = \exists x_j \varphi_1$ es análogo al anterior.
+\end{proof}
+\end{lemma}
+
+\begin{theorem}
+Sea $T = (\Sigma, \tau)$ una teoría. Entonces
+\[
+(S^\tau / \dashv\vdash_T, s^T, i^T, c^T, 0^T, 1^T)
+\]
+es un álgebra de Boole. \\
+
+\textbf{Pruebe sólo el ítem (6).}
+\begin{proof}
+Veamos que
+\[
+[\varphi_1]_T \, s_T \, \big( [\varphi_2]_T \, s_T \, [\varphi_3]_T \big)
+= \big( [\varphi_1]_T \, s_T \, [\varphi_2]_T \big) \, s_T \, [\varphi_3]_T,
+\]
+cualesquiera sean $\varphi_1, \varphi_2, \varphi_3 \in S_\tau$.
+
+Sean $\varphi_1, \varphi_2, \varphi_3 \in S_\tau$ fijas.  
+Por la definición de la operación $s_T$ tenemos que:
+\[
+\begin{aligned}
+[\varphi_1]_T \, s_T \, \big( [\varphi_2]_T \, s_T \, [\varphi_3]_T \big)
+&= [\varphi_1]_T \, s_T \, [(\varphi_2 \vee \varphi_3)]_T \\
+&= [(\varphi_1 \vee (\varphi_2 \vee \varphi_3))]_T, \\[6pt]
+\big( [\varphi_1]_T \, s_T \, [\varphi_2]_T \big) \, s_T \, [\varphi_3]_T
+&= [(\varphi_1 \vee \varphi_2)]_T \, s_T \, [\varphi_3]_T \\
+&= [((\varphi_1 \vee \varphi_2) \vee \varphi_3)]_T.
+\end{aligned}
+\]
+
+\noindent
+Por tanto, debemos probar que
+\[
+[(\varphi_1 \vee (\varphi_2 \vee \varphi_3))]_T
+= [((\varphi_1 \vee \varphi_2) \vee \varphi_3)]_T,
+\]
+es decir, que
+\[
+T \vdash 
+\big( (\varphi_1 \vee (\varphi_2 \vee \varphi_3)) 
+\leftrightarrow 
+((\varphi_1 \vee \varphi_2) \vee \varphi_3) \big).
+\]
+
+\noindent
+Nótese que, por (2) del lema de propiedades básicas de $\vdash$, basta con probar que:
+\[
+T \vdash 
+\big( (\varphi_1 \vee (\varphi_2 \vee \varphi_3))
+\rightarrow 
+((\varphi_1 \vee \varphi_2) \vee \varphi_3) \big),
+\qquad
+T \vdash 
+\big( ((\varphi_1 \vee \varphi_2) \vee \varphi_3)
+\rightarrow 
+(\varphi_1 \vee (\varphi_2 \vee \varphi_3)) \big).
+\]
+
+\noindent
+A continuación damos una prueba formal de
+\[
+(\varphi_1 \vee (\varphi_2 \vee \varphi_3))
+\rightarrow 
+((\varphi_1 \vee \varphi_2) \vee \varphi_3)
+\text{ en } T,
+\]
+
+\begin{enumerate}[label=\arabic*.]
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Hipótesis 1}
+    \item $\varphi_1$ \hfill \textit{Hipótesis 2}
+    \item $(\varphi_1 \vee \varphi_2)$ \hfill \textit{Introducción de $\vee$ (2)}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 2, Introducción de $\vee$ (3)}
+    \item $\varphi_1 \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $(\varphi_2 \vee \varphi_3)$ \hfill \textit{Hipótesis 3}
+    \item $\varphi_2$ \hfill \textit{Hipótesis 4}
+    \item $(\varphi_1 \vee \varphi_2)$ \hfill \textit{Introducción de $\vee$ (6)}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 4, Introducción de $\vee$ (7)}
+    \item $\varphi_2 \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $\varphi_3$ \hfill \textit{Hipótesis 5}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 5, Introducción de $\vee$ (11)}
+    \item $\varphi_3 \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 3, División por casos (6, 10, 13)}
+    \item $(\varphi_2 \vee \varphi_3) \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Tesis 1, División por casos (1, 5, 15)}
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3)) \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
+\end{enumerate}
+
+\end{proof}
+\end{theorem}
+
+\section*{Auxiliares de Demostraciones}
+\begin{enumerate}
+    \item Lema de menú de términos: Supongamos $t \in T^k_\tau$, con $k \ge 1$. Entonces se da alguna de las siguientes:
+    \begin{enumerate}[label=(\alph*)]
+        \item $t \in Var \cup C$.
+        \item $t = f(t_1, \ldots, t_n)$, con $f \in F_n$, $n \ge 1$ y $t_1, \ldots, t_n \in T_{k-1}^\tau$.
+    \end{enumerate}
+    \item Lema auxiliar 2: Sea $F : A \to B$ un homomorfismo. Entonces
+    \[
+    F\big(t^A[(a_1, a_2, \ldots)]\big) = t^B\big[(F(a_1), F(a_2), \ldots)\big]
+    \]
+    para cada $t \in T^\tau$, $(a_1, a_2, \ldots) \in A^N$.
+    \item Lema de Mordisqueo de terminos: Sean $s, t \in T^\tau$ y supongamos que hay palabras $x, y, z$, con $y \ne \varepsilon$, tales que 
+    $s = xy$ y $t = yz$. Entonces $x = z = \varepsilon$ o bien $s, t \in C$. 
+
+    En particular, si un término es tramo inicial o final de otro término, entonces dichos términos son iguales.
+
+    \item Lema de Lectura Única de fórmulas: Dada $\varphi \in F^\tau$ se da una y sólo una de las siguientes:
+
+    \begin{enumerate}
+        \item $\varphi = (t \equiv s)$, con $t, s \in T^\tau$.
+        \item $\varphi = r(t_1, \ldots, t_n)$, con $r \in R_n$, $t_1, \ldots, t_n \in T^\tau$.
+        \item $\varphi = (\varphi_1 \, \eta \, \varphi_2)$, con $\eta \in \{\wedge, \vee, \to, \leftrightarrow\}$, $\varphi_1, \varphi_2 \in F^\tau$.
+        \item $\varphi = \neg \varphi_1$, con $\varphi_1 \in F^\tau$.
+        \item $\varphi = Qv\varphi_1$, con $Q \in \{\forall, \exists\}$, $\varphi_1 \in F^\tau$ y $v \in Var$.
+    \end{enumerate}
+
+    Más aún, en los puntos (1), (2), (3), (4) y (5) tales descomposiciones son únicas.
+
+    \item Lema de propiedades básicas de $\vdash$:Sea $(\Sigma, \tau)$ una teoría.
+
+    \begin{enumerate}
+    \item (\textbf{Uso de Teoremas}) Si 
+    $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$ 
+    y 
+    $(\Sigma \cup \{\varphi_1, \ldots, \varphi_n\}, \tau) \vdash \varphi$, 
+    entonces 
+    $(\Sigma, \tau) \vdash \varphi$.
+
+    \item Supongamos 
+    $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$. 
+    Si $R$ es una regla distinta de \textsc{Generalización} y \textsc{Elección}, 
+    y $\varphi$ se deduce de $\varphi_1, \ldots, \varphi_n$ por la regla $R$, 
+    entonces 
+    $(\Sigma, \tau) \vdash \varphi$.
+
+    \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ 
+    si y sólo si 
+    $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
+

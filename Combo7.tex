@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newcommand{\deduce}[2]{(#1, #2) \vdash}
+\newcommand{\incon}{es inconsistente}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 7}
+
+\begin{lemma}[Propiedades básicas de la deducción]
+Sea $(\Sigma, \tau)$ una teoría.
+\begin{enumerate}[label=(\arabic*)]
+    \item (\textit{Uso de teoremas}) Si $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$ y $(\Sigma \cup \{\varphi_1, \ldots, \varphi_n\}, \tau) \vdash \varphi$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item Supongamos $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$. Si $R$ es una regla distinta de \textsc{Generalización} y \textsc{Elección} y $\varphi$ se deduce de $\varphi_1, \ldots, \varphi_n$ por la regla $R$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ si y sólo si $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
+\end{enumerate}
+\end{lemma} (Ver combo 4.1)
+
+\begin{lemma}
+Sea $(L, s, i)$ un reticulado terna y sea $\theta$ una congruencia de $(L, s, i)$. Entonces:
+\begin{enumerate}[label=(\arabic*)]
+    \item $(L / \theta, \tilde{s}, \tilde{i})$ es un reticulado terna.
+    \item El orden parcial $\tilde{\le}$ asociado al reticulado terna $(L / \theta, \tilde{s}, \tilde{i})$ cumple:
+    \[
+    x / \theta  \tilde{\le}  y / \theta \quad \text{ssi} \quad y \theta (x s y).
+    \]
+\end{enumerate}
+\begin{proof}
+\noindent\textbf{(1) $(L/\theta,\widetilde{s},\widetilde{\imath})$ es un reticulado terna.}
+
+Por hipótesis $\theta$ es una congruencia, por lo tanto las operaciones
+\[
+x/\theta\ \widetilde{s}\ y/\theta := (x s y)/\theta,\qquad
+x/\theta\ \widetilde{\imath}\ y/\theta := (x \imath y)/\theta
+\]
+están bien definidas (la condición de congruencia garantiza que la clase cociente no depende de los representantes).
+
+Queda verificar las identidades (I1)--(I7) para las operaciones $\widetilde{s},\widetilde{\imath}$ en $L/\theta$. Tomaremos representantes y usaremos que $(L,s,i)$ satisface (I1)--(I7).
+
+\begin{itemize}
+  \item (I1) Identidad idempotente:
+  \[
+    (x/\theta)\ \widetilde{s}\ (x/\theta) = (x s x)/\theta = x/\theta,
+  \]
+  porque $x s x=x$ en $L$. De manera análoga $(x/\theta)\ \widetilde{\imath}\ (x/\theta)=x/\theta$.
+
+  \item (I2) Conmutatividad de $\widetilde{s}$:
+  \[
+    (x/\theta)\ \widetilde{s}\ (y/\theta) = (x s y)/\theta = (y s x)/\theta = (y/\theta)\ \widetilde{s}\ (x/\theta).
+  \]
+  Igual para $\widetilde{\imath}$ usando la conmutatividad de $i$ en $L$.
+
+  \item (I4) Asociatividad de $\widetilde{s}$:
+  \[
+    \big((x/\theta)\ \widetilde{s}\ (y/\theta)\big)\ \widetilde{s}\ (z/\theta)
+    = ((x s y) s z)/\theta
+    = (x s (y s z))/\theta
+    = (x/\theta)\ \widetilde{s}\ \big((y/\theta)\ \widetilde{s}\ (z/\theta)\big).
+  \]
+  Análogo para $\widetilde{\imath}$ por (I5).
+
+  \item (I6) Absorción:
+  \[
+    (x/\theta)\ \widetilde{s}\ \big((x/\theta)\ \widetilde{\imath}\ (y/\theta)\big)
+    = (x s (x \imath y))/\theta
+    = x/\theta,
+  \]
+  porque en $L$ vale $x s (x \imath y)=x$. La otra ley de absorción (I7) se verifica igual.
+\end{itemize}
+
+Por lo tanto $(L/\theta,\widetilde{s},\widetilde{\imath})$ satisface (I1)--(I7), es decir es un reticulado terna.
+
+\medskip
+
+\noindent\textbf{(2) Relación de orden $\widetilde{\leq}$ en el cociente.}
+
+\noindent
+Por definición de $\widetilde{\leq}$ tenemos que 
+\[
+x/\theta \widetilde{\leq} y/\theta \ \text{sii}\ y/\theta = x/\theta \widetilde{s} y/\theta.
+\]
+Pero 
+\[
+x/\theta \widetilde{s} y/\theta = (x s y)/\theta 
+\quad \text{(por definición de $\widetilde{s}$)},
+\]
+por lo cual tenemos que 
+\[
+x/\theta \widetilde{\leq} y/\theta \ \text{sii}\ y/\theta = (x\, s\, y)/\theta.
+\]
+\end{proof}
+\end{lemma}
+
+\begin{lemma}
+Sean $(L, s, i)$ y $(L', s', i')$ reticulados terna y sean $(L, \le)$ y $(L', \le')$ los posets asociados. Sea $F: L \to L'$ una función. Entonces $F$ es un isomorfismo de $(L, s, i)$ en $(L', s', i')$ si y sólo si $F$ es un isomorfismo de $(L, \le)$ en $(L', \le')$.
+\end{lemma} (Ver combo 4.3)
+
+\end{document}
+

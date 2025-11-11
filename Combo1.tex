@@ -1,0 +1,101 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newcommand{\deduce}[2]{(#1, #2) \vdash}
+\newcommand{\incon}{es inconsistente}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 1}
+
+\begin{theorem}[del Filtro Primo]
+Sea $(L, s, i)$ un reticulado terna distributivo y $F$ un filtro. Supongamos $x_0 \in L - F$. Entonces hay un filtro primo $P$ tal que
+\[
+x_0 \notin P \quad \text{y} \quad F \subseteq P.
+\]
+
+\end{theorem}
+
+\begin{lemma}[Propiedades básicas de la consistencia]
+Sea $(\Sigma, \tau)$ una teoría.
+\begin{enumerate}[label=(\arabic*)]
+    \item Si $(\Sigma, \tau)$ es inconsistente, entonces $(\Sigma, \tau) \vdash \varphi$, para toda sentencia $\varphi$.
+    \item Si $(\Sigma, \tau)$ es consistente y $(\Sigma, \tau) \vdash \varphi$, entonces $(\Sigma \cup \{\varphi\}, \tau)$ es consistente.
+    \item Si $(\Sigma, \tau) \not\vdash \neg\varphi$, entonces $(\Sigma \cup \{\varphi\}, \tau)$ es consistente.
+\end{enumerate}
+
+\begin{proof}
+
+(1) Si $(\Sigma, \tau)$ es inconsistente, entonces por definición tenemos que 
+$(\Sigma, \tau) \vdash \psi \wedge \neg \psi$ para alguna sentencia $\psi$. 
+Dada una sentencia cualquiera $\varphi$, tenemos que $\varphi$ se deduce por la regla del absurdo a partir de 
+$\psi \wedge \neg \psi$, con lo cual (2) del Lema de propiedades básicas de $\vdash$ nos dice que 
+$(\Sigma, \tau) \vdash \varphi$.
+
+
+(2) Supongamos $(\Sigma, \tau)$ es consistente y $(\Sigma, \tau) \vdash \varphi$. 
+Si $(\Sigma \cup \{\varphi\}, \tau)$ fuera inconsistente, entonces 
+$(\Sigma \cup \{\varphi\}, \tau) \vdash \psi \wedge \neg \psi$, 
+para alguna sentencia $\psi$, lo cual por (1) del Lema de propiedades básicas de $\vdash$ nos diría que 
+$(\Sigma, \tau) \vdash \psi \wedge \neg \psi$, 
+es decir, nos diría que $(\Sigma, \tau)$ es inconsistente.
+
+(3)  Veamos por \textbf{contradicción}. Supongamos que $(\Sigma \cup \{\varphi\}, \tau)$ \incon.
+Esto significa que
+\[
+    \deduce{\Sigma \cup \{\varphi\}}{\tau} (\psi \land \neg \psi) \quad \text{para algún } \psi.
+\]
+Por \textbf{(3)} del \textbf{lema de propiedades básicas de $\vdash$} tenemos
+\[
+    \deduce{\Sigma}{\tau} \varphi \to (\psi \land \neg \psi)
+\]
+Por \textbf{regla del absurdo} tenemos
+\[
+    \deduce{\Sigma}{\tau} \neg \varphi
+\]
+Lo cual \textbf{contradice la hipótesis}.
+
+
+\end{proof}
+
+\end{lemma}
+
+\section*{Auxiliares de Demostraciones}
+\begin{enumerate}
+    \item Lema de propiedades básicas de $\vdash$: Sea $(\Sigma, \tau)$ una teoría.
+
+  \begin{enumerate}
+    \item (\textbf{Uso de Teoremas}) Si 
+    $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$ 
+    y 
+    $(\Sigma \cup \{\varphi_1, \ldots, \varphi_n\}, \tau) \vdash \varphi$, 
+    entonces 
+    $(\Sigma, \tau) \vdash \varphi$.
+
+    \item Supongamos 
+    $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$. 
+    Si $R$ es una regla distinta de \textsc{Generalización} y \textsc{Elección}, 
+    y $\varphi$ se deduce de $\varphi_1, \ldots, \varphi_n$ por la regla $R$, 
+    entonces 
+    $(\Sigma, \tau) \vdash \varphi$.
+
+    \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ 
+    si y sólo si 
+    $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

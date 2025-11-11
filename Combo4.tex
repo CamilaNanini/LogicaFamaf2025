@@ -1,0 +1,231 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newcommand{\deduce}[2]{(#1, #2) \vdash}
+\newcommand{\incon}{es inconsistente}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 4}
+
+\begin{lemma}[Propiedades básicas de la deducción]
+Sea $(\Sigma, \tau)$ una teoría.
+\begin{enumerate}[label=(\arabic*)]
+    \item (\textit{Uso de teoremas}) Si $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$ y $(\Sigma \cup \{\varphi_1, \ldots, \varphi_n\}, \tau) \vdash \varphi$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item Supongamos $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$. Si $R$ es una regla distinta de \textsc{Generalización} y \textsc{Elección} y $\varphi$ se deduce de $\varphi_1, \ldots, \varphi_n$ por la regla $R$, entonces $(\Sigma, \tau) \vdash \varphi$.
+    \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ si y sólo si $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+Sea $(L, s, i, c, 0, 1)$ un álgebra de Boole y sean $a, b \in B$. Se tiene que:
+\begin{enumerate}[label=(\arabic*)]
+    \item $(a i b)^c = a^c s b^c$
+    \item $a i b = 0$ si y sólo si $b \le a^c$
+\end{enumerate}
+\begin{proof}
+
+\noindent\textbf{(1)} \[
+(a \, i \, b)^c = a^c \, s \, b^c.
+\]
+
+Sea $(L,s,i,c,0,1)$ un álgebra de Boole, es decir, un reticulado complementado distributivo.  
+En un álgebra de Boole vale la distributividad:
+\[
+x \, s \, (y \, i \, z) = (x \, s \, y) \, i \, (x \, s \, z),
+\quad
+x \, i \, (y \, s \, z) = (x \, i \, y) \, s \, (x \, i \, z).
+\]
+
+Queremos probar que $(a \, i \, b)^c$ cumple las propiedades de complemento de $a^c \, s \, b^c$.  
+Para ello verificamos:
+
+\[
+(a \, i \, b) \, s \, (a^c \, s \, b^c) = 1
+\quad\text{y}\quad
+(a \, i \, b) \, i \, (a^c \, s \, b^c) = 0.
+\]
+
+\underline{Primero, la unión da $1$:}
+\[
+\begin{aligned}
+(a \, i \, b) \, s \, (a^c \, s \, b^c)
+&= \big((a \, s \, a^c) \, s \, (b \, s \, b^c)\big) &&\text{(por distributividad)}\\
+&= (1 \, s \, 1) = 1.
+\end{aligned}
+\]
+
+\underline{Luego, la intersección da $0$:}
+\[
+\begin{aligned}
+(a \, i \, b) \, i \, (a^c \, s \, b^c)
+&= \big((a \, i \, a^c) \, s \, (b \, i \, b^c)\big) &&\text{(por distributividad)}\\
+&= (0 \, s \, 0) = 0.
+\end{aligned}
+\]
+
+Por unicidad del complemento, se tiene entonces:
+\[
+(a \, i \, b)^c = a^c \, s \, b^c.
+\]
+
+\medskip
+
+\noindent\textbf{(2)} Queremos probar que
+\[
+a \, i \, b = 0 \quad\Longleftrightarrow\quad b \leq a^c.
+\]
+
+\underline{($\Rightarrow$)}  
+Supongamos $a i b = 0$. Se tiene
+\[
+\begin{aligned}
+b &= (b i a) \, s \, (b i a^c) \quad \text{(por lema anterior)} \\
+  &= (a i b) \, s \, (b_i a^c) \\
+  &= 0 \, s \, (b_i a^c) \\
+  &= (b i a^c) \leq a^c,
+\end{aligned}
+\]
+por lo cual $b \leq a^c$.
+
+\medskip
+
+\underline{($\Leftarrow$)}  
+\noindent
+Supongamos ahora $b \leq a^c$.  
+Ya que $a \leq a$, por lema de "ser menor que infimo", aplicado al reticulado par $(B, \leq)$, nos dice que
+\[
+a i b \leq a i a^c.
+\]
+Ya que $a i a^c = 0$, obtenemos que
+\[
+a i b = 0.
+\]
+\end{proof}
+\end{theorem}
+
+\begin{lemma}
+Sean $(L, s, i)$ y $(L', s', i')$ reticulados terna y sean $(L, \le)$ y $(L', \le')$ los posets asociados. Sea $F: L \to L'$ una función. Entonces $F$ es un isomorfismo de $(L, s, i)$ en $(L', s', i')$ si y sólo si $F$ es un isomorfismo de $(L, \le)$ en $(L', \le')$.
+\medskip
+\begin{proof}
+Sea $F: L \to L'$ un isomorfismo de posets, es decir:
+\begin{enumerate}[label=\alph*]
+    \item $F$ es biyectiva,
+    \item para todo $x, y \in L$, se cumple que 
+    \[
+    x \leq y \iff F(x) \leq' F(y).
+    \]
+\end{enumerate}
+
+\noindent
+Queremos probar que $F$ es un isomorfismo de reticulados terna, 
+es decir, que además preserva las operaciones:
+\[
+F(x \, s \, y) = F(x) \, s' \, F(y),
+\qquad
+F(x \, i \, y) = F(x) \, i' \, F(y),
+\]
+para todo $x, y \in L$.
+
+Por el teorema de Dedekind sabemos que 
+\[
+a \, s \, b = \sup\{a, b\} \text{ en } (L, \leq).
+\]
+Entonces $a \leq a \, s \, b$ y $b \leq a \, s \, b$.
+
+\medskip
+\noindent
+Sean $x, y \in L$ y definamos $z := x \, s \, y$ en $L$. 
+Queremos probar que 
+\[
+F(z) = F(x) \, s' \, F(y).
+\]
+
+\subsubsection*{1. $F(z)$ es cota superior de $\{F(x), F(y)\}$}
+
+Puesto que $z$ es cota superior de $\{x, y\}$ en $L$, se tiene $x \leq z$ y $y \leq z$.  
+Por la hipótesis de isomorfismo, $F(x) \leq' F(z)$ y $F(y) \leq' F(z)$.  
+Por tanto, $F(z)$ es cota superior de $\{F(x), F(y)\}$ en $L'$.
+
+\subsubsection*{2. $F(z)$ es la menor cota superior}
+
+Sea $w' \in L'$ cualquier cota superior de $\{F(x), F(y)\}$; es decir, 
+$F(x) \leq' w'$ y $F(y) \leq' w'$.  
+Como $F$ es biyectiva, existe $w \in L$ tal que $F(w) = w'$.
+
+\noindent
+Usando la reflexión del orden (isomorfismo), obtenemos $x \leq w$ y $y \leq w$.  
+Entonces $z = \sup\{x, y\} \leq w$.  
+Aplicando $F$ y usando que $F$ preserva el orden, se tiene 
+\[
+F(z) \leq' F(w) = w'.
+\]
+
+\noindent
+Esto muestra que cualquier cota superior $w'$ de $\{F(x), F(y)\}$ domina a $F(z)$.  
+Por la definición de supremo, $F(z)$ es la menor cota superior, es decir:
+\[
+F(z) = \sup_{L'} \{F(x), F(y)\}.
+\]
+
+\noindent
+Por la definición de la operación $s'$ en el reticulado terna asociado a $(L', \leq')$, se cumple:
+\[
+\sup_{L'}\{F(x), F(y)\} = F(x) \, s' \, F(y).
+\]
+Por tanto,
+\[
+F(x \, s \, y) = F(z) = F(x) \, s' \, F(y),
+\]
+como queríamos.
+
+\medskip
+\noindent
+La prueba para el ínfimo es dual.
+\end{proof}
+\end{lemma}
+
+
+\section*{Auxiliares de Demostraciones}
+
+\begin{enumerate}
+    \item Teorema de Dedekind: Sea $(L, s, i)$ un reticulado terna. La relación binaria definida por
+        \[
+        x \le y \ \text{si y sólo si} \ x \, s \, y = y
+        \]
+        es un orden parcial sobre $L$, para el cual se cumple que:
+        \[
+        \sup\{x, y\} = x \, s \, y \quad \text{y} \quad \inf\{x, y\} = x \, i \, y
+        \]
+        cualesquiera sean $x, y \in L$.
+    \item Unicidad del complemento: Sea $(L, s, i, 0, 1)$ un reticulado acotado. 
+    Si $(L, s, i, 0, 1)$ es distributivo, entonces todo elemento tiene a lo sumo un complemento. 
+    Es decir, si 
+    \[
+    x \, s \, u = x \, s \, v = 1 
+    \quad \text{y} \quad 
+    x \, i \, u = x \, i \, v = 0,
+    \]
+    entonces $u = v$, cualesquiera sean $x, u, v \in L$.
+    \item "Lema anterior": Sea $(B, s, i, c, 0, 1)$ un álgebra de Boole. 
+    Cualesquiera sean $x, y \in B$, se tiene que 
+    \[
+    y = (y \, i \, x) \, s \, (y \, i \, x^c).
+    \]
+
+\end{enumerate}
+
+
+\end{document}
+

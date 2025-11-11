@@ -1,0 +1,262 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combos de Definiciones}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newcommand{\deduce}[2]{(#1, #2) \vdash}
+\newcommand{\incon}{es inconsistente}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 2}
+
+\begin{theorem}[de Dedekind]
+Sea $(L, s, i)$ un reticulado terna. La relación binaria definida por:
+\[
+x \le y \quad \text{si y sólo si} \quad x s y = y
+\]
+es un orden parcial sobre $L$ para el cual se cumple que:
+\[
+\sup(\{x, y\}) = x s y, \quad \inf(\{x, y\}) = x i y
+\]
+cualesquiera sean $x, y \in L$.
+
+\begin{proof}
+Primero probaremos la reflexividad de \(\le\). Para todo \(x\in L\) debemos mostrar \(x\le x\), es decir
+\[
+x \;s\; x = x.
+\]
+Ésta es precisamente la identidad de idempotencia para \(s\) (una de las igualdades axiomáticas del reticulado), por lo que \(x\le x\) para todo \(x\in L\). Entonces \(\le\) es reflexiva.
+
+Ahora probaremos la antisimetría. Sean \(x,y\in L\) tales que \(x\le y\) y \(y\le x\). Por la definición de \(\le\) esto equivale a
+\[
+x\; s\; y = y \qquad\text{y}\qquad y\; s\; x = x.
+\]
+Pero \(s\) es conmutativa, luego \(x\; s\; y = y\; s\; x\). Combinando las igualdades anteriores obtenemos
+\[
+y = x\; s\; y = y\; s\; x = x,
+\]
+es decir \(x=y\). Por tanto \(\le\) es antisimétrica.
+\end{proof}
+
+\begin{proof}
+Veamos que \(\le\) es transitiva con respecto a \(L\). Supongamos que \(x \le y\) e \(y \le z\). Es decir, que por definición de \(\le\) tenemos que
+\[
+x \; s \; y = y \qquad \text{y} \qquad y \; s \; z = z.
+\]
+Entonces
+\[
+x \; s \; z 
+= x \; s \; (y \; s \; z)
+= (x \; s \; y) \; s \; z
+= y \; s \; z
+= z,
+\]
+por lo cual \(x \le z\).  
+O sea que ya sabemos que \((L, \le)\) es un poset.
+
+Veamos ahora que \(\sup(\{x, y\}) = x \; s \; y\).  
+Primero debemos ver que \(x \; s \; y\) es una cota superior del conjunto \(\{x, y\}\), es decir:
+\[
+x \le x \; s \; y \qquad \text{y} \qquad y \le x \; s \; y.
+\]
+Por la definición de \(\le\), debemos probar que
+\[
+x \; s \; (x \; s \; y) = x \; s \; y 
+\qquad \text{y} \qquad 
+y \; s \; (x \; s \; y) = x \; s \; y.
+\]
+Estas igualdades se pueden probar usando las propiedades (I1), (I2) y (I4).
+
+Nos falta ver entonces que \(x \; s \; y\) es menor o igual que cualquier cota superior de \(\{x, y\}\).  
+Supongamos \(x, y \le z\). Es decir que, por definición de \(\le\), tenemos que
+\[
+x \; s \; z = z 
+\qquad \text{y} \qquad 
+y \; s \; z = z.
+\]
+Pero entonces
+\[
+(x \; s \; y) \; s \; z 
+= x \; s \; (y \; s \; z)
+= x \; s \; z
+= z,
+\]
+por lo que \(x \; s \; y \le z\).  
+Es decir que \(x \; s \; y\) es la menor cota superior.
+
+Para probar que \(\inf(\{x, y\}) = x \; i \; y\), probaremos que para todo \(u, v \in L\),
+\[
+u \le v \quad \text{si y sólo si} \quad u \; i \; v = u,
+\]
+lo cual le permitirá al lector aplicar un razonamiento similar al usado en la prueba de que \(\sup(\{x, y\}) = x \; s \; y\).
+
+Supongamos que \(u \le v\). Por definición tenemos que \(u \; s \; v = v\). Entonces
+\[
+u \; i \; v = u \; i \; (u \; s \; v).
+\]
+Pero por (I7) tenemos que \(u \; i \; (u \; s \; v) = u\), lo cual implica \(u \; i \; v = u\).
+
+Recíprocamente, si \(u \; i \; v = u\), entonces
+\[
+u \; s \; v 
+= (u \; i \; v) \; s \; v
+= v \; s \; (u \; i \; v) \quad \text{(por (I2))} 
+= v \; s \; (v \; i \; u) \quad \text{(por (I3))} 
+= v \quad \text{(por (I6))}.
+\]
+Lo cual nos dice que \(u \le v\).
+\end{proof}
+\end{theorem}
+
+\begin{lemma}
+Supongamos que $\vec{a}, \vec{b}$ son asignaciones tales que si $x_i \in Li(\varphi)$, entonces $a_i = b_i$. Entonces:
+\[
+A \vDash \varphi[\vec{a}] \text{ si y sólo si } A \vDash \varphi[\vec{b}].
+\]
+
+\begin{proof}
+Sea \(A=(A,i)\) una estructura de tipo \(\tau\). Queremos probar el caso base, hay dos subcasos:
+
+\medskip
+\noindent\textbf{Caso 1: } \(\varphi\) es una igualdad atómica \(t\equiv s\).
+
+Supongamos que \(\vec a,\vec b\) coinciden en todas las variables que ocurren en \(\varphi\).
+En particular, todas las variables que ocurren en \(t\) y en \(s\) son variables de
+\(Li(\varphi)\). Así que tenemos
+\[
+t^A[\vec a]=t^A[\vec b]\quad\text{y}\quad s^A[\vec a]=s^A[\vec b].
+\]
+Esto por lema auxiliar 1.
+Entonces
+\[
+\begin{aligned}
+A\models (t\equiv s)[\vec a]
+&\iff t^A[\vec a]=s^A[\vec a]\qquad &&\text{(definición de satisfacción para igualdad)}\\
+&\iff t^A[\vec b]=s^A[\vec b]\qquad &&\text{(por las igualdades anteriores)}\\
+&\iff A\models (t\equiv s)[\vec b].
+\end{aligned}
+\]
+
+\medskip
+\noindent\textbf{Caso 2: } \(\varphi\) es una fórmula atómica de predicado
+\(r(t_1,\dots,t_m)\).
+
+Nuevamente por lema auxiliar 1 se da que en cada \(t_j\):
+\[
+t_j^A[\vec a]=t_j^A[\vec b]\qquad\text{para }j=1,\dots,m.
+\]
+Entonces las \(m\)-uplas de valores de los términos coinciden:
+\[
+\big(t_1^A[\vec a],\dots,t_m^A[\vec a]\big)=\big(t_1^A[\vec b],\dots,t_m^A[\vec b]\big).
+\]
+Por la definición \(\models\)
+\[
+\begin{aligned}
+A\models r(t_1,\dots,t_m)[\vec a]
+&\iff \big(t_1^A[\vec a],\dots,t_m^A[\vec a]\big)\in i(r)\\
+&\iff \big(t_1^A[\vec b],\dots,t_m^A[\vec b]\big)\in i(r)\\
+&\iff A\models r(t_1,\dots,t_m)[\vec b].
+\end{aligned}
+\]
+
+\medskip
+\noindent
+Veamos que Teo$_k$ implica Teo$_{k+1}$. Sea 
+$\varphi \in F_\tau^{k+1} - F_\tau^k$. 
+Hay varios casos:
+
+\medskip
+\noindent \textbf{Caso} $\varphi = (\varphi_1 \wedge \varphi_2)$.
+
+\noindent
+Ya que $L_i(\varphi_i) \subseteq L_i(\varphi)$, $i = 1,2$, Teo$_k$ nos dice que 
+$A \vDash \varphi_i[\vec{a}]$ sii $A \vDash \varphi_i[\vec{b}]$, para $i = 1,2$. 
+Se tiene entonces que:
+\[
+A \vDash \varphi[\vec{a}]
+\iff \text{(por (3) en la def. de $A \vDash \varphi[\vec{a}]$)}
+A \vDash \varphi_1[\vec{a}] \text{ y } A \vDash \varphi_2[\vec{a}]
+\]
+\[
+\iff \text{(por Teo$_k$)}
+A \vDash \varphi_1[\vec{b}] \text{ y } A \vDash \varphi_2[\vec{b}]
+\]
+\[
+\iff \text{(por (3) en la def. de $A \vDash \varphi[\vec{a}]$)}
+A \vDash \varphi[\vec{b}]
+\]
+
+\medskip
+\noindent \textbf{Caso} $\varphi = (\varphi_1 \vee \varphi_2)$.
+
+\noindent
+Es completamente similar al anterior.
+
+\medskip
+\noindent \textbf{Caso} $\varphi = (\varphi_1 \to \varphi_2)$.
+
+\noindent
+Es completamente similar al anterior.
+
+\medskip
+\noindent \textbf{Caso} $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$.
+
+\noindent
+Es completamente similar al anterior.
+
+\medskip
+\noindent \textbf{Caso} $\varphi = \neg \varphi_1$.
+
+\noindent
+Es completamente similar al anterior.
+
+\medskip
+\noindent \textbf{Caso} $\varphi = \forall x_j \varphi_1$.
+
+\noindent
+Supongamos $A \vDash \varphi[\vec{a}]$. Entonces, por (8) en la definición de 
+$A \vDash \varphi[\vec{a}]$, se tiene que 
+$A \vDash \varphi_1[\downarrow a_j(\vec{a})]$, para todo $a \in A$. 
+Nótese que $\downarrow a_j(\vec{a})$ y $\downarrow a_j(\vec{b})$ 
+coinciden en toda $x_i \in L_i(\varphi_1)$, ya que 
+$L_i(\varphi_1) \subseteq L_i(\varphi) \cup \{x_j\}$. 
+O sea, por Teo$_k$ se tiene que 
+$A \vDash \varphi_1[\downarrow a_j(\vec{b})]$ para todo $a \in A$, 
+lo cual, por (8) en la definición de $A \vDash \varphi[\vec{a}]$, 
+nos dice que $A \vDash \varphi[\vec{b}]$. 
+La prueba de que $A \vDash \varphi[\vec{b}]$ implica que 
+$A \vDash \varphi[\vec{a}]$ es similar.
+
+\medskip
+\noindent \textbf{Caso} $\varphi = \exists x_j \varphi_1$.
+
+\noindent
+Es similar al anterior.
+\end{proof}
+\end{lemma}
+
+\section*{Auxiliares de Demostraciones}
+\begin{enumerate}
+  
+    \item Lema auxiliar 1: Sea $A$ una estructura de tipo $\tau$ y sea $t \in T_\tau$. 
+    Supongamos que $\vec{a}, \vec{b}$ son asignaciones tales que 
+    $a_i = b_i$ cada vez que $x_i$ ocurra en $t$. 
+    Entonces 
+    \[
+    t^A[\vec{a}] = t^A[\vec{b}].
+    \]
+
+\end{enumerate}
+
+\end{document}
+
