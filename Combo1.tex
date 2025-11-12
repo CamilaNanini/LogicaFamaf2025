@@ -25,6 +25,69 @@ Sea $(L, s, i)$ un reticulado terna distributivo y $F$ un filtro. Supongamos $x_
 x_0 \notin P \quad \text{y} \quad F \subseteq P.
 \]
 
+\begin{proof}
+Sea 
+\[
+\mathcal{F} = \{ F_1 : F_1 \text{ es un filtro}, \; x_0 \notin F_1 \text{ y } F \subseteq F_1 \}.
+\]
+
+Nótese que $\mathcal{F} \neq \emptyset$, por lo cual $(\mathcal{F}, \subseteq)$ es un poset.  
+Veamos que cada cadena en $(\mathcal{F}, \subseteq)$ tiene una cota superior. Sea $C$ una cadena.  
+Si $C = \emptyset$, entonces cualquier elemento de $\mathcal{F}$ es cota de $C$.  
+Supongamos entonces $C \neq \emptyset$. Sea
+\[
+G = \{ x : x \in F_1 \text{ para algún } F_1 \in C \}.
+\]
+
+Veamos que $G$ es un filtro. Es claro que $G$ es no vacío.  
+Supongamos que $x, y \in G$. Sean $F_1, F_2 \in C$ tales que $x \in F_1$ y $y \in F_2$.  
+Si $F_1 \subseteq F_2$, entonces, ya que $F_2$ es un filtro, tenemos que 
+\[
+x \, i \, y \in F_2 \subseteq G.
+\]
+Si $F_2 \subseteq F_1$, entonces 
+\[
+x \, i \, y \in F_1 \subseteq G.
+\]
+Ya que $C$ es una cadena, tenemos que siempre $x \, i \, y \in G$.  
+De forma análoga se prueba la propiedad restante, por lo cual $G$ es un filtro.  
+Además $x_0 \notin G$, por lo que $G \in \mathcal{F}$ es cota superior de $C$.
+
+Por el **Lema de Zorn**, $(\mathcal{F}, \subseteq)$ tiene un elemento maximal $P$.  
+Veamos que $P$ es un **filtro primo**.  
+Supongamos $x \, s \, y \in P$ y $x, y \notin P$.  
+Nótese que $[P \cup \{x\})$ es un filtro el cual contiene propiamente a $P$.  
+Entonces, ya que $P$ es un elemento maximal de $(\mathcal{F}, \subseteq)$, tenemos que 
+\[
+x_0 \in [P \cup \{x\}).
+\]
+Análogamente, 
+\[
+x_0 \in [P \cup \{y\}).
+\]
+Ya que $x_0 \in [P \cup \{x\})$, tenemos que existen elementos $p_1, \ldots, p_n \in P$ tales que
+\[
+x_0 \ge p_1 \, i \, \cdots \, i \, p_n \, i \, x
+\]
+(se deja como ejercicio justificar esto usar la def de Filtro generado por S).  
+Ya que $x_0 \in [P \cup \{y\})$, existen elementos $q_1, \ldots, q_m \in P$ tales que
+\[
+x_0 \ge q_1 \, i \, \cdots \, i \, q_m \, i \, y.
+\]
+Si llamamos $p$ al siguiente elemento de $P$:
+\[
+p = p_1 \, i \, \cdots \, i \, p_n \, i \, q_1 \, i \, \cdots \, i \, q_m,
+\]
+tenemos que
+\[
+x_0 \ge p \, i \, x, \qquad x_0 \ge p \, i \, y.
+\]
+Se tiene entonces que
+\[
+x_0 \ge (p \, i \, x) \, s \, (p \, i \, y) = p \, i \, (x \, s \, y) \in P,
+\]
+lo cual es absurdo ya que $x_0 \notin P$.
+\end{proof}
 \end{theorem}
 
 \begin{lemma}[Propiedades básicas de la consistencia]
@@ -93,7 +156,15 @@ Lo cual \textbf{contradice la hipótesis}.
     \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ 
     si y sólo si 
     $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
-  \end{enumerate}
+    \end{enumerate}
+
+    \item {(Lema de Zorn)} Sea $(P, \leq)$ un poset y supongamos que cada cadena de $(P, \leq)$ tiene al menos una cota superior. Entonces, hay un elemento maximal en $(P, \leq)$.
+    \item Filtro generado por $S$: Dado un conjunto $S \subseteq L$, denotemos con $[S)$ el siguiente conjunto:
+    \[
+    [S) = \{\, y \in L : y \geq s_1 \, i \, \cdots \, i \, s_n \text{, para algunos } s_1, \ldots, s_n \in S,\; n \geq 1 \,\}.
+    \]
+
+
 
 \end{enumerate}
 

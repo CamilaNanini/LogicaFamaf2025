@@ -267,6 +267,35 @@ A continuación damos una prueba formal de
     \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3)) \rightarrow ((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Conclusión}
 \end{enumerate}
 
+\noindent
+A continuación damos una prueba formal de
+\[
+((\varphi_1 \vee \varphi_2) \vee \varphi_3)
+\rightarrow 
+(\varphi_1 \vee (\varphi_2 \vee \varphi_3))
+\text{ en } T,
+\]
+
+\begin{enumerate}[label=\arabic*.]
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3)$ \hfill \textit{Hipótesis 1}
+    \item $(\varphi_1 \vee \varphi_2)$ \hfill \textit{Hipótesis 2}
+    \item $\varphi_1$ \hfill \textit{Hipótesis 3}
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Tesis 3 Disjunción Introducción 3}
+    \item $\varphi_1 \rightarrow (\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Conclusión}
+    \item $\varphi_2$ \hfill \textit{Hipótesis 4}
+    \item $(\varphi_2 \vee \varphi_3)$ \hfill \textit{Disjunción Introducción 6}
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Tesis 4 Disjunción Introducción 7}
+    \item $\varphi_2 \rightarrow (\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Conclusión}
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Tesis 2 División por casos 2,5,9}
+    \item $(\varphi_1 \vee \varphi_2) \rightarrow (\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Conclusión}
+    \item $\varphi_3$ \hfill \textit{Hipótesis 5}
+    \item $(\varphi_2 \vee \varphi_3)$ \hfill \textit{Disjunción 12}
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Tesis 5 Disjunción 13} 
+    \item $\varphi_3 \rightarrow (\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Conclusión}
+    \item $(\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Tesis 1 División por casos 1,11,15}
+    \item $((\varphi_1 \vee \varphi_2) \vee \varphi_3) \rightarrow (\varphi_1 \vee (\varphi_2 \vee \varphi_3))$ \hfill \textit{Conclusión} 
+\end{enumerate}
+
 \end{proof}
 \end{theorem}
 
