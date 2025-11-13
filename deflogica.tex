@@ -104,7 +104,7 @@
     \item Defina cuando “$\varphi_i$ está bajo la hipótesis $\varphi_l$ en $(\varphi, J)$” (no hace falta que defina $B^J$)
     
     Diremos que $\varphi_i$ está bajo la hipótesis $\varphi_l$ en $(\varphi, J)$, o que 
-    $\varphi_l$ es una hipótesis de $\varphi_i$ en $(\varphi, J)$, cuando haya en $B_J$ 
+    $\varphi_l$ es una hipótesis de $\varphi_i$ en $(\varphi, J)$, cuando haya en $B^J$ 
     un bloque de la forma $\langle l, j \rangle$ el cual contenga a $i$.
 
     \item Defina $(L,s,i)/\theta$ ($\theta$ una congruencia del reticulado terna $(L,s,i)$).  
@@ -126,16 +126,15 @@
 
 \section*{Combo 3}
 \begin{enumerate}[label=(\arabic*)]
-    \item Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T_\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina $t^A[a_1, \ldots, a_n]$ (i.e. Convención notacional 2)
+    \item Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T^\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina $t^A[a_1, \ldots, a_n]$ (i.e. Convención notacional 2)
 
     \bigskip
     
-    Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T_\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, se define:
+    Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T^\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, se define:
     \[
     t^A[a_1, \ldots, a_n]
     \]
     como el elemento $t^A[\vec{b}]$, donde $\vec{b}$ es una asignación tal que a cada variable $v_i$ le asigna el valor $a_i$.  
-    Es decir, $t^A[a_1, \ldots, a_n] = t^A[\vec{b}]$ cuando $\vec{b}(v_i) = a_i$ para todo $i = 1, \ldots, n$.
 
     \item Defina “$F$ es un homomorfismo de $(L,s,i,c,0,1)$ en $(L',s',i',c',0',1')$”.  
     
@@ -239,10 +238,6 @@ Sea $J = J_1 \dots J_{n(J)} \in \text{Just}^+$. Diremos que $J$ es \emph{balance
 
     \item Defina la relación “$v$ ocurre libremente en $\varphi$ a partir de $i$”
     
-
-    Dadas palabras $\alpha, \beta \in \Sigma^*$, con $|\alpha|, |\beta| \ge 1$, y un natural $i \in \{1, \dots, |\beta|\}$, se dice que $\alpha$ ocurre a partir de $i$ en $\beta$ cuando existen palabras $\delta, \gamma$ tales que $\beta = \delta \alpha \gamma$ y $|\delta| = i-1$.  
-    O sea "$\alpha$ ocurre a partir de $i$ en $\beta$ si al comenzar a leer desde el $i$-ésimo lugar de $\beta$"
-
     Definimos recursivamente la relación “$v$ ocurre libremente en $\varphi$ a partir de $i$”, donde $v \in \text{Var}$, $\varphi \in F_\tau$ e $i \in \{1, \dots, |\varphi|\}$, de la siguiente manera:
 
     \begin{enumerate}[label=(\arabic*)]
@@ -250,7 +245,7 @@ Sea $J = J_1 \dots J_{n(J)} \in \text{Just}^+$. Diremos que $J$ es \emph{balance
         \item Si $\varphi = (\varphi_1 \eta \varphi_2)$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si se da alguna de las siguientes:
         \begin{enumerate}[label=(\alph*)]
             \item $v$ ocurre libremente en $\varphi_1$ a partir de $i-1$
-            \item $v$ ocurre libremente en $\varphi_2$ a partir de $i - |\varphi_1 \eta|$
+            \item $v$ ocurre libremente en $\varphi_2$ a partir de $i - |(\varphi_1 \eta|$
         \end{enumerate}
         \item Si $\varphi = \neg \varphi_1$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si $v$ ocurre libremente en $\varphi_1$ a partir de $i-1$.
         \item Si $\varphi = Q w \varphi_1$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si $v \neq w$ y $v$ ocurre libremente en $\varphi_1$ a partir de $i - |Q w|$.
@@ -300,7 +295,7 @@ Explique la notación declaratoria para términos con sus tres Convenciones Nota
     \[
     t = f(t_1, \ldots, t_m),
     \]
-    con $f \in F_m$ y $t_1, \ldots, t_m \in T_\tau$—, entonces supondremos tácitamente que también se han hecho las declaraciones:
+    con $f \in F_m$ y $t_1, \ldots, t_m \in T^\tau$—, entonces supondremos tácitamente que también se han hecho las declaraciones:
     \[
     t_1 =_d t_1(v_1, \ldots, v_n), \quad \ldots, \quad t_m =_d t_m(v_1, \ldots, v_n).
     \]
@@ -334,12 +329,12 @@ Supongamos que hemos declarado una fórmula $\varphi =_d \varphi(v_1, \ldots, v_
   Si hemos declarado $\varphi =_d \varphi(v_1, \ldots, v_n)$, entonces, según la \textbf{Lectura única de fórmulas declaradas (Lema 3)}, se cumple exactamente uno de los siguientes casos para $\varphi$, y en cada uno de ellos se asumen tácitamente las declaraciones indicadas:
 
   \begin{itemize}
-    \item \textbf{(1)} Si $\varphi = (t \equiv s)$, con $t, s \in T_\tau$, entonces también declaramos:
+    \item \textbf{(1)} Si $\varphi = (t \equiv s)$, con $t, s \in T^\tau$, entonces también declaramos:
     \[
     t =_d t(v_1, \ldots, v_n) \quad \text{y} \quad s =_d s(v_1, \ldots, v_n).
     \]
 
-    \item \textbf{(2)} Si $\varphi = r(t_1, \ldots, t_m)$, con $r \in R_m$ y $t_1, \ldots, t_m \in T_\tau$, entonces declaramos:
+    \item \textbf{(2)} Si $\varphi = r(t_1, \ldots, t_m)$, con $r \in R_m$ y $t_1, \ldots, t_m \in T^\tau$, entonces declaramos:
     \[
     t_1 =_d t_1(v_1, \ldots, v_n), \ldots, t_m =_d t_m(v_1, \ldots, v_n).
     \]
