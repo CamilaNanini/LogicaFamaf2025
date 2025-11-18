@@ -38,7 +38,7 @@ Si $F$ es un homomorfismo entonces
 \[
 F(t^A[a_1, \ldots, a_n]) = t^B[F(a_1), \ldots, F(a_n)]
 \]
-para cada $t \in T_\tau$ y $a_1, \ldots, a_n \in A$.
+para cada $t \in T^\tau$ y $a_1, \ldots, a_n \in A$.
 \end{quote}
 
 \bigskip
@@ -46,9 +46,9 @@ para cada $t \in T_\tau$ y $a_1, \ldots, a_n \in A$.
 \textbf{Caso base:} $\varphi \in F^\tau_0$.  
 Por el lema de menú para fórmulas, $\varphi$ puede tener las siguientes formas:
 \[
-\varphi = (s = t) \quad \text{con } s,t \in T_\tau, 
+\varphi = (s = t) \quad \text{con } s,t \in T^\tau, 
 \qquad \text{o bien} \qquad
-\varphi = r(t_1, \ldots, t_n),\; n \ge 1,\; r \in R_n,\; t_1, \ldots, t_n \in T_\tau.
+\varphi = r(t_1, \ldots, t_n),\; n \ge 1,\; r \in R_n,\; t_1, \ldots, t_n \in T^\tau.
 \]
 
 \noindent
@@ -102,12 +102,12 @@ A \vDash \varphi[a_1, \ldots, a_n] \iff B \vDash \varphi[F(a_1), \ldots, F(a_n)]
 \quad \forall a_1, \ldots, a_n \in A.
 \]
 
-Si $\varphi \in F_\tau^k$, entonces claramente se cumple la propiedad, por lo que suponemos $\varphi \in F_\tau^{k+1} - F_\tau^k$.  
+Si $\varphi \in F^\tau_k$, entonces claramente se cumple la propiedad, por lo que suponemos $\varphi \in F^\tau_{k+1} - F^\tau_k$.  
 Ahora, por el lema de menú para fórmulas, tenemos distintos casos.
 
 \medskip
 \noindent
-\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F_\tau^k$.
+\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau_k$.
 \[
 \begin{aligned}
 A \vDash \varphi[a_1, \ldots, a_n]
@@ -122,7 +122,7 @@ $\varphi = (\varphi_1 \Leftrightarrow \varphi_2)$ y $\varphi = \neg \varphi_1$ s
 
 \medskip
 \noindent
-\textbf{Caso} $\varphi = \forall x_j \varphi_1$, con $\varphi_1 \in F_\tau^k$.  
+\textbf{Caso} $\varphi = \forall v_j \varphi_1$, con $\varphi_1 \in F^\tau_k$ y $v_j \in {v_1, \dots ,v_n}$.  
 Por definición:
 \[
 A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } A \vDash \varphi_1[a_1, \ldots, a, \ldots, a_n] 
@@ -143,7 +143,29 @@ Finalmente, por definición:
 A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
 \]
 
-El caso $\varphi = \exists x_j \varphi_1$ es análogo.
+\medskip
+
+\textbf{Caso} $\varphi = \forall v \varphi_1$, con $\varphi_1 \in F^\tau_k$ y $v \notin {v_1, \dots ,v_n}$.  
+Por definición:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } A \vDash \varphi_1[a_1, \ldots, a_n, a] 
+\quad \text{para todo } a \in A.
+\]
+Por la HI:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi_1[F(a_1), \ldots , F(a_n),F(a)] 
+\quad \text{para todo } a \in A.
+\]
+Luego, como $F$ es isomorfismo, $\operatorname{Im}(F) = B$, entonces:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi_1[F(a_1), \ldots, F(a_n),b] 
+\quad \text{para todo } b \in B.
+\]
+Finalmente, por definición:
+\[
+A \vDash \varphi[a_1, \ldots, a_n] \text{ sii } B \vDash \varphi[F(a_1), \ldots, F(a_n)].
+\]
+El caso $\varphi = \exists $ es análogo.
 \end{proof}
 \end{lemma}
 
@@ -170,7 +192,7 @@ s = F^{-1}(F(s)) \leq F^{-1}(F(a)) = a.
 
 (b) Supongamos que existe $\sup(S)$. 
 Veamos entonces que $F(\sup(S))$ es el supremo de $F(S)$. 
-Por (e), $F(\sup(S))$ es cota superior de $F(S)$. 
+Por demostracion anterior, $F(\sup(S))$ es cota superior de $F(S)$. 
 Supongamos que $b$ es cota superior de $F(S)$. 
 Entonces $F^{-1}(b)$ es cota superior de $S$, 
 por lo cual $\sup(S) \leq F^{-1}(b)$, 
@@ -183,15 +205,27 @@ entonces $F^{-1}(\sup(F(S)))$ es el supremo de $S$.
 
 \section*{Auxiliares de Demostraciones}
 \begin{enumerate}
-    \item Lema de menú de fórmulas:  Supongamos $\varphi \in F_k^\tau$, con $k \ge 1$. Entonces $\varphi$ es de alguna de las siguientes formas:
+    \item Lectura única de fórmulas declaradas. Sea $\tau$ un tipo cualquiera y 
+    $\varphi \in F^\tau$. Supongamos 
+    \[
+    \varphi =_d\varphi(v_1, \ldots, v_n).
+    \]
+    Entonces se cumple una y sólo una de las siguientes:
 
-\begin{enumerate}
-    \item $\varphi = (t \equiv s)$, con $t, s \in T^\tau$.
-    \item $\varphi = r(t_1, \ldots, t_n)$, con $r \in R_n$, $t_1, \ldots, t_n \in T^\tau$.
-    \item $\varphi = (\varphi_1 \, \eta \, \varphi_2)$, con $\eta \in \{\wedge, \vee, \to, \leftrightarrow\}$, $\varphi_1, \varphi_2 \in F_{k-1}^\tau$.
-    \item $\varphi = \neg \varphi_1$, con $\varphi_1 \in F_{k-1}^\tau$.
-    \item $\varphi = Qv\varphi_1$, con $Q \in \{\forall, \exists\}$, $v \in Var$ y $\varphi_1 \in F_{k-1}^\tau$.
-\end{enumerate}
+    \begin{enumerate}
+        \item $\varphi = (t \equiv s)$, con $t, s \in T^\tau$, únicos.
+        \item $\varphi = r(t_1, \ldots, t_m)$, con $r \in R_m$ y $t_1, \ldots, t_m \in T^\tau$.
+        \item $\varphi = (\varphi_1 \wedge \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, únicas.
+        \item $\varphi = (\varphi_1 \vee \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, únicas.
+        \item $\varphi = (\varphi_1 \rightarrow \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, únicas.
+        \item $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, únicas.
+        \item $\varphi = \neg \varphi_1$, con $\varphi_1 \in F^\tau$, única.
+        \item $\varphi = \forall v_j\, \varphi_1$, con $v_j \in \{v_1, \ldots, v_n\}$ y $\varphi_1 \in F^\tau$, únicas.
+        \item $\varphi = \forall v\, \varphi_1$, con $v \in Var - \{v_1, \ldots, v_n\}$ y $\varphi_1 \in F^\tau$, únicas.
+        \item $\varphi = \exists v_j\, \varphi_1$, con $v_j \in \{v_1, \ldots, v_n\}$ y $\varphi_1 \in F^\tau$, únicas.
+        \item $\varphi = \exists v\, \varphi_1$, con $v \in Var - \{v_1, \ldots, v_n\}$ y $\varphi_1 \in F^\tau$, únicas.
+    \end{enumerate}
+
 
     
 \end{enumerate}

@@ -30,7 +30,7 @@
     \item Defina $\text{Mod}_T(\varphi)$
     \medskip
     
-    Sea $T = (\Sigma, \tau)$ una teoría. Dada $\varphi \in S_{\tau}$ definamos
+    Sea $T = (\Sigma, \tau)$ una teoría. Dada $\varphi \in S^{\tau}$ definamos
     \[
     \mathrm{Mod}_T(\varphi) = \{A : A \text{ es modelo de } T \text{ y } A \vDash \varphi\}.
     \]
@@ -155,11 +155,11 @@
     
     Dado un conjunto $S \subseteq L$, denotemos con $[S)$ el siguiente conjunto:
     \[
-    [S) = \{\, y \in L : y \geq s_1 \lor \dots \lor s_n, \text{ para algunos } s_1, \ldots, s_n \in S, \, n \geq 1 \,\}.
+    [S) = \{\, y \in L : y \geq s_1 i \dots i s_n, \text{ para algunos } s_1, \ldots, s_n \in S, \, n \geq 1 \,\}.
     \]
     Llamaremos a $[S)$ el \emph{filtro generado por} $S$.
 
-    \item Defina cuando $J \in \text{Just}^+$ es balanceada (no hace falta que defina $B_J$)
+    \item Defina cuando $J \in \text{Just}^+$ es balanceada (no hace falta que defina $B^J$)
     \bigskip
 
 Sea $J = J_1 \dots J_{n(J)} \in \text{Just}^+$. Diremos que $J$ es \emph{balanceada} si se cumplen las siguientes condiciones:
@@ -168,7 +168,7 @@ Sea $J = J_1 \dots J_{n(J)} \in \text{Just}^+$. Diremos que $J$ es \emph{balance
     \item Para cada $k \in \mathbb{N}$, a lo sumo hay un $i$ tal que $J_i = \text{HIPOTESIS } \overline{k}$ y a lo sumo hay un $i$ tal que $J_i = \text{TESIS } \overline{k}\alpha$, con $\alpha \in \text{JustBas}$.
     \item Si $J_i = \text{HIPOTESIS } \overline{k}$, entonces existe $l > i$ tal que $J_l = \text{TESIS } \overline{k}\alpha$, con $\alpha \in \text{JustBas}$.
     \item Si $J_i = \text{TESIS } \overline{k}\alpha$, con $\alpha \in \text{JustBas}$, entonces existe $l < i$ tal que $J_l = \text{HIPOTESIS } \overline{k}$.
-    \item Los bloques de hipótesis-tesis no se solapan de forma parcial: si $B_1, B_2 \in B^J$, entonces $B_1 \cap B_2 = \emptyset$ o $B_1 \subseteq B_2$ o $B_2 \subseteq B_1$.
+    \item Si $B_1, B_2 \in B^J$, entonces $B_1 \cap B_2 = \emptyset$ o $B_1 \subseteq B_2$ o $B_2 \subseteq B_1$.
 \end{enumerate}
 
 \end{enumerate}
@@ -238,7 +238,7 @@ Sea $J = J_1 \dots J_{n(J)} \in \text{Just}^+$. Diremos que $J$ es \emph{balance
 
     \item Defina la relación “$v$ ocurre libremente en $\varphi$ a partir de $i$”
     
-    Definimos recursivamente la relación “$v$ ocurre libremente en $\varphi$ a partir de $i$”, donde $v \in \text{Var}$, $\varphi \in F_\tau$ e $i \in \{1, \dots, |\varphi|\}$, de la siguiente manera:
+    Definimos recursivamente la relación “$v$ ocurre libremente en $\varphi$ a partir de $i$”, donde $v \in \text{Var}$, $\varphi \in F^\tau$ e $i \in \{1, \dots, |\varphi|\}$, de la siguiente manera:
 
     \begin{enumerate}[label=(\arabic*)]
         \item Si $\varphi$ es atómica, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$ si y solo si $v$ ocurre en $\varphi$ a partir de $i$.
@@ -272,8 +272,11 @@ Explique la notación declaratoria para términos con sus tres Convenciones Nota
 
 \bigskip
 
-    La notación declaratoria para términos se utiliza para expresar explícitamente de qué variables depende un término y permite realizar sustituciones o evaluaciones.  
-    Supongamos que $t =_d t(v_1, \ldots, v_n)$ es una declaración de término. Entonces se aplican las siguientes convenciones:
+    Si $t$ es un término de tipo $\tau$, entonces escribiremos 
+    \[
+    t = d_t(v_1, \ldots, v_n)
+    \]
+    para declarar que $v_1, \ldots, v_n$ son variables distintas (con $n \ge 1$) y tales que toda variable que ocurre en $t$ pertenece a $\{v_1, \ldots, v_n\}$ (no necesariamente toda $v_j$ debe ocurrir en $t$).
 
     \begin{enumerate}
     \item \textbf{Convención Notacional 1:}  
@@ -307,7 +310,20 @@ Explique la notación declaratoria para fórmulas con sus tres Convenciones Nota
 
 \bigskip
 
-Supongamos que hemos declarado una fórmula $\varphi =_d \varphi(v_1, \ldots, v_n)$. Entonces se aplican las siguientes convenciones:
+Si $\varphi$ es una fórmula de tipo $\tau$, entonces escribiremos 
+\[
+\varphi = d_\varphi(v_1, \ldots, v_n)
+\]
+para declarar que $v_1, \ldots, v_n$ son variables distintas (con $n \ge 1$) tales que 
+\[
+L_i(\varphi) \subseteq \{v_1, \ldots, v_n\}.
+\]
+Tal como para el caso de términos, el uso de declaraciones de la forma 
+\[
+\varphi = d_\varphi(v_1, \ldots, v_n)
+\]
+será muy útil cuando se combina con ciertas convenciones notacionales que describiremos a continuación.
+
 
 \begin{enumerate}
   \item \textbf{Convención Notacional 3:}  
@@ -482,7 +498,7 @@ Supongamos que hemos declarado una fórmula $\varphi =_d \varphi(v_1, \ldots, v_
     \end{enumerate}
     Diremos que un elemento $a \in P$ es cota superior de $S$ en $(P, \leq)$ cuando $b \leq a$ para todo $b \in S$. 
 
-    \item Defina “$i$ es anterior a $j$ en $(\varphi, J)$” (no hace falta que defina $B_J$)
+    \item Defina “$i$ es anterior a $j$ en $(\varphi, J)$” (no hace falta que defina $B^J$)
 
     \bigskip
     Sea $(\varphi, J)$ un par adecuado de tipo $\tau$, con $i, j \in \langle 1, n(\varphi)\rangle$.  
@@ -540,7 +556,7 @@ Supongamos que hemos declarado una fórmula $\varphi =_d \varphi(v_1, \ldots, v_
 
     Dada una teoría $T = (\Sigma, \tau)$, se define el \emph{álgebra de Lindenbaum} de $T$ como
     \[
-    A_T = (S_\tau / \dashv\vdash_T, \, s^T, \, i^T, \, c^T, \, 0_T, \, 1_T),
+    A_T = (S_\tau / \dashv\vdash_T, \, s^T, \, i^T, \, c^T, \, 0^T, \, 1^T),
     \]
     donde:
     \[
@@ -548,22 +564,15 @@ Supongamos que hemos declarado una fórmula $\varphi =_d \varphi(v_1, \ldots, v_
     ([\varphi]_T)^{c^T} = [\neg \varphi]_T,
     \]
     \[
-    1_T = \{\varphi \in S_\tau : T \vdash \varphi\}, \quad 
-    0_T = \{\varphi \in S_\tau : T \vdash \neg \varphi\}.
+    1^T = \{\varphi \in S_\tau : T \vdash \varphi\}, \quad 
+    0^`T = \{\varphi \in S_\tau : T \vdash \neg \varphi\}.
     \]
     El álgebra $A_T$ es un álgebra de Boole.
 
     \item Defina “$S$ es un subuniverso del reticulado complementado $(L,s,i,c,0,1)$”
-    
-    Dados reticulados complementados $(L,s,i,c,0,1)$ y $(L',s',i',c',0',1')$, diremos que $(L,s,i,c,0,1)$ es un subreticulado complementado de $(L',s',i',c',0',1')$ si se cumplen las siguientes condiciones:
-    \begin{enumerate}[label=(\roman*)]
-        \item $L \subseteq L'$
-        \item $L$ es cerrado bajo las operaciones $s'$, $i'$ y $c'$
-        \item $0 = 0'$ y $1 = 1'$
-        \item $s = s'|_{L \times L}, \; i = i'|_{L \times L}, \; c = c'|_L$
-    \end{enumerate}
+    Sea $(L, s, i, c, 0, 1)$ un reticulado complementado.  
+    Un conjunto $S \subseteq L$ es llamado **subuniverso** de $(L, s, i, c, 0, 1)$ si $0,1 \in S$ y además $S$ es cerrado bajo las operaciones $s$, $i$ y $c$.
 
-    Sea $(L,s,i,c,0,1)$ un reticulado complementado. Un conjunto $S \subseteq L$ se llama subuniverso de $(L,s,i,c,0,1)$ si $0,1 \in S$ y además $S$ es cerrado bajo las operaciones $s$, $i$ y $c$.
 \end{enumerate}
 
 \section*{Combo 10}
