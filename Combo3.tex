@@ -23,7 +23,7 @@
 Dado $t \in T^\tau$, se da una de las siguientes:
 \begin{enumerate}[label=(\arabic*)]
     \item $t \in Var \cup C$
-    \item Hay únicos $n \ge 1$, $f \in F^n$, $t_1, \ldots, t_n \in T^\tau$ tales que $t = f(t_1, \ldots, t_n)$.
+    \item Hay únicos $n \ge 1$, $f \in F_n$, $t_1, \ldots, t_n \in T^\tau$ tales que $t = f(t_1, \ldots, t_n)$.
 \end{enumerate}
 \begin{proof}
 \noindent
@@ -126,23 +126,23 @@ Veamos cada implicación por separado.
 Supongamos $A \vDash \varphi[\vec{a}]$.  
 Entonces, por la definición de $\vDash$, se tiene que 
 \[
-A \vDash \varphi_1[\downarrow a_j(\vec{a})], \quad \text{para todo } a \in A.
+A \vDash \varphi_1[\downarrow^a_j(\vec{a})], \quad \text{para todo } a \in A.
 \]
 Por Teo$_k$ tenemos que 
 \[
-B \vDash \varphi_1[F(\downarrow a_j(\vec{a}))], \quad \text{para todo } a \in A.
+B \vDash \varphi_1[F(\downarrow^a_j(\vec{a}))], \quad \text{para todo } a \in A.
 \]
 Pero como
 \[
-F(\downarrow a_j(\vec{a})) = \downarrow F(a)_j(F(\vec{a})),
+F(\downarrow^a_j(\vec{a})) = \downarrow^{F(a)}_j(F(\vec{a})),
 \]
 tenemos que 
 \[
-B \vDash \varphi_1[\downarrow F(a)_j(F(\vec{a}))], \quad \text{para todo } a \in A.
+B \vDash \varphi_1[\downarrow^{F(a)}_j(F(\vec{a}))], \quad \text{para todo } a \in A.
 \]
 Como $F$ es sobreyectiva, obtenemos que 
 \[
-B \vDash \varphi_1[\downarrow b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
+B \vDash \varphi_1[\downarrow^b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
 \]
 Ahora, por la definición de $\vDash$, tenemos que 
 \[
@@ -155,23 +155,23 @@ es decir, $B \vDash \varphi[F(\vec{a})]$.
 Recíprocamente, supongamos que $B \vDash \varphi[F(\vec{a})]$.  
 La definición de $\vDash$ nos dice que 
 \[
-B \vDash \varphi_1[\downarrow b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
+B \vDash \varphi_1[\downarrow^b_j(F(\vec{a}))], \quad \text{para todo } b \in B.
 \]
 Obviamente, esto implica que 
 \[
-B \vDash \varphi_1[\downarrow F(a)_j(F(\vec{a}))], \quad \text{para todo } a \in A.
+B \vDash \varphi_1[\downarrow^{F(a)}_j(F(\vec{a}))], \quad \text{para todo } a \in A.
 \]
 Pero como 
 \[
-\downarrow F(a)_j(F(\vec{a})) = F(\downarrow a_j(\vec{a})),
+\downarrow^{F(a)}_j(F(\vec{a})) = F(\downarrow^a_j(\vec{a})),
 \]
 tenemos que 
 \[
-B \vDash \varphi_1[F(\downarrow a_j(\vec{a}))], \quad \text{para todo } a \in A.
+B \vDash \varphi_1[F(\downarrow^a_j(\vec{a}))], \quad \text{para todo } a \in A.
 \]
 Por Teo$_k$, se sigue que 
 \[
-A \vDash \varphi_1[\downarrow a_j(\vec{a})], \quad \text{para todo } a \in A,
+A \vDash \varphi_1[\downarrow^a_j(\vec{a})], \quad \text{para todo } a \in A,
 \]
 lo cual, por la definición de $\vDash$, nos dice que $A \vDash \varphi[\vec{a}]$.
 
@@ -192,20 +192,20 @@ es un álgebra de Boole. \\
 \begin{proof}
 Veamos que
 \[
-[\varphi_1]_T \, s_T \, \big( [\varphi_2]_T \, s_T \, [\varphi_3]_T \big)
-= \big( [\varphi_1]_T \, s_T \, [\varphi_2]_T \big) \, s_T \, [\varphi_3]_T,
+[\varphi_1]_T \, s^T \, \big( [\varphi_2]_T \, s^T \, [\varphi_3]_T \big)
+= \big( [\varphi_1]_T \, s^T \, [\varphi_2]_T \big) \, s^T \, [\varphi_3]_T,
 \]
-cualesquiera sean $\varphi_1, \varphi_2, \varphi_3 \in S_\tau$.
+cualesquiera sean $\varphi_1, \varphi_2, \varphi_3 \in S^\tau$.
 
-Sean $\varphi_1, \varphi_2, \varphi_3 \in S_\tau$ fijas.  
-Por la definición de la operación $s_T$ tenemos que:
+Sean $\varphi_1, \varphi_2, \varphi_3 \in S^\tau$ fijas.  
+Por la definición de la operación $s^T$ tenemos que:
 \[
 \begin{aligned}
-[\varphi_1]_T \, s_T \, \big( [\varphi_2]_T \, s_T \, [\varphi_3]_T \big)
-&= [\varphi_1]_T \, s_T \, [(\varphi_2 \vee \varphi_3)]_T \\
+[\varphi_1]_T \, s^T \, \big( [\varphi_2]_T \, s^T \, [\varphi_3]_T \big)
+&= [\varphi_1]_T \, s^T \, [(\varphi_2 \vee \varphi_3)]_T \\
 &= [(\varphi_1 \vee (\varphi_2 \vee \varphi_3))]_T, \\[6pt]
-\big( [\varphi_1]_T \, s_T \, [\varphi_2]_T \big) \, s_T \, [\varphi_3]_T
-&= [(\varphi_1 \vee \varphi_2)]_T \, s_T \, [\varphi_3]_T \\
+\big( [\varphi_1]_T \, s^T \, [\varphi_2]_T \big) \, s^T \, [\varphi_3]_T
+&= [(\varphi_1 \vee \varphi_2)]_T \, s^T \, [\varphi_3]_T \\
 &= [((\varphi_1 \vee \varphi_2) \vee \varphi_3)]_T.
 \end{aligned}
 \]
@@ -306,6 +306,22 @@ A continuación damos una prueba formal de
         \item $t \in Var \cup C$.
         \item $t = f(t_1, \ldots, t_n)$, con $f \in F_n$, $n \ge 1$ y $t_1, \ldots, t_n \in T_{k-1}^\tau$.
     \end{enumerate}
+
+    \item Dado un tipo $\tau$, definamos recursivamente los conjuntos de palabras $T^\tau_k$, con $k \ge 0$, de la siguiente manera:
+    \[
+    T^\tau_0 = Var \,\cup\, C
+    \]
+    \[
+    T^\tau_{k+1}
+    = T^\tau_k \,\cup\, 
+    \{\, f(t_1, \ldots, t_n) : f \in F_n,\ n \ge 1,\ \text{y } t_1, \ldots, t_n \in T^\tau_k \,\}.
+    \]
+    Sea
+    \[
+    T_\tau = \bigcup_{k \ge 0} T^\tau_k.
+    \]
+    Los elementos de $T^\tau$ serán llamados \emph{términos de tipo} $\tau$.
+
     \item Lema auxiliar 2: Sea $F : A \to B$ un homomorfismo. Entonces
     \[
     F\big(t^A[(a_1, a_2, \ldots)]\big) = t^B\big[(F(a_1), F(a_2), \ldots)\big]
