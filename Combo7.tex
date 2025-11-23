@@ -107,5 +107,18 @@ x/\theta \widetilde{\leq} y/\theta \ \text{sii}\ y/\theta = (x\, s\, y)/\theta.
 Sean $(L, s, i)$ y $(L', s', i')$ reticulados terna y sean $(L, \le)$ y $(L', \le')$ los posets asociados. Sea $F: L \to L'$ una función. Entonces $F$ es un isomorfismo de $(L, s, i)$ en $(L', s', i')$ si y sólo si $F$ es un isomorfismo de $(L, \le)$ en $(L', \le')$.
 \end{lemma} (Ver combo 4.3)
 
-\end{document}
+\medskip
 
+Axiomas elementales de reticulados terna:
+\begin{enumerate}
+    \item $\forall x \,(x \, s \, x = x)$
+    \item $\forall x \,(x \, i \, x = x)$
+    \item $\forall x \forall y \,(x \, s \, y = y \, s \, x)$
+    \item $\forall x \forall y \,(x \, i \, y = y \, i \, x)$
+    \item $\forall x \forall y \forall z \,((x \, s \, y) \, s \, z = x \, s \,(y \, s \, z))$
+    \item $\forall x \forall y \forall z \,((x \, i \, y) \, i \, z = x \, i \,(y \, i \, z))$
+    \item $\forall x \forall y \,(x \, s \,(x \, i \, y) = x)$
+    \item $\forall x \forall y \,(x \, i \,(x \, s \, y) = x)$
+\end{enumerate}
+
+\end{document}

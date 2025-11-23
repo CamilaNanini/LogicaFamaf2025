@@ -26,6 +26,76 @@ Sea $(\Sigma, \tau)$ una teoría.
     \item Supongamos $(\Sigma, \tau) \vdash \varphi_1, \ldots, \varphi_n$. Si $R$ es una regla distinta de \textsc{Generalización} y \textsc{Elección} y $\varphi$ se deduce de $\varphi_1, \ldots, \varphi_n$ por la regla $R$, entonces $(\Sigma, \tau) \vdash \varphi$.
     \item $(\Sigma, \tau) \vdash (\varphi \to \psi)$ si y sólo si $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.
 \end{enumerate}
+
+\begin{proof}
+(1) Nótese que basta con hacer el caso $n = 1$. El caso con $n \geq 2$ se obtiene aplicando $n$ veces el caso $n = 1$.  
+Supongamos entonces que $(\Sigma, \tau) \vdash \varphi_1$ y $(\Sigma \cup \{\varphi_1\}, \tau) \vdash \varphi$.  
+Sea $(\alpha_1, \ldots, \alpha_h, I_1, \ldots, I_h)$ una prueba formal de $\varphi_1$ en $(\Sigma, \tau)$.  
+Sea $(\psi_1, \ldots, \psi_m, J_1, \ldots, J_m)$ una prueba formal de $\varphi$ en $(\Sigma \cup \{\varphi_1\}, \tau)$.  
+
+Nótese que, por los Lemas Cambio de indice de hipotesis y Cambio de nombres de constante auxiliares, podemos suponer que estas dos pruebas no comparten ningún nombre de constante auxiliar y que tampoco comparten números asociados a hipótesis o tesis.  
+
+Para cada $i = 1, \ldots, m$, definamos $\tilde{J}_i$ de la siguiente manera:
+
+\begin{itemize}
+    \item Si $J_i = \alpha\,\textsc{AxiomaPropio}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$ y $\psi_i = \varphi_1$, entonces $\tilde{J}_i = \alpha\,\textsc{Evocación}(\bar{h})$.
+    \item Si $J_i = \alpha\,\textsc{AxiomaPropio}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$ y $\psi_i \notin \{\varphi_1\}$, entonces $\tilde{J}_i = \alpha\,\textsc{AxiomaPropio}$.
+    \item Si $J_i = \alpha\,\textsc{AxiomaLógico}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces $\tilde{J}_i = \alpha\,\textsc{AxiomaLógico}$.
+    \item Si $J_i = \alpha\,\textsc{Conclusión}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces $\tilde{J}_i = \alpha\,\textsc{Conclusión}$.
+    \item Si $J_i = \textsc{Hipótesis}\bar{k}$, entonces $\tilde{J}_i = \textsc{Hipótesis}\bar{k}$.
+    \item Si $J_i = \alpha R(\bar{l}_1, \ldots, \bar{l}_k)$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces 
+    \[
+    \tilde{J}_i = \alpha R(\overline{l_1+h} , \ldots, \overline{l_k+h} ).
+    \]
+\end{itemize}
+
+Es fácil chequear que 
+\[
+(\alpha_1, \ldots, \alpha_h, \psi_1, \ldots, \psi_m, I_1, \ldots, I_h, \tilde{J}_1, \ldots, \tilde{J}_m)
+\]
+es una prueba formal de $\varphi$ en $(\Sigma, \tau)$.
+
+\vspace{1em}
+(2) Nótese que:
+\begin{align*}
+1. &\quad \varphi_1 \quad \textsc{AxiomaPropio} \\
+2. &\quad \varphi_2 \quad \textsc{AxiomaPropio} \\
+\vdots \\
+n. &\quad \varphi_n \quad \textsc{AxiomaPropio} \\
+n+1. &\quad \varphi \quad R(\bar{1}, \ldots, \bar{n})
+\end{align*}
+es una prueba formal de $\varphi$ en $(\Sigma \cup \{\varphi_1, \ldots, \varphi_n\}, \tau)$, lo cual por (1) nos dice que $(\Sigma, \tau) \vdash \varphi$.
+
+\vspace{1em}
+(3) Supongamos $(\Sigma, \tau) \vdash (\varphi \to \psi)$. Entonces tenemos que $(\Sigma \cup \{\varphi\}, \tau) \vdash (\varphi \to \psi), \varphi$, lo cual por (2) nos dice que $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.  
+
+Supongamos ahora que $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$. Sea $(\varphi_1, \ldots, \varphi_n, J_1, \ldots, J_n)$ una prueba formal de $\psi$ en $(\Sigma \cup \{\varphi\}, \tau)$.  
+
+Para cada $i = 1, \ldots, n$, definamos $\tilde{J}_i$ como sigue:
+
+\begin{itemize}
+    \item Si $\varphi_i = \varphi$ y $J_i = \alpha\,\textsc{AxiomaPropio}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces $\tilde{J}_i = \alpha\,\textsc{Evocación}(1)$.
+    \item Si $\varphi_i \neq \varphi$ y $J_i = \alpha\,\textsc{AxiomaPropio}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces $\tilde{J}_i = \alpha\,\textsc{AxiomaPropio}$.
+    \item Si $J_i = \alpha\,\textsc{AxiomaLógico}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces $\tilde{J}_i = \alpha\,\textsc{AxiomaLógico}$.
+    \item Si $J_i = \alpha\,\textsc{Conclusión}$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces $\tilde{J}_i = \alpha\,\textsc{Conclusión}$.
+    \item Si $J_i = \textsc{Hipótesis}\bar{k}$, entonces $\tilde{J}_i = \textsc{Hipótesis}\bar{k}$.
+    \item Si $J_i = \alpha R(\bar{l}_1, \ldots, \bar{l}_k)$, con $\alpha \in \{\varepsilon\} \cup \{\textsc{Tesis}\bar{k} : k \in \mathbb{N}\}$, entonces 
+    \[
+    \tilde{J}_i = \alpha R(\overline{l_1 + 1}, \ldots, \overline{l_k + 1}).
+    \]
+\end{itemize}
+
+Sea $m$ tal que ninguna $J_i$ es igual a $\textsc{Hipótesis}\bar{m}$.  
+Nótese que $\tilde{J}_n$ no es de la forma $\textsc{Tesis}\bar{k}\beta$ ni de la forma $\textsc{Hipótesis}\bar{k}$, por lo cual $\textsc{Tesis}\bar{m}\tilde{J}_n$ es una justificación.  
+
+Es fácil chequear que:
+\[
+(\varphi, \varphi_1, \ldots, \varphi_n, (\varphi \to \psi), 
+\textsc{Hipótesis}\bar{m}, \tilde{J}_1, \ldots, \tilde{J}_{n-1}, \textsc{Tesis}\bar{m}\tilde{J}_n, \textsc{Conclusión})
+\]
+es una prueba formal de $(\varphi \to \psi)$ en $(\Sigma, \tau)$.
+\end{proof}
+
 \end{lemma}
 
 \begin{theorem}
@@ -82,10 +152,7 @@ Por unicidad del complemento, se tiene entonces:
 
 \medskip
 
-\noindent\textbf{(2)} Queremos probar que
-\[
-a \, i \, b = 0 \quad\Longleftrightarrow\quad b \leq a^c.
-\]
+\noindent\textbf{(2)} Queremos probar que $a \, i \, b = 0 \quad\Longleftrightarrow\quad b \leq a^c.$
 
 \underline{($\Rightarrow$)}  
 Supongamos $a i b = 0$. Se tiene
@@ -103,15 +170,11 @@ por lo cual $b \leq a^c$.
 
 \underline{($\Leftarrow$)}  
 \noindent
-Supongamos ahora $b \leq a^c$.  
-Ya que $a \leq a$, por lema de "ser menor que infimo", aplicado al reticulado par $(B, \leq)$, nos dice que
-\[
-a i b \leq a i a^c.
-\]
-Ya que $a i a^c = 0$, obtenemos que
-\[
-a i b = 0.
-\]
+Supongamos ahora $b \leq a^c$.  Entonces como $aib \leq b$ por transitividad
+$aib \leq a^c$. Ahora $a \leq a$, por lo que $a i b \leq a i a^c$.
+Ya que $a i a^c = 0$, obtenemos que $aib \leq 0$ y por axioma $0 \leq aib$, 
+entonces $a i b = 0.$
+
 \end{proof}
 \end{theorem}
 
@@ -119,18 +182,18 @@ a i b = 0.
 Sean $(L, s, i)$ y $(L', s', i')$ reticulados terna y sean $(L, \le)$ y $(L', \le')$ los posets asociados. Sea $F: L \to L'$ una función. Entonces $F$ es un isomorfismo de $(L, s, i)$ en $(L', s', i')$ si y sólo si $F$ es un isomorfismo de $(L, \le)$ en $(L', \le')$.
 \medskip
 \begin{proof}
+\medskip
+\noindent
+$(\Leftarrow)$; 
 Sea $F: L \to L'$ un isomorfismo de posets, es decir:
 \begin{enumerate}[label=\alph*]
     \item $F$ es biyectiva,
-    \item para todo $x, y \in L$, se cumple que 
-    \[
-    x \leq y \iff F(x) \leq' F(y).
-    \]
+    \item para todo $x, y \in L$, se cumple que $x \leq y \iff F(x) \leq' F(y)$
 \end{enumerate}
 
 \noindent
 Queremos probar que $F$ es un isomorfismo de reticulados terna, 
-es decir, que además preserva las operaciones:
+es decir, que preserva las operaciones:
 \[
 F(x \, s \, y) = F(x) \, s' \, F(y),
 \qquad
@@ -138,10 +201,7 @@ F(x \, i \, y) = F(x) \, i' \, F(y),
 \]
 para todo $x, y \in L$.
 
-Por el teorema de Dedekind sabemos que 
-\[
-a \, s \, b = \sup\{a, b\} \text{ en } (L, \leq).
-\]
+Por el teorema de Dedekind sabemos que $a \, s \, b = \sup\{a, b\} \text{ en } (L, \leq).$
 Entonces $a \leq a \, s \, b$ y $b \leq a \, s \, b$.
 
 \medskip
@@ -174,24 +234,16 @@ F(z) \leq' F(w) = w'.
 
 \noindent
 Esto muestra que cualquier cota superior $w'$ de $\{F(x), F(y)\}$ domina a $F(z)$.  
-Por la definición de supremo, $F(z)$ es la menor cota superior, es decir:
-\[
-F(z) = \sup_{L'} \{F(x), F(y)\}.
-\]
-
-\noindent
-Por la definición de la operación $s'$ en el reticulado terna asociado a $(L', \leq')$, se cumple:
-\[
-\sup_{L'}\{F(x), F(y)\} = F(x) \, s' \, F(y).
-\]
-Por tanto,
-\[
-F(x \, s \, y) = F(z) = F(x) \, s' \, F(y),
-\]
-como queríamos.
 
 \medskip
 \noindent
+$(\Rightarrow)$; 
+Supongamos que  F es un isomorfismo de (L, s, i) en (L', s', i'). 
+Sean x, y $\in$ L tales que x $\le$ y. 
+Tenemos que y = xsy, por lo cual F(y) = F(xsy) = F(x)s'F(y),
+ocurriendo que $F(x) \le' F(y)$.
+De forma similar se puede ver que $F^{-1}$ es también un homomorfismo de $(L', \le')$ en $(L, \le)$.
+
 La prueba para el ínfimo es dual.
 \end{proof}
 \end{lemma}
@@ -223,9 +275,41 @@ La prueba para el ínfimo es dual.
     \[
     y = (y \, i \, x) \, s \, (y \, i \, x^c).
     \]
+    \item Cambio de índice de hipótesis: Sea $(\varphi, J)$ una prueba formal de $\varphi$ en $(\Sigma, \tau)$.  
+    Sea $m \in \mathbb{N}$ tal que $J_i \neq \text{HIPÓTESIS}\overline{m}$, para cada $i = 1, \ldots, n(\varphi)$.  
+    Supongamos que $J_i = \text{HIPÓTESIS}\overline{k}$ y que $J_j = \text{TESIS}\overline{k} \, \alpha$, con $[\alpha]_1 \notin \text{Num}$.  
+    Sea $\tilde{J}$ el resultado de reemplazar en $J$ la justificación $J_i$ por $\text{HIPÓTESIS}\overline{m}$  
+    y reemplazar la justificación $J_j$ por $\text{TESIS}\overline{m} \, \alpha$.  
+    Entonces $(\varphi, \tilde{J})$ es una prueba formal de $\varphi$ en $(\Sigma, \tau)$.
+    \item Cambio de nombres de constantes auxiliares: Sea $(\varphi, J)$ una prueba formal de $\varphi$ en $(\Sigma, \tau)$.  
+    Sea $C_1$ el conjunto de nombres de constantes auxiliares de $(\varphi, J)$.  
+    Sea $e \in C_1$.  
+    Sea $\tilde{e} \notin C \cup C_1$ tal que 
+    \[
+    (C \cup (C_1 - \{e\}) \cup \{\tilde{e}\}, F, R, a)
+    \]
+    es un tipo.  
 
+    Sea $\tilde{\varphi_i}$ el resultado de reemplazar en $\varphi_i$ cada ocurrencia de $e$ por $\tilde{e}$.  
+
+    Entonces 
+    \[
+    (\tilde{\varphi}_1, \ldots, \tilde{\varphi}_{n(\varphi)}, J)
+    \]
+    es una prueba formal de $\varphi$ en $(\Sigma, \tau)$.
 \end{enumerate}
 
+Axiomas elementales de reticulados terna:
+\begin{enumerate}
+    \item $\forall x \,(x \, s \, x = x)$
+    \item $\forall x \,(x \, i \, x = x)$
+    \item $\forall x \forall y \,(x \, s \, y = y \, s \, x)$
+    \item $\forall x \forall y \,(x \, i \, y = y \, i \, x)$
+    \item $\forall x \forall y \forall z \,((x \, s \, y) \, s \, z = x \, s \,(y \, s \, z))$
+    \item $\forall x \forall y \forall z \,((x \, i \, y) \, i \, z = x \, i \,(y \, i \, z))$
+    \item $\forall x \forall y \,(x \, s \,(x \, i \, y) = x)$
+    \item $\forall x \forall y \,(x \, i \,(x \, s \, y) = x)$
+\end{enumerate}
 
 \end{document}
 
