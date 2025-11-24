@@ -165,8 +165,97 @@ Lo cual \textbf{contradice la hipótesis}.
     \]
 
 
-
 \end{enumerate}
+
+\section*{Explicación más intuitiva de la prueba del Teorema del Filtro Primo}
+
+\subsection*{Idea general del Teorema del Filtro Primo}
+
+Queremos demostrar:
+
+\begin{quote}
+Si $F$ es un filtro de un reticulado distributivo $L$ y $x_0 \notin F$, entonces existe un
+\emph{filtro primo} $P$ que contiene a $F$ pero no contiene a $x_0$.
+\end{quote}
+
+\subsection*{¿Cómo se demuestra esto?}
+
+\begin{enumerate}
+    \item Consideramos todos los filtros posibles que contienen a $F$ pero no contienen a $x_0$.  
+    A este conjunto lo llamamos $\mathcal{F}$.
+    \item En $\mathcal{F}$ ordenamos los filtros por inclusión.
+    \item Probamos que cualquier cadena de filtros de $\mathcal{F}$ tiene una cota superior.
+    \item Como cada cadena tiene cota superior, por el Lema de Zorn existe un elemento maximal de $\mathcal{F}$.  
+    A ese maximal lo llamamos $P$.
+    \item Demostramos que este filtro maximal $P$ es primo, es decir,
+    \[
+        x s y \in P \quad \Rightarrow \quad x \in P \text{ o } y \in P.
+    \]
+\end{enumerate}
+
+\subsection*{Explicación intuitiva}
+
+\subsubsection*{1. Comenzamos con tu filtro $F$ y el elemento prohibido $x_0$.}
+
+Queremos extender $F$ lo más posible sin permitir que entre $x_0$.
+
+\subsubsection*{2. Consideramos todos los filtros que contienen a $F$ y excluyen a $x_0$.}
+
+Definimos:
+\[
+\mathcal{F}=\{\,F_1 : F \subseteq F_1,\ x_0 \notin F_1\,\}.
+\]
+
+\subsubsection*{3. Ordenamos estos filtros por inclusión.}
+
+Un filtro es ``más grande'' que otro si contiene más elementos.
+
+\subsubsection*{4. Tomamos una cadena de filtros.}
+
+Una cadena es una sucesión totalmente ordenada:
+\[
+F_1 \subseteq F_2 \subseteq F_3 \subseteq \cdots
+\]
+
+Cada uno evita a $x_0$.
+
+\subsubsection*{5. Unimos todos los filtros de la cadena: obtenemos una cota superior.}
+
+Definimos:
+\[
+G=\bigcup_{F_i \in C} F_i.
+\]
+
+Se verifica que $G$ es un filtro y que $x_0 \notin G$.
+
+Por lo tanto, toda cadena tiene una cota superior en $\mathcal{F}$.
+
+\subsubsection*{6. Aplicamos el Lema de Zorn.}
+
+Como toda cadena en $(\mathcal{F},\subseteq)$ tiene una cota superior, existe un filtro maximal
+\[
+P \in \mathcal{F}.
+\]
+Es decir, no podemos agrandarlo sin incluir a $x_0$.
+
+\subsubsection*{7. Demostramos que $P$ es un filtro primo.}
+
+Si $x s y \in P$ pero $x \notin P$ y $y \notin P$, entonces podríamos extender $P$ agregando, por ejemplo, $x$:
+\[
+P' = [\,P \cup \{x\}\,).
+\]
+
+Este $P'$ seguiría siendo un filtro que evita $x_0$.
+
+Pero eso contradice la maximalidad de $P$.
+
+Por lo tanto, al menos uno de $x$ o $y$ debe estar en $P$.
+
+\subsection*{Conclusión}
+
+Podemos extender el filtro $F$ todo lo posible sin incluir $x_0$.  
+Esa extensión maximal—existente por el Lema de Zorn—es necesariamente un filtro primo.
+
 
 \end{document}
 
