@@ -5,7 +5,7 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{enumitem}
 
-\title{Combos de Definiciones}
+\title{Combo 4}
 \author{Camila Nanini}
 
 \newtheorem{theorem}{Teorema}
@@ -174,6 +174,41 @@ Supongamos ahora $b \leq a^c$.  Entonces como $aib \leq b$ por transitividad
 $aib \leq a^c$. Ahora $a \leq a$, por lo que $a i b \leq a i a^c$.
 Ya que $a i a^c = 0$, obtenemos que $aib \leq 0$ y por axioma $0 \leq aib$, 
 entonces $a i b = 0.$
+
+\textbf{Pequeña demo del paso $a i b \leq a i a^c$} Supongamos \(a \, i \, b \le a^{c}\). Por definición de \(\le\),
+\[
+(a \, i \, b) \, i \, a^{c} = a \, i \, b. \tag{1}
+\]
+
+Queremos probar \(a \, i \, b \le a \, i \, a^{c}\), es decir demostrar
+\[
+(a \, i \, b) \, i \, (a \, i \, a^{c}) = a \, i \, b.
+\]
+
+\[
+\begin{aligned}
+(a \, i \, b)\, i \,(a \, i \, a^{c})
+&= a\, i \,\bigl( b \, i \, (a \, i \, a^{c})\bigr)
+    &&\text{(asociatividad / conmutatividad)}\\[4pt]
+&= a\, i \,\bigl( (b \, i \, a)\, i \, a^{c}\bigr)
+    &&\text{(asociatividad)}\\[4pt]
+&= a\, i \,\bigl( (a \, i \, b)\, i \, a^{c}\bigr)
+    &&\text{(conmutatividad \(b\, i \, a = a \, i \, b\))}\\[4pt]
+&= a\, i \,(a \, i \, b)
+    &&\text{(por (1), sustituyendo \((a \, i \, b)\, i \, a^{c} = a \, i \, b\))}\\[4pt]
+&= (a \, i \, a)\, i \, b
+    &&\text{(asociatividad)}\\[4pt]
+&= a \, i \, b
+    &&\text{(idempotencia \(a \, i \, a = a\)).}
+\end{aligned}
+\]
+
+Hemos obtenido
+\[
+(a \, i \, b)\, i \,(a \, i \, a^{c}) = a \, i \, b,
+\]
+que por la definición de \(\le\) es precisamente \(a \, i \, b \le a \, i \, a^{c}\).
+
 
 \end{proof}
 \end{theorem}

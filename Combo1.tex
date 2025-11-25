@@ -53,8 +53,8 @@ Ya que $C$ es una cadena, tenemos que siempre $x \, i \, y \in G$.
 De forma análoga se prueba la propiedad restante, por lo cual $G$ es un filtro.  
 Además $x_0 \notin G$, por lo que $G \in \mathcal{F}$ es cota superior de $C$.
 
-Por el **Lema de Zorn**, $(\mathcal{F}, \subseteq)$ tiene un elemento maximal $P$.  
-Veamos que $P$ es un **filtro primo**.  
+Por el Lema de Zorn, $(\mathcal{F}, \subseteq)$ tiene un elemento maximal $P$.  
+Veamos que $P$ es un filtro primo.  
 Supongamos $x \, s \, y \in P$ y $x, y \notin P$.  
 Nótese que $[P \cup \{x\})$ es un filtro el cual contiene propiamente a $P$.  
 Entonces, ya que $P$ es un elemento maximal de $(\mathcal{F}, \subseteq)$, tenemos que 
@@ -69,7 +69,7 @@ Ya que $x_0 \in [P \cup \{x\})$, tenemos que existen elementos $p_1, \ldots, p_n
 \[
 x_0 \ge p_1 \, i \, \cdots \, i \, p_n \, i \, x
 \]
-(se deja como ejercicio justificar esto usar la def de Filtro generado por S).  
+(se deja como ejercicio justificar esto (al final del documento)).  
 Ya que $x_0 \in [P \cup \{y\})$, existen elementos $q_1, \ldots, q_m \in P$ tales que
 \[
 x_0 \ge q_1 \, i \, \cdots \, i \, q_m \, i \, y.
@@ -134,6 +134,81 @@ Lo cual \textbf{contradice la hipótesis}.
 
 \end{lemma}
 
+\section*{Demostración complementaria de el teorema del filtro primo}
+\textbf{Afirmación.}  
+"Como $x_0 \in [P \cup \{x\})$, hay $p_1,\dots,p_n \in P$ tales que  
+$x_0 \ge p_1 i \cdots i p_n i x$"
+
+\medskip
+
+Sea $P$ un filtro propio de $L$ y sea $x_0 \in [P \cup \{x\})$.  
+Por definición de clausura ideal de un filtro:
+
+\[
+x_0 \in [P \cup \{x\}) 
+\iff (\exists n\ge 1)(\exists s_1,\dots,s_n \in P\cup\{x\})\;
+x_0 \ge s_1 i \cdots i s_n. \tag{1}
+\]
+
+Supongamos \textbf{por contradicción} que
+
+\[
+s_i \in P \quad \text{para todo } i=1,\dots,n. \tag{2}
+\]
+
+Entonces, como $P$ es un filtro, es cerrado bajo meets, de modo que
+
+\[
+s_1 i \cdots i s_n \in P. \tag{3}
+\]
+
+Además, los filtros son conjuntos ascendentes: si $p\in P$ y $p\le y$, entonces $y\in P$.
+Aplicando esto a (1) y (3) obtenemos:
+
+\[
+s_1 i \cdots i s_n\in P,\qquad 
+s_1 i \cdots i s_n \le x_0
+\quad\Longrightarrow\quad x_0\in P. \tag{4}
+\]
+
+Pero por construcción de $P$ en el teorema del filtro primo, sabemos que:
+
+\[
+x_0 \notin P. \tag{5}
+\]
+
+La contradicción entre (4) y (5) demuestra que la suposición (2) es imposible.
+
+
+Por tanto, \textbf{alguno de los $s_i$ no está en $P$}, y dado que cada  
+$s_i \in P\cup\{x\}$, concluimos:
+
+\[
+\exists j \in \{1,\dots,n\} : s_j = x. \tag{6}
+\]
+
+Reordenando los índices si fuera necesario, podemos escribir:
+
+\[
+s_1 = p_1,\; \dots,\; s_{n-1} = p_{n-1} \in P, \qquad s_n = x. \tag{7}
+\]
+
+Sustituyendo esta descomposición en (1), obtenemos:
+
+\[
+x_0 \ge p_1 i \cdots i p_{n-1} i x. \tag{8}
+\]
+
+Renombrando $n-1$ como $n$, queda:
+
+\[
+\boxed{
+x_0 \ge p_1 i \cdots i p_n i x 
+\quad \text{con } p_i \in P.
+}
+\]
+
+
 \section*{Auxiliares de Demostraciones}
 \begin{enumerate}
     \item Lema de propiedades básicas de $\vdash$: Sea $(\Sigma, \tau)$ una teoría.
@@ -159,11 +234,6 @@ Lo cual \textbf{contradice la hipótesis}.
     \end{enumerate}
 
     \item {(Lema de Zorn)} Sea $(P, \leq)$ un poset y supongamos que cada cadena de $(P, \leq)$ tiene al menos una cota superior. Entonces, hay un elemento maximal en $(P, \leq)$.
-    \item Filtro generado por $S$: Dado un conjunto $S \subseteq L$, denotemos con $[S)$ el siguiente conjunto:
-    \[
-    [S) = \{\, y \in L : y \geq s_1 \, i \, \cdots \, i \, s_n \text{, para algunos } s_1, \ldots, s_n \in S,\; n \geq 1 \,\}.
-    \]
-
 
 \end{enumerate}
 
