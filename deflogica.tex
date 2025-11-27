@@ -126,11 +126,11 @@
 
 \section*{Combo 3}
 \begin{enumerate}[label=(\arabic*)]
-    \item Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T^\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina $t^A[a_1, \ldots, a_n]$ (i.e. Convención notacional 2)
+    \item Dados $t =_d t(v_1, \ldots, v_n) \in T^\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, defina $t^A[a_1, \ldots, a_n]$ (i.e. Convención notacional 2)
 
     \bigskip
     
-    Dados $t \stackrel{d}{=} t(v_1, \ldots, v_n) \in T^\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, se define:
+    Dados $t =_d t(v_1, \ldots, v_n) \in T^\tau$, $A$ una estructura de tipo $\tau$ y $a_1, \ldots, a_n \in A$, se define:
     \[
     t^A[a_1, \ldots, a_n]
     \]
@@ -274,7 +274,7 @@ Explique la notación declaratoria para términos con sus tres Convenciones Nota
 
     Si $t$ es un término de tipo $\tau$, entonces escribiremos 
     \[
-    t = d_t(v_1, \ldots, v_n)
+    t =_d t(v_1, \ldots, v_n)
     \]
     para declarar que $v_1, \ldots, v_n$ son variables distintas (con $n \ge 1$) y tales que toda variable que ocurre en $t$ pertenece a $\{v_1, \ldots, v_n\}$ (no necesariamente toda $v_j$ debe ocurrir en $t$).
 
@@ -312,17 +312,12 @@ Explique la notación declaratoria para fórmulas con sus tres Convenciones Nota
 
 Si $\varphi$ es una fórmula de tipo $\tau$, entonces escribiremos 
 \[
-\varphi = d_\varphi(v_1, \ldots, v_n)
+\varphi =_d \varphi(v_1, \ldots, v_n)
 \]
 para declarar que $v_1, \ldots, v_n$ son variables distintas (con $n \ge 1$) tales que 
 \[
 L_i(\varphi) \subseteq \{v_1, \ldots, v_n\}.
 \]
-Tal como para el caso de términos, el uso de declaraciones de la forma 
-\[
-\varphi = d_\varphi(v_1, \ldots, v_n)
-\]
-será muy útil cuando se combina con ciertas convenciones notacionales que describiremos a continuación.
 
 
 \begin{enumerate}

@@ -56,7 +56,7 @@ Procedemos por inducción.
 
 \medskip
 \noindent
-\textbf{Teo$_k$:} Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi \in F_\tau^k$. Entonces
+\textbf{Teo$_k$:} Supongamos que $F: A \to B$ es un isomorfismo. Sea $\varphi \in F^\tau_k$. Entonces
 \[
 A \vDash \varphi[\vec{a}] \text{ sii } B \vDash \varphi[F(\vec{a})],
 \]
@@ -97,13 +97,13 @@ Veamos ahora que Teo$_k$ implica Teo$_{k+1}$.
 Supongamos que vale Teo$_k$. Probaremos que entonces vale Teo$_{k+1}$.
 
 \smallskip
-Si $\varphi \in F_\tau^k$, podemos aplicar directamente Teo$_k$.  
-Supongamos entonces que $\varphi \in F_\tau^{k+1} - F_\tau^k$.  
+Si $\varphi \in F^\tau_k$, podemos aplicar directamente Teo$_k$.  
+Supongamos entonces que $\varphi \in F^\tau_{k+1} - F^\tau_k$.  
 Por el Lema de Lectura Única de fórmulas, hay varios casos.
 
 \medskip
 \noindent
-\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F_\tau^k$. Entonces:
+\textbf{Caso} $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau_k$. Entonces:
 \[
 \begin{aligned}
 A \vDash \varphi[\vec{a}]
@@ -118,7 +118,7 @@ $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$ y $\varphi = \neg \varphi_1$ s
 
 \medskip
 \noindent
-\textbf{Caso} $\varphi = \forall x_j \varphi_1$, con $\varphi_1 \in F_\tau^k$.  
+\textbf{Caso} $\varphi = \forall x_j \varphi_1$, con $\varphi_1 \in F^\tau_k$.  
 Veamos cada implicación por separado.
 
 \smallskip
@@ -301,7 +301,7 @@ A continuación damos una prueba formal de
 
 \section*{Auxiliares de Demostraciones}
 \begin{enumerate}
-    \item Lema de menú de términos: Supongamos $t \in T^k_\tau$, con $k \ge 1$. Entonces se da alguna de las siguientes:
+    \item Lema de menú de términos: Supongamos $t \in T_k^\tau$, con $k \ge 1$. Entonces se da alguna de las siguientes:
     \begin{enumerate}[label=(\alph*)]
         \item $t \in Var \cup C$.
         \item $t = f(t_1, \ldots, t_n)$, con $f \in F_n$, $n \ge 1$ y $t_1, \ldots, t_n \in T_{k-1}^\tau$.
