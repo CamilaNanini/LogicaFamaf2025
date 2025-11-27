@@ -1,0 +1,315 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Combo 6}
+\author{Camila Nanini}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
+\newcommand{\deduce}[2]{(#1, #2) \vdash}
+\newcommand{\incon}{es inconsistente}
+
+\begin{document}
+
+\maketitle
+
+\section*{Combo 6}
+
+\begin{theorem}[Teorema de Completitud]
+Sea $T = (\Sigma, \tau)$ una teoría de primer orden.  
+Si $T \models \varphi$, entonces $T \vdash \varphi$.
+\end{theorem}
+
+Haga solo el caso en que $\tau$ tiene una cantidad infinita de nombres de constantes que no ocurren en las sentencias de $\Sigma$.  
+En la exposición de la prueba no es necesario que demuestre los ítems: (1), (2), (3) y (4).
+
+\begin{proof}
+Primero probaremos completitud para el caso en que $\tau$ tiene una cantidad infinita
+de nombres de constante que no ocurren en las sentencias de $\Sigma$.
+Lo probaremos por el absurdo: supongamos que hay una sentencia $\varphi_0$ tal que
+$T \models \varphi_0$ y $T \nvdash \varphi_0$.
+
+Nótese que, ya que $T \nvdash \varphi_0$, tenemos que
+$[\varphi_0]_T \ne 1^T = \{\varphi \in S^\tau : T \vdash \varphi\}$
+O sea que $[\lnot \varphi_0]_T \ne 0^T$.
+
+Por el Lema de enumeracion hay una infinitupla $(\gamma_1,\gamma_2,\dots)\in F^{\tau \mathbb N}$ tal que:
+
+\begin{itemize}
+    \item $|Li(\gamma_j)| \le 1$ para cada $j = 1,2,\dots$
+    \item Si $|Li(\gamma)| \le 1$, entonces $\gamma = \gamma_j$ para algún $j \in \mathbb N$.
+\end{itemize}
+
+Para cada $j\in\mathbb N$, sea $w_j \in Var$ tal que $Li(\gamma_j) \subseteq \{w_j\}$.
+Para cada $j$, declaremos $\gamma_j \; {:=}_d\; \gamma_j(w_j)$.
+
+Nótese que por el Lema del Infimo tenemos que
+\[
+\inf\bigl(\{[\gamma_j(t)]_T : t \in T^\tau_c\}\bigr)
+= [\forall w_j\, \gamma_j(w_j)]_T,
+\qquad j=1,2,\dots
+\]
+
+Por el Teorema de Rasiowa–Sikorski, existe un filtro primo $U$ de $A_T$ tal que:
+
+\begin{enumerate}[label=(\alph*)]
+    \item $[\lnot \varphi_0]_T \in U$,
+    \item Para cada $j\in\mathbb N$,
+    \[
+    \{[\gamma_j(t)]_T : t\in T^\tau_c\} \subseteq U
+    \quad\Longrightarrow\quad
+    [\forall w_j\, \gamma_j(w_j)]_T \in U.
+    \]
+\end{enumerate}
+
+Dado que la infinitupla $(\gamma_1,\gamma_2,\dots)$ cubre todas las fórmulas
+con a lo sumo una variable libre, podemos reescribir la propiedad (b) como:
+
+\begin{enumerate}[label=(b$'$)]
+    \item Para cada $\varphi {:=}_d \varphi(v) \in F^\tau$, si
+    \[
+    \{[\varphi(t)]_T : t \in T^\tau_c\} \subseteq U,
+    \]
+    entonces
+    \[
+    [\forall v\, \varphi(v)]_T \in U.
+    \]
+\end{enumerate}
+
+Definimos sobre $T^\tau_c$ la siguiente relación:
+\[
+t \,\bowtie\, s \quad\text{si y sólo si}\quad [(t \equiv s)]_T \in U.
+\]
+
+Entonces se verifica que:
+
+\begin{enumerate}
+    \item $\bowtie$ es una relación de equivalencia.
+
+    \item Para cada $\varphi {:=}_d \varphi(v_1,\dots,v_n)\in F_\tau$ y
+    $t_1,\dots,t_n,s_1,\dots,s_n \in T^\tau_c$, si
+    \[
+    t_1 \bowtie s_1,\; t_2 \bowtie s_2,\;\dots,\; t_n \bowtie s_n,
+    \]
+    entonces
+    \[
+    [\varphi(t_1,\dots,t_n)]_T \in U
+    \quad\Longleftrightarrow\quad
+    [\varphi(s_1,\dots,s_n)]_T \in U.
+    \]
+
+    \item Para cada $f \in F_n$ y
+    $t_1,\dots,t_n,s_1,\dots,s_n \in T^\tau_c$,
+    \[
+    t_1 \bowtie s_1,\ t_2 \bowtie s_2,\ \dots,\ t_n \bowtie s_n
+    \quad\Longrightarrow\quad
+    f(t_1,\dots,t_n)\; \bowtie\; f(s_1,\dots,s_n).
+    \]
+
+    \item Para cada $t {:=}_d t(v_1,\dots,v_n) \in T^\tau$ y 
+    $t_1,\dots,t_n \in T^\tau_c$, tenemos que
+    \[
+    t^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+    =
+    t(t_1,\dots,t_n)/\!\bowtie.
+    \]
+
+    \item Para cada $\varphi {:=}_d \varphi(v_1,\dots,v_n)\in F_\tau$ y 
+    $t_1,\dots,t_n \in T^\tau_c$, tenemos que
+    \[
+    A_U \models \varphi[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+    \quad\text{si y sólo si}\quad
+    [\varphi(t_1,\dots,t_n)]_T \in U.
+    \]
+\end{enumerate}
+Probaremos (5) por inducción en el $k$ tal que $\varphi \in F^\tau_{k}$. 
+El caso $k=0$ es dejado al lector. 
+
+Supongamos que (5) vale para $\varphi \in F^\tau_{k}$.  
+Sea ahora $\varphi {:=}_d \varphi(v_1,\dots,v_n) \in F^\tau_{k+1} \setminus F^\tau_k$. 
+Hay varios casos:
+
+\subsubsection*{Caso $\varphi = (\varphi_1 \lor \varphi_2)$}
+
+Por la Convención Notacional 6, tenemos 
+$\varphi_i {:=}_d \varphi_i(v_1,\dots,v_n)$. Entonces:
+
+\[
+\begin{aligned}
+A_U \models \varphi[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+&\iff 
+A_U \models \varphi_1[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+\text{ o }
+A_U \models \varphi_2[t_1/\!\bowtie,\dots,t_n/\!\bowtie] \\
+&\iff
+[\varphi_1(t_1,\dots,t_n)]_T \in U 
+\text{ o }
+[\varphi_2(t_1,\dots,t_n)]_T \in U \\
+&\iff
+[\varphi_1(t_1,\dots,t_n)]_T \, s^T \,
+[\varphi_2(t_1,\dots,t_n)]_T \in U \\
+&\iff
+[(\varphi_1(t_1,\dots,t_n)\lor \varphi_2(t_1,\dots,t_n))]_T \in U \\
+&\iff
+[\varphi(t_1,\dots,t_n)]_T \in U.
+\end{aligned}
+\]
+
+\subsubsection*{Caso $\varphi = \forall v\, \varphi_1$ con $v \in Var \setminus \{v_1,\dots,v_n\}$}
+
+Por la Convención Notacional 6, 
+$\varphi_1 {:=}_d \varphi_1(v_1,\dots,v_n,v)$. Entonces:
+
+\[
+\begin{aligned}
+A_U \models \varphi[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+&\iff 
+A_U \models \varphi_1[t_1/\!\bowtie,\dots,t_n/\!\bowtie,t/\!\bowtie],
+\quad \text{para todo } t\in T_c^\tau \\
+&\iff
+[\varphi_1(t_1,\dots,t_n,t)]_T \in U,
+\quad \text{para todo } t\in T_c^\tau \\
+&\iff
+[\forall v\,\varphi_1(t_1,\dots,t_n,v)]_T \in U \\
+&\iff
+[\varphi(t_1,\dots,t_n)]_T \in U.
+\end{aligned}
+\]
+
+\subsubsection*{Caso $\varphi = \exists v\, \varphi_1$ con $v \in Var \setminus \{v_1,\dots,v_n\}$}
+
+Por la Convención Notacional 6, 
+$\varphi_1 {:=}_d \varphi_1(v_1,\dots,v_n,v)$. Entonces:
+
+\[
+\begin{aligned}
+A_U \models \varphi[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+&\iff 
+A_U \models \varphi_1[t_1/\!\bowtie,\dots,t_n/\!\bowtie,t/\!\bowtie],
+\quad \text{para algún } t\in T_c^\tau \\
+&\iff
+[\varphi_1(t_1,\dots,t_n,t)]_T \in U,
+\quad \text{para algún } t\in T_c^\tau \\
+&\iff
+([\varphi_1(t_1,\dots,t_n,t)]_T)^c_T \notin U,
+\quad \text{para algún } t\in T_c^\tau \\
+&\iff
+[\neg\varphi_1(t_1,\dots,t_n,t)]_T \notin U,
+\quad \text{para algún } t\in T_c^\tau \\
+&\iff
+[\forall v\, \neg\varphi_1(t_1,\dots,t_n,v)]_T \notin U \\
+&\iff
+([\forall v\, \neg\varphi_1(t_1,\dots,t_n,v)]_T)^{c^T} \in U \\
+&\iff
+[\neg\forall v\, \neg\varphi_1(t_1,\dots,t_n,v)]_T \in U \\
+&\iff
+[\varphi(t_1,\dots,t_n)]_T \in U.
+\end{aligned}
+\]
+
+\subsubsection*{Conclusión}
+
+El ítem (5) implica que para cada sentencia $\psi\in S^\tau$:
+
+\[
+A_U \models \psi 
+\quad\text{si y sólo si}\quad
+[\psi]_T \in U.
+\]
+
+Por lo tanto:
+
+\[
+A_U \models \Sigma
+\qquad\text{y}\qquad
+A_U \models \neg\varphi_0,
+\]
+
+lo cual contradice la suposición de que $T \models \varphi_0$.
+
+\bigskip
+
+Ahora supongamos que $\tau$ es cualquier tipo. 
+Sean $s_1$ y $s_2$ símbolos no pertenecientes a la lista
+\[
+\forall\ \exists\ \neg\ \lor\ \land\ \to\ \leftrightarrow\ ( \ )\ ,\ \equiv\ 
+X\ \mathit{0 \ 1 \ \dots\ 9}\ \mathbf{0 \ 1 \ \dots\ 9}
+\]
+y tales que ninguno ocurra en alguna palabra de $C \cup F \cup R$.
+
+Si $T \models \varphi$, entonces —usando el Lema de Coincidencia— se tiene:
+
+\[
+(\Sigma,(C \cup \{s_1s_2s_1,\ s_1s_2s_2s_1,\dots\},F,R,a)) \models \varphi,
+\]
+
+por lo cual
+
+\[
+(\Sigma,(C \cup \{s_1s_2s_1,\ s_1s_2s_2s_1,\dots\},F,R,a)) \vdash \varphi.
+\]
+
+Pero por el Lema de Tipos parecidos, concluimos:
+
+\[
+T \vdash \varphi.
+\]
+
+\end{proof}
+
+\section*{Auxiliares de Demostraciones}
+
+\begin{enumerate}
+    \item \textbf{(Lema de enumeración).} Sea $\tau$ un tipo.  
+    Hay una infinitupla $(\gamma_1,\gamma_2,\ldots)\in F^{\tau^{\mathbb{N}}}$ tal que:
+
+    \begin{enumerate}
+        \item $\lvert L_i(\gamma_j)\rvert \le 1$, para cada $j = 1,2,\ldots$
+        \item Si $\lvert L_i(\gamma)\rvert \le 1$, entonces $\gamma = \gamma_j$ para algún $j\in\mathbb{N}$.
+    \end{enumerate}
+
+    \item \textbf{(Lema del Ínfimo).} Sea $T = (\Sigma, \tau)$ una teoría y supongamos que $\tau$ tiene una cantidad infinita 
+    de nombres de constante que no ocurren en las sentencias de $\Sigma$. 
+    Entonces, para cada fórmula $\varphi =_{d} \varphi(v)$, se tiene que en el álgebra de Lindenbaum $A_T$:
+
+    \[
+    [\forall v\, \varphi(v)]_T 
+    = 
+    \inf\bigl(\{\, [\varphi(t)]_T : t \in T_c^\tau \,\}\bigr).
+    \]
+
+    \item \textbf{(Teorema de Rasiowa y Sikorski).} 
+    Sea $(B, s, i, c, 0, 1)$ un álgebra de Boole. 
+    Sea $a \in B$, $a \neq 0$. 
+    Supongamos que $(A_1, A_2, \ldots)$ es una infinitupla de subconjuntos de $B$ tal que existe 
+    $\inf(A_j)$ para cada $j = 1,2,\ldots$. 
+    Entonces existe un filtro primo $P$ que cumple:
+
+    \begin{enumerate}
+        \item[(a)] $a \in P$,
+        \item[(b)] Si $P \supseteq A_j$, entonces $\,\inf(A_j) \in P$, para cada $j = 1,2,\ldots$.
+    \end{enumerate}
+ 
+    \item \textbf{(Tipos parecidos).} 
+    Sean $\tau = (C, F, R, a)$ y $\tau' = (C', F', R', a')$ tipos.
+
+    \begin{enumerate}
+        \item Si $C \subseteq C'$, $F \subseteq F'$, $R \subseteq R'$ y $a'|_{F \cup R} = a$, entonces
+        \[
+        (\Sigma, \tau) \vdash \varphi \quad \Rightarrow \quad (\Sigma, \tau') \vdash \varphi .
+        \]
+
+        \item Si $C \subseteq C'$, $F = F'$, $R = R'$ y $a' = a$, entonces
+        \[
+        (\Sigma, \tau') \vdash \varphi \quad \Rightarrow \quad (\Sigma, \tau) \vdash \varphi,
+        \]
+        cada vez que $\Sigma \cup \{\varphi\} \subseteq S_\tau$.
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
