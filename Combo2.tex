@@ -226,12 +226,12 @@ Es completamente similar al anterior.
 \noindent
 Supongamos $A \vDash \varphi[\vec{a}]$. Entonces, por (8) en la definición de 
 $A \vDash \varphi[\vec{a}]$, se tiene que 
-$A \vDash \varphi_1[\downarrow a_j(\vec{a})]$, para todo $a \in A$. 
-Nótese que $\downarrow a_j(\vec{a})$ y $\downarrow a_j(\vec{b})$ 
+$A \vDash \varphi_1[\downarrow^a_j(\vec{a})]$, para todo $a \in A$. 
+Nótese que $\downarrow^a_j(\vec{a})$ y $\downarrow^a_j(\vec{b})$ 
 coinciden en toda $x_i \in L_i(\varphi_1)$, ya que 
 $L_i(\varphi_1) \subseteq L_i(\varphi) \cup \{x_j\}$. 
 O sea, por Teo$_k$ se tiene que 
-$A \vDash \varphi_1[\downarrow a_j(\vec{b})]$ para todo $a \in A$, 
+$A \vDash \varphi_1[\downarrow^a_j(\vec{b})]$ para todo $a \in A$, 
 lo cual, por (8) en la definición de $A \vDash \varphi[\vec{a}]$, 
 nos dice que $A \vDash \varphi[\vec{b}]$. 
 La prueba de que $A \vDash \varphi[\vec{b}]$ implica que 
@@ -255,6 +255,18 @@ Es similar al anterior.
     \[
     t^A[\vec{a}] = t^A[\vec{b}].
     \]
+
+    \item \textbf{Identidades de los reticulados terna.}
+
+    \begin{align*}
+    \text{(I1)} \quad & x \, s \, x = x \, i \, x = x, && \text{cualesquiera sea } x \in L, \\
+    \text{(I2)} \quad & x \, s \, y = y \, s \, x, && \text{cualesquiera sean } x, y \in L, \\
+    \text{(I3)} \quad & x \, i \, y = y \, i \, x, && \text{cualesquiera sean } x, y \in L, \\
+    \text{(I4)} \quad & (x \, s \, y) \, s \, z = x \, s \, (y \, s \, z), && \text{cualesquiera sean } x, y, z \in L, \\
+    \text{(I5)} \quad & (x \, i \, y) \, i \, z = x \, i \, (y \, i \, z), && \text{cualesquiera sean } x, y, z \in L, \\
+    \text{(I6)} \quad & x \, s \, (x \, i \, y) = x, && \text{cualesquiera sean } x, y \in L, \\
+    \text{(I7)} \quad & x \, i \, (x \, s \, y) = x, && \text{cualesquiera sean } x, y \in L.
+    \end{align*}
 
 \end{enumerate}
 

@@ -30,8 +30,8 @@ Sea $(\Sigma, \tau)$ una teoría.
 \begin{proof}
 (1) Nótese que basta con hacer el caso $n = 1$. El caso con $n \geq 2$ se obtiene aplicando $n$ veces el caso $n = 1$.  
 Supongamos entonces que $(\Sigma, \tau) \vdash \varphi_1$ y $(\Sigma \cup \{\varphi_1\}, \tau) \vdash \varphi$.  
-Sea $(\alpha_1, \ldots, \alpha_h, I_1, \ldots, I_h)$ una prueba formal de $\varphi_1$ en $(\Sigma, \tau)$.  
-Sea $(\psi_1, \ldots, \psi_m, J_1, \ldots, J_m)$ una prueba formal de $\varphi$ en $(\Sigma \cup \{\varphi_1\}, \tau)$.  
+Sea $(\alpha_1 \ldots \alpha_h, I_1 \ldots I_h)$ una prueba formal de $\varphi_1$ en $(\Sigma, \tau)$.  
+Sea $(\psi_1 \ldots \psi_m, J_1 \ldots J_m)$ una prueba formal de $\varphi$ en $(\Sigma \cup \{\varphi_1\}, \tau)$.  
 
 Nótese que, por los Lemas Cambio de indice de hipotesis y Cambio de nombres de constante auxiliares, podemos suponer que estas dos pruebas no comparten ningún nombre de constante auxiliar y que tampoco comparten números asociados a hipótesis o tesis.  
 
@@ -51,7 +51,7 @@ Para cada $i = 1, \ldots, m$, definamos $\tilde{J}_i$ de la siguiente manera:
 
 Es fácil chequear que 
 \[
-(\alpha_1, \ldots, \alpha_h, \psi_1, \ldots, \psi_m, I_1, \ldots, I_h, \tilde{J}_1, \ldots, \tilde{J}_m)
+(\alpha_1 \ldots \alpha_h \psi_1 \ldots \psi_m, I_1 \ldots I_h \tilde{J}_1 \ldots \tilde{J}_m)
 \]
 es una prueba formal de $\varphi$ en $(\Sigma, \tau)$.
 
@@ -69,7 +69,7 @@ es una prueba formal de $\varphi$ en $(\Sigma \cup \{\varphi_1, \ldots, \varphi_
 \vspace{1em}
 (3) Supongamos $(\Sigma, \tau) \vdash (\varphi \to \psi)$. Entonces tenemos que $(\Sigma \cup \{\varphi\}, \tau) \vdash (\varphi \to \psi), \varphi$, lo cual por (2) nos dice que $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$.  
 
-Supongamos ahora que $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$. Sea $(\varphi_1, \ldots, \varphi_n, J_1, \ldots, J_n)$ una prueba formal de $\psi$ en $(\Sigma \cup \{\varphi\}, \tau)$.  
+Supongamos ahora que $(\Sigma \cup \{\varphi\}, \tau) \vdash \psi$. Sea $(\varphi_1 \ldots \varphi_n, J_1 \ldots J_n)$ una prueba formal de $\psi$ en $(\Sigma \cup \{\varphi\}, \tau)$.  
 
 Para cada $i = 1, \ldots, n$, definamos $\tilde{J}_i$ como sigue:
 
@@ -90,8 +90,8 @@ Nótese que $\tilde{J}_n$ no es de la forma $\textsc{Tesis}\bar{k}\beta$ ni de l
 
 Es fácil chequear que:
 \[
-(\varphi, \varphi_1, \ldots, \varphi_n, (\varphi \to \psi), 
-\textsc{Hipótesis}\bar{m}, \tilde{J}_1, \ldots, \tilde{J}_{n-1}, \textsc{Tesis}\bar{m}\tilde{J}_n, \textsc{Conclusión})
+(\varphi \varphi_1 \ldots \varphi_n (\varphi \to \psi), 
+\textsc{Hipótesis}\bar{m} \tilde{J}_1 \ldots \tilde{J}_{n-1} \textsc{Tesis}\bar{m}\tilde{J}_n \textsc{Conclusión})
 \]
 es una prueba formal de $(\varphi \to \psi)$ en $(\Sigma, \tau)$.
 \end{proof}
