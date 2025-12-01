@@ -5,7 +5,7 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{enumitem}
 
-\title{Combo 6}
+\title{Combo 5}
 \author{Camila Nanini}
 
 \newtheorem{theorem}{Teorema}
@@ -17,7 +17,7 @@
 
 \maketitle
 
-\section*{Combo 6}
+\section*{Combo 5}
 
 \begin{theorem}[Teorema de Completitud]
 Sea $T = (\Sigma, \tau)$ una teoría de primer orden.  
@@ -25,7 +25,7 @@ Si $T \models \varphi$, entonces $T \vdash \varphi$.
 \end{theorem}
 
 Haga solo el caso en que $\tau$ tiene una cantidad infinita de nombres de constantes que no ocurren en las sentencias de $\Sigma$.  
-En la exposición de la prueba no es necesario que demuestre los ítems: (1), (2), (3) y (4).
+En la exposición de la prueba no es necesario que demuestre los ítems: (1) y (5).
 
 \begin{proof}
 Primero probaremos completitud para el caso en que $\tau$ tiene una cantidad infinita
@@ -141,192 +141,104 @@ Entonces se verifica que:
     [\varphi(t_1,\dots,t_n)]_T \in U.
     \]
 \end{enumerate}
-Probaremos (5) por inducción en el $k$ tal que $\varphi \in F^\tau_{k}$. 
-El caso $k=0$ es dejado al lector (Al final). 
 
-Supongamos que (5) vale para $\varphi \in F^\tau_{k}$.  
-Sea ahora $\varphi {:=}_d \varphi(v_1,\dots,v_n) \in F^\tau_{k+1} \setminus F^\tau_k$. 
-Hay varios casos:
-
-\subsubsection*{Caso $\varphi = (\varphi_1 \lor \varphi_2)$}
-
-Por la Convención Notacional 6, tenemos 
-$\varphi_i {:=}_d \varphi_i(v_1,\dots,v_n)$. Entonces:
-
+Probaremos (2). Nótese que
 \[
-\begin{aligned}
-A_U \models \varphi[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
-&\iff 
-A_U \models \varphi_1[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
-\text{ o }
-A_U \models \varphi_2[t_1/\!\bowtie,\dots,t_n/\!\bowtie] \\
-&\iff
-[\varphi_1(t_1,\dots,t_n)]_T \in U 
-\text{ o }
-[\varphi_2(t_1,\dots,t_n)]_T \in U \\
-&\iff
-[\varphi_1(t_1,\dots,t_n)]_T \, s^T \,
-[\varphi_2(t_1,\dots,t_n)]_T \in U \\
-&\iff
-[(\varphi_1(t_1,\dots,t_n)\lor \varphi_2(t_1,\dots,t_n))]_T \in U \\
-&\iff
-[\varphi(t_1,\dots,t_n)]_T \in U.
-\end{aligned}
+T \;\vdash\; 
+\bigl( (t_{1} \equiv s_{1}) \;\wedge\; (t_{2} \equiv s_{2}) \;\wedge\; \cdots \;\wedge\; (t_{n} \equiv s_{n}) 
+\;\wedge\; \varphi(t_{1},\dots,t_{n}) \bigr)
+\;\to\;
+\varphi(s_{1},\dots,s_{n}),
+\]
+lo cual nos dice que
+\[
+[(t_{1} \equiv s_{1})]_{T}
+\; i^{T} \;
+[(t_{2} \equiv s_{2})]_{T}
+\; i^{T} \;\cdots\; i^{T} \;
+[(t_{n} \equiv s_{n})]_{T}
+\; i^{T} \;
+[\varphi(t_{1},\dots,t_{n})]_{T}
+\;\le^{T}\;
+[\varphi(s_{1},\dots,s_{n})]_{T}.
 \]
 
-\subsubsection*{Caso $\varphi = \forall v\, \varphi_1$ con $v \in Var \setminus \{v_1,\dots,v_n\}$}
-
-Por la Convención Notacional 6, 
-$\varphi_1 {:=}_d \varphi_1(v_1,\dots,v_n,v)$. Entonces:
-
+De esto se desprende que
 \[
-\begin{aligned}
-A_U \models \varphi[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
-&\iff 
-A_U \models \varphi_1[t_1/\!\bowtie,\dots,t_n/\!\bowtie,t/\!\bowtie],
-\quad \text{para todo } t\in T_c^\tau \\
-&\iff
-[\varphi_1(t_1,\dots,t_n,t)]_T \in U,
-\quad \text{para todo } t\in T_c^\tau \\
-&\iff
-[\forall v\,\varphi_1(t_1,\dots,t_n,v)]_T \in U \\
-&\iff
-[\varphi(t_1,\dots,t_n)]_T \in U.
-\end{aligned}
+[\varphi(t_{1},\dots,t_{n})]_{T} \in U 
+\quad\Longrightarrow\quad
+[\varphi(s_{1},\dots,s_{n})]_{T} \in U,
 \]
+ya que \(U\) es un filtro. La otra implicación es análoga.
 
-\subsubsection*{Caso $\varphi = \exists v\, \varphi_1$ con $v \in Var \setminus \{v_1,\dots,v_n\}$}
-
-Por la Convención Notacional 6, 
-$\varphi_1 {:=}_d \varphi_1(v_1,\dots,v_n,v)$. Entonces:
-
+Para probar (3) podemos tomar 
 \[
-\begin{aligned}
-A_U \models \varphi[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
-&\iff 
-A_U \models \varphi_1[t_1/\!\bowtie,\dots,t_n/\!\bowtie,t/\!\bowtie],
-\quad \text{para algún } t\in T_c^\tau \\
-&\iff
-[\varphi_1(t_1,\dots,t_n,t)]_T \in U,
-\quad \text{para algún } t\in T_c^\tau \\
-&\iff
-([\varphi_1(t_1,\dots,t_n,t)]_T)^c_T \notin U,
-\quad \text{para algún } t\in T_c^\tau \\
-&\iff
-[\neg\varphi_1(t_1,\dots,t_n,t)]_T \notin U,
-\quad \text{para algún } t\in T_c^\tau \\
-&\iff
-[\forall v\, \neg\varphi_1(t_1,\dots,t_n,v)]_T \notin U \\
-&\iff
-([\forall v\, \neg\varphi_1(t_1,\dots,t_n,v)]_T)^{c^T} \in U \\
-&\iff
-[\neg\forall v\, \neg\varphi_1(t_1,\dots,t_n,v)]_T \in U \\
-&\iff
-[\varphi(t_1,\dots,t_n)]_T \in U.
-\end{aligned}
+\varphi \;=\; \bigl(f(v_{1},\dots,v_{n}) \equiv f(s_{1},\dots,s_{n})\bigr)
 \]
+y aplicar (2).
 
-\subsubsection*{Conclusión}
-
-El ítem (5) implica que para cada sentencia $\psi\in S^\tau$:
-
-\[
-A_U \models \psi 
-\quad\text{si y sólo si}\quad
-[\psi]_T \in U.
-\]
-
-Por lo tanto:
-
-\[
-A_U \models \Sigma
-\qquad\text{y}\qquad
-A_U \models \neg\varphi_0,
-\]
-
-lo cual contradice la suposición de que $T \models \varphi_0$.
-
-\bigskip
-
-Ahora supongamos que $\tau$ es cualquier tipo. 
-Sean $s_1$ y $s_2$ símbolos no pertenecientes a la lista
-\[
-\forall\ \exists\ \neg\ \lor\ \land\ \to\ \leftrightarrow\ ( \ )\ ,\ \equiv\ 
-X\ \mathit{0 \ 1 \ \dots\ 9}\ \mathbf{0 \ 1 \ \dots\ 9}
-\]
-y tales que ninguno ocurra en alguna palabra de $C \cup F \cup R$.
-
-Si $T \models \varphi$, entonces —usando el Lema de Coincidencia— se tiene:
-
-\[
-(\Sigma,(C \cup \{s_1s_2s_1,\ s_1s_2s_2s_1,\dots\},F,R,a)) \models \varphi,
-\]
-
-por lo cual
-
-\[
-(\Sigma,(C \cup \{s_1s_2s_1,\ s_1s_2s_2s_1,\dots\},F,R,a)) \vdash \varphi.
-\]
-
-Pero por el Lema de Tipos parecidos, concluimos:
-
-\[
-T \vdash \varphi.
-\]
-
-\end{proof}
-
-\subsubsection*{Caso base: $k = 0$}
-
-Si $\varphi \in F^\tau_0$, entonces $\varphi$ es atómica.  
-Hay dos casos a considerar:
-
-\paragraph{1. Caso $\varphi$ de la forma $t_1 = t_2$.}
-
-Debemos ver que
-\[
-A_U \models (t_1 = t_2)[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
-\quad\Longleftrightarrow\quad
-[(t_1 = t_2)]_T \in U.
-\]
-
-Por definición de la interpretación de términos en $A_U$,
+\subsubsection*{Prueba del ítem (4).}
+\emph{Afirmación.} Para todo término \(t =_{d} t(v_1,\dots,v_n)\in T^\tau\) y para todo
+\(t_1,\dots,t_n \in T^\tau_c\) se tiene
 \[
 t^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
-= t(t_1,\dots,t_n)/\!\bowtie.
+= 
+t(t_1,\dots,t_n)/\!\bowtie.
 \]
 
-Asimismo, la interpretación del símbolo ``$=$'' en $A_U$ es:
+Por inducción sobre la formación del término \(t\).
+
+\textbf{Caso base.}
+\begin{itemize}
+  \item Si \(t\) es la variable \(v_i\), entonces por definición de la evaluación en \(A_U\)
+  \[
+  t^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+  \text{ (Carácter recursivo de la notación $t^A[a_1,...,a_n]$)}
+   \]
+   \[
+  = t_i/\!\bowtie \text{ (Def $A_U$)}
+   \]
+   \[
+  = t(t_1,\dots,t_n)/\!\bowtie \text{ (Notacion Declaratoria)}
+  \]
+  \item Si \(t\) es una constante \(c\)   \[
+  t^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie] = c^{A_U} \text{ (Carácter recursivo de la notación $t^A[a_1,...,a_n]$)}
+  \]
+  \[ 
+  = c/\!\bowtie,\text{ (Def $A_U$)}
+  \]
+  \[
+  = t(t_1,\dots,t_n)/\!\bowtie \text{ (Notacion Declaratoria)}
+  \]
+\end{itemize}
+
+\textbf{Paso inductivo.} Supongamos que la afirmación vale para todos los subtérminos de complejidad menor que \(t\).  
+Sea \(t\) de la forma \(f(s_1,\dots,s_m)\), donde \(f\) es un símbolo de función \(m\)-ario y \(s_1,\dots,s_m\) son términos más simples. Entonces, por la definición de evaluación en la estructura \(A_U\),
 \[
-A_U \models t_1 = t_2
-\quad\Longleftrightarrow\quad
-t_1/\!\bowtie = t_2/\!\bowtie
-\quad\Longleftrightarrow\quad
-[(t_1 \equiv t_2)]_T \in U.
+t^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
+= f^{A_U}\bigl(s_1^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie],\dots,
+s_m^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie]\bigr).
 \]
-
-Pero en el álgebra de Lindenbaum $[(t_1 = t_2)]_T = [(t_1 \equiv t_2)]_T$,  
-por lo que obtenemos exactamente la condición deseada:
+Aplicando la hipótesis inductiva a cada \(s_j\) obtenemos
 \[
-A_U \models t_1 = t_2
-\quad\Longleftrightarrow\quad
-[(t_1 = t_2)]_T \in U.
+s_j^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie] = s_j(t_1,\dots,t_n)/\!\bowtie,
+\qquad j=1,\dots,m.
 \]
-
-\paragraph{2. Caso $\varphi$ de la forma $R(t_1,\dots,t_m)$.}
-
-Por definición de la interpretación del predicado $R$ en $A_U$,
+Por definición de la interpretación \(f^{A_U}\) en \(A_U\) (la cual toma clases de términos y devuelve la clase del término formado por \(f\)),
 \[
-A_U \models R(t_1,\dots,t_m)[t_1/\!\bowtie,\dots,t_n/\!\bowtie]
-\quad\Longleftrightarrow\quad
-[R(t_1,\dots,t_m)]_T \in U.
+f^{A_U}\bigl(s_1(t_1,\dots,t_n)/\!\bowtie,\dots,s_m(t_1,\dots,t_n)/\!\bowtie\bigr)
+= f(s_1(t_1,\dots,t_n),\dots,s_m(t_1,\dots,t_n))/\!\bowtie.
 \]
+Pero el miembro derecho es exactamente \(t(t_1,\dots,t_n)/\!\bowtie\), puesto que \(t=f(s_1,\dots,s_m)\).  
+De esta forma concluimos
+\[
+t^{A_U}[t_1/\!\bowtie,\dots,t_n/\!\bowtie] = t(t_1,\dots,t_n)/\!\bowtie,
+\]
+y la inductiva queda probada.
 
-Esta es exactamente la equivalencia requerida para el ítem (5).
+\(\square\)
 
-\bigskip
-
-Con esto queda demostrado el caso base $k=0$.
+\end{proof}
 
 \section*{Auxiliares de Demostraciones}
 
@@ -360,22 +272,7 @@ Con esto queda demostrado el caso base $k=0$.
         \item[(a)] $a \in P$,
         \item[(b)] Si $P \supseteq A_j$, entonces $\,\inf(A_j) \in P$, para cada $j = 1,2,\ldots$.
     \end{enumerate}
- 
-    \item \textbf{(Tipos parecidos).} 
-    Sean $\tau = (C, F, R, a)$ y $\tau' = (C', F', R', a')$ tipos.
 
-    \begin{enumerate}
-        \item Si $C \subseteq C'$, $F \subseteq F'$, $R \subseteq R'$ y $a'|_{F \cup R} = a$, entonces
-        \[
-        (\Sigma, \tau) \vdash \varphi \quad \Rightarrow \quad (\Sigma, \tau') \vdash \varphi .
-        \]
-
-        \item Si $C \subseteq C'$, $F = F'$, $R = R'$ y $a' = a$, entonces
-        \[
-        (\Sigma, \tau') \vdash \varphi \quad \Rightarrow \quad (\Sigma, \tau) \vdash \varphi,
-        \]
-        cada vez que $\Sigma \cup \{\varphi\} \subseteq S_\tau$.
-    \end{enumerate}
 
 \end{enumerate}
 
